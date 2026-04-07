@@ -19,13 +19,19 @@ interface ArtefatoPageProps {
 
 export default async function ArtefatoPage({ params }: ArtefatoPageProps) {
   const { id } = await params
-  const supabase = await createClient()
 
-  const { data: artifact } = await supabase
-    .from('artifacts')
-    .select('*')
-    .eq('id', id)
-    .single()
+  let artifact = null
+  try {
+    const supabase = await createClient()
+    const { data } = await supabase
+      .from('artifacts')
+      .select('*')
+      .eq('id', id)
+      .single()
+    artifact = data
+  } catch {
+    notFound()
+  }
 
   if (!artifact) notFound()
 
