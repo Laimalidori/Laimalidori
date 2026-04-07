@@ -2,16 +2,25 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function updateSession(request: NextRequest) {
-  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+  // Use SUPABASE_URL / SUPABASE_ANON_KEY (no NEXT_PUBLIC_ prefix) so they are
+  // read at runtime, not inlined at build time. NEXT_PUBLIC_ vars are statically
+  // replaced by the Next.js compiler and will be "undefined" if not set before build.
+  const supabaseUrl =
+    process.env.SUPABASE_URL ||
+    process.env.NEXT_PUBLIC_SUPABASE_URL
+
+  const supabaseAnonKey =
+    process.env.SUPABASE_ANON_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  if (!supabaseUrl || !supabaseAnonKey) {
     return NextResponse.next({ request })
   }
 
-  let supabaseResponse = NextResponse.next({ request })
+  try {
+    let supabaseResponse = NextResponse.next({ request })
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    {
+    const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
       cookies: {
         getAll() {
           return request.cookies.getAll()
@@ -26,25 +35,27 @@ export async function updateSession(request: NextRequest) {
           )
         },
       },
+    })
+
+    const { data: { user } } = await supabase.auth.getUser()
+
+    const isAuthPage = request.nextUrl.pathname.startsWith('/login')
+    const isDashboard = request.nextUrl.pathname.startsWith('/dashboard')
+
+    if (!user && isDashboard) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/login'
+      return NextResponse.redirect(url)
     }
-  )
 
-  const { data: { user } } = await supabase.auth.getUser()
+    if (user && isAuthPage) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/dashboard'
+      return NextResponse.redirect(url)
+    }
 
-  const isAuthPage = request.nextUrl.pathname.startsWith('/login')
-  const isDashboard = request.nextUrl.pathname.startsWith('/dashboard')
-
-  if (!user && isDashboard) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/login'
-    return NextResponse.redirect(url)
+    return supabaseResponse
+  } catch {
+    return NextResponse.next({ request })
   }
-
-  if (user && isAuthPage) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/dashboard'
-    return NextResponse.redirect(url)
-  }
-
-  return supabaseResponse
 }
