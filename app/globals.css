@@ -397,3 +397,27 @@
   content: '●';
   font-size: 8px;
 }
+
+/* ─────────────────────────────────────────────────────────
+   FORM INPUTS
+───────────────────────────────────────────────────────── */
+.form-input {
+  width: 100%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color var(--duration-fast);
+}
+.form-input:focus {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-focus);
+}
+.form-input::placeholder { color: var(--text-disabled); }
+.form-input:disabled { opacity: 0.5; pointer-events: none; }
+select.form-input { cursor: pointer; }
+textarea.form-input { resize: vertical; line-height: 1.5; }
