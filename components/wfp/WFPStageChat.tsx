@@ -3,7 +3,15 @@
 import { useState, useRef, useEffect, useMemo } from 'react'
 import { useChat } from '@ai-sdk/react'
 import { TextStreamChatTransport } from 'ai'
+import ReactMarkdown from 'react-markdown'
+import { createClient } from '@/lib/supabase/client'
 import type { WFPProject, EtapaDefinicao } from '@/types/wfp'
+
+interface StoredMessage {
+  role: 'user' | 'assistant'
+  content: string
+  timestamp: string
+}
 
 interface Props {
   projectId: string
@@ -45,9 +53,68 @@ const SUGESTOES: Record<number, string[]> = {
   ],
 }
 
+/** Extract text from an AI SDK v6 UIMessage (parts[] is primary; content string is fallback) */
+function extractText(msg: unknown): string {
+  const m = msg as Record<string, unknown>
+  if (Array.isArray(m.parts) && m.parts.length > 0) {
+    const txt = (m.parts as Array<{ type: string; text?: string }>)
+      .filter((p) => p.type === 'text')
+      .map((p) => p.text ?? '')
+      .join('')
+    if (txt) return txt
+  }
+  if (typeof m.content === 'string') return m.content
+  return ''
+}
+
+/** Split content into text and [ENTREGÁVEL] blocks */
+interface Segment { type: 'text' | 'deliverable'; content: string }
+
+function parseContent(content: string): Segment[] {
+  const segs: Segment[] = []
+  const re = /\[ENTREGÁVEL\]([\s\S]*?)\[\/ENTREGÁVEL\]/g
+  let last = 0
+  let m: RegExpExecArray | null
+  while ((m = re.exec(content)) !== null) {
+    if (m.index > last) segs.push({ type: 'text', content: content.slice(last, m.index) })
+    segs.push({ type: 'deliverable', content: m[1].trim() })
+    last = m.index + m[0].length
+  }
+  if (last < content.length) segs.push({ type: 'text', content: content.slice(last) })
+  return segs.length ? segs : [{ type: 'text', content }]
+}
+
+function AssistantBubble({ content }: { content: string }) {
+  const segs = parseContent(content)
+  return (
+    <>
+      {segs.map((seg, i) =>
+        seg.type === 'deliverable' ? (
+          <div
+            key={i}
+            className="mt-4 border border-success rounded-lg p-4 bg-success-subtle space-y-2"
+          >
+            <p className="text-xs font-semibold text-success tracking-wide uppercase">
+              ✓ Entregável da etapa
+            </p>
+            <div className="prose-chat text-sm">
+              <ReactMarkdown>{seg.content}</ReactMarkdown>
+            </div>
+          </div>
+        ) : (
+          <ReactMarkdown key={i}>{seg.content}</ReactMarkdown>
+        )
+      )}
+    </>
+  )
+}
+
 export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) {
   const messagesEndRef = useRef<HTMLDivElement>(null)
-  const [input, setInput] = useState('')
+  const [input, setInput]               = useState('')
+  const [storedMsgs, setStoredMsgs]     = useState<StoredMessage[]>([])
+  const [historyLoaded, setHistoryLoaded] = useState(false)
+  const initSentRef = useRef(false)
 
   const systemContext = buildSystemContext(projeto, etapaDef)
 
@@ -64,9 +131,41 @@ export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) 
   const { messages, sendMessage, status } = useChat({ transport })
   const isLoading = status === 'submitted' || status === 'streaming'
 
+  /* ── Load conversation history from Supabase ── */
+  useEffect(() => {
+    const supabase = createClient()
+    supabase
+      .from('wfp_stage_outputs')
+      .select('mensagens')
+      .eq('projeto_id', projectId)
+      .eq('etapa_id', stageNum)
+      .single()
+      .then(({ data }) => {
+        if (data?.mensagens) {
+          // Filter hidden system messages from display
+          const visible = (data.mensagens as StoredMessage[]).filter(
+            (m) => m.content !== '[abertura da etapa]'
+          )
+          setStoredMsgs(visible)
+        }
+        setHistoryLoaded(true)
+      })
+  }, [projectId, stageNum])
+
+  /* ── Auto-init: open the stage with Nina's analysis when no history ── */
+  useEffect(() => {
+    if (!historyLoaded)           return
+    if (initSentRef.current)      return
+    if (storedMsgs.length > 0)   return
+    if (messages.length > 0)     return
+    initSentRef.current = true
+    sendMessage({ text: '__INIT__' })
+  }, [historyLoaded, storedMsgs.length, messages.length, sendMessage])
+
+  /* ── Scroll to bottom on new messages ── */
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages])
+  }, [messages, storedMsgs])
 
   function handleSend() {
     const text = input.trim()
@@ -82,16 +181,35 @@ export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) 
 
   const sugestoes = SUGESTOES[stageNum] ?? []
 
+  // Filter the invisible __INIT__ sentinel from the live messages list
+  const liveMsgs = messages.filter((m) => extractText(m) !== '__INIT__')
+  const hasAny   = storedMsgs.length > 0 || liveMsgs.length > 0
+
   return (
-    <div className="border border-border-light rounded-lg overflow-hidden bg-bg-surface">
-      {/* Messages */}
-      <div className="min-h-[300px] max-h-[520px] overflow-y-auto p-5 space-y-4">
-        {messages.length === 0 && (
-          <div className="space-y-4">
+    <div className="flex flex-col border border-border-light rounded-lg overflow-hidden bg-bg-surface">
+      {/* ── Message area ── */}
+      <div className="flex-1 overflow-y-auto p-5 space-y-5 min-h-[420px] max-h-[620px]">
+
+        {/* Skeleton while loading history */}
+        {!historyLoaded && (
+          <div className="animate-pulse space-y-3">
+            <div className="flex gap-3">
+              <div className="w-7 h-7 rounded bg-bg-muted shrink-0" />
+              <div className="flex-1 space-y-2 pt-1">
+                <div className="h-3 w-3/4 bg-bg-muted rounded" />
+                <div className="h-3 w-1/2 bg-bg-muted rounded" />
+                <div className="h-3 w-2/3 bg-bg-muted rounded" />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Suggestion chips — only when truly empty */}
+        {historyLoaded && !hasAny && !isLoading && (
+          <div className="space-y-3">
             <p className="body-sm text-text-tertiary">
-              Nina está pronta para conduzir{' '}
-              <span className="text-text-primary font-medium">{etapaDef.nome}</span>.
-              Use as sugestões abaixo ou descreva sua situação específica.
+              Ou escolha um ponto de partida para{' '}
+              <span className="font-medium text-text-primary">{etapaDef.nome}</span>:
             </p>
             <div className="space-y-2">
               {sugestoes.map((s, i) => (
@@ -107,16 +225,10 @@ export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) 
           </div>
         )}
 
-        {messages.map((msg) => (
-          <div
-            key={msg.id}
-            className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
-          >
-            {msg.role === 'assistant' && (
-              <div className="w-7 h-7 rounded bg-accent text-white flex items-center justify-center shrink-0 text-xs font-medium">
-                N
-              </div>
-            )}
+        {/* ── Stored (historical) messages ── */}
+        {storedMsgs.map((msg, idx) => (
+          <div key={`h-${idx}`} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
+            {msg.role === 'assistant' && <NinaAvatar />}
             <div
               className={`max-w-[85%] rounded-lg px-4 py-3 text-sm leading-relaxed ${
                 msg.role === 'user'
@@ -124,18 +236,38 @@ export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) 
                   : 'bg-bg-subtle text-text-primary prose-chat'
               }`}
             >
-              {typeof (msg as unknown as { content: unknown }).content === 'string'
-                ? (msg as unknown as { content: string }).content
-                : ''}
+              {msg.role === 'assistant'
+                ? <AssistantBubble content={msg.content} />
+                : msg.content}
             </div>
           </div>
         ))}
 
+        {/* ── Live messages (current session) ── */}
+        {liveMsgs.map((msg) => {
+          const text = extractText(msg)
+          return (
+            <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
+              {msg.role === 'assistant' && <NinaAvatar />}
+              <div
+                className={`max-w-[85%] rounded-lg px-4 py-3 text-sm leading-relaxed ${
+                  msg.role === 'user'
+                    ? 'bg-accent text-white ml-auto'
+                    : 'bg-bg-subtle text-text-primary prose-chat'
+                }`}
+              >
+                {msg.role === 'assistant'
+                  ? <AssistantBubble content={text} />
+                  : text}
+              </div>
+            </div>
+          )
+        })}
+
+        {/* Streaming indicator */}
         {isLoading && (
           <div className="flex gap-3">
-            <div className="w-7 h-7 rounded bg-accent text-white flex items-center justify-center shrink-0 text-xs font-medium">
-              N
-            </div>
+            <NinaAvatar />
             <div className="bg-bg-subtle rounded-lg px-4 py-3">
               <span className="streaming-cursor" />
             </div>
@@ -145,15 +277,15 @@ export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) 
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input */}
-      <div className="border-t border-border-light p-3 flex gap-2">
+      {/* ── Input bar ── */}
+      <div className="border-t border-border-light p-3 flex gap-2 bg-bg-surface">
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend() }
           }}
-          placeholder="Descreva sua situação ou faça uma pergunta específica…"
+          placeholder="Responda, adicione dados ou faça uma pergunta…"
           rows={2}
           className="flex-1 resize-none text-sm bg-transparent text-text-primary placeholder-text-disabled outline-none py-1"
           disabled={isLoading}
@@ -172,14 +304,22 @@ export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) 
   )
 }
 
+function NinaAvatar() {
+  return (
+    <div className="w-7 h-7 rounded bg-accent text-white flex items-center justify-center shrink-0 text-xs font-semibold">
+      N
+    </div>
+  )
+}
+
 function buildSystemContext(projeto: WFPProject | null, etapa: EtapaDefinicao): string {
   if (!projeto) return ''
   const p = (projeto.parametrizacao as unknown) as Record<string, Record<string, unknown>>
-  const id     = p?.identidadeEmpresa      ?? {}
-  const mom    = p?.momentoEstrategico     ?? {}
-  const fin    = p?.contextoFinanceiro     ?? {}
-  const mat    = p?.maturidadeOrganizacional ?? {}
-  const pol    = p?.contextoPolitico       ?? {}
+  const id  = p?.identidadeEmpresa       ?? {}
+  const mom = p?.momentoEstrategico      ?? {}
+  const fin = p?.contextoFinanceiro      ?? {}
+  const mat = p?.maturidadeOrganizacional ?? {}
+  const pol = p?.contextoPolitico        ?? {}
 
   return `
 Projeto: ${projeto.nome}

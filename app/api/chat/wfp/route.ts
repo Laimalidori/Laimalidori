@@ -19,6 +19,7 @@ Você não é uma ferramenta de relatório. Você é a consultora que o CHRO con
 - Faz 1–2 perguntas de qualificação quando falta dado crítico antes de concluir
 - Nunca elogia a pergunta — vai direto à substância
 - Quando identifica risco político ou de execução, nomeia explicitamente — não suaviza
+- Quando produz um entregável estruturado completo (diagnóstico, ranking, matriz, cenário), encapsula-o entre [ENTREGÁVEL] e [/ENTREGÁVEL]
 
 ## Os 6 frameworks centrais do método WFP
 
@@ -76,6 +77,34 @@ Nesses casos: pause, nomeie o problema, explique a consequência e redirecione.
 - Acurácia da lente de realidade: % de riscos que se materializaram e foram previstos na Etapa 5 (meta: >80%)
 `
 
+/** Extract text content from a message (handles both string and parts[] formats) */
+function getMsgText(msg: { content?: unknown; parts?: unknown[] }): string {
+  if (typeof msg.content === 'string') return msg.content
+  if (Array.isArray(msg.parts)) {
+    return (msg.parts as Array<{ type: string; text?: string }>)
+      .filter((p) => p.type === 'text')
+      .map((p) => p.text ?? '')
+      .join('')
+  }
+  if (Array.isArray(msg.content)) {
+    return (msg.content as Array<{ type: string; text?: string }>)
+      .filter((p) => p.type === 'text')
+      .map((p) => p.text ?? '')
+      .join('')
+  }
+  return ''
+}
+
+const INIT_INSTRUCTION = `
+
+## Abertura automática da etapa
+A mensagem "[abertura da etapa]" indica que o CHRO acabou de entrar nesta etapa pela primeira vez. Faça a abertura da etapa:
+1. Leia o contexto do projeto acima — empresa, momento, pressão, gatilho, maturidade, política
+2. Identifique 1–2 riscos ou tensões específicas para ESTE projeto nesta etapa (não genéricas)
+3. Diga o que você vai precisar do CHRO para conduzir a análise desta etapa
+4. Seja direta — sem saudações, sem coaching genérico, sem repetir o nome da etapa
+Máximo: 200 palavras. Primeira palavra: "Para"`
+
 export async function POST(req: Request) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -83,41 +112,55 @@ export async function POST(req: Request) {
 
   const { messages, projectId, stageNum, systemContext } = await req.json()
 
-  const system = `${WFP_SYSTEM_BASE}\n\n## Contexto do Projeto\n${systemContext ?? ''}\n\n## Etapa ${stageNum} de 6\nFoque sua análise no objetivo desta etapa. Ao final de análises completas, ofereça próximos passos concretos.`
+  // Detect auto-init request
+  const lastMsg = messages[messages.length - 1] as { content?: unknown; parts?: unknown[] } | undefined
+  const lastText = lastMsg ? getMsgText(lastMsg) : ''
+  const isInit = lastText === '__INIT__'
+
+  // Replace __INIT__ sentinel with the visible placeholder for the model
+  const processedMessages = isInit
+    ? messages.slice(0, -1).concat([{ role: 'user', content: '[abertura da etapa]' }])
+    : messages
+
+  const system =
+    `${WFP_SYSTEM_BASE}\n\n## Contexto do Projeto\n${systemContext ?? ''}\n\n## Etapa ${stageNum} de 6\nFoque sua análise no objetivo desta etapa. Ao concluir análises completas com dados suficientes, encapsule o entregável entre [ENTREGÁVEL] e [/ENTREGÁVEL].` +
+    (isInit ? INIT_INSTRUCTION : '')
 
   const result = streamText({
     model: anthropic('claude-sonnet-4-6'),
     system,
-    messages,
+    messages: processedMessages,
     maxOutputTokens: 6000,
     onFinish: async ({ text }: { text: string }) => {
-      if (projectId && stageNum) {
-        // Persist messages to wfp_stage_outputs
-        const { data: existing } = await supabase
-          .from('wfp_stage_outputs')
-          .select('id, mensagens')
-          .eq('projeto_id', projectId)
-          .eq('etapa_id', stageNum)
-          .single()
+      if (!projectId || !stageNum) return
 
-        const existingMsgs = (existing?.mensagens as Array<{ role: string; content: string; timestamp: string }>) ?? []
-        const lastUserMsg = messages[messages.length - 1]
-        const newMsgs = [
-          ...existingMsgs,
-          ...(lastUserMsg ? [{ role: 'user', content: lastUserMsg.content, timestamp: new Date().toISOString() }] : []),
-          { role: 'assistant', content: text, timestamp: new Date().toISOString() },
-        ]
+      const { data: existing } = await supabase
+        .from('wfp_stage_outputs')
+        .select('id, mensagens')
+        .eq('projeto_id', projectId)
+        .eq('etapa_id', stageNum)
+        .single()
 
-        if (existing) {
-          await supabase
-            .from('wfp_stage_outputs')
-            .update({ mensagens: newMsgs })
-            .eq('id', existing.id)
-        } else {
-          await supabase
-            .from('wfp_stage_outputs')
-            .insert({ projeto_id: projectId, etapa_id: stageNum, mensagens: newMsgs })
-        }
+      const prev = (existing?.mensagens as Array<{ role: string; content: string; timestamp: string }>) ?? []
+
+      // For __INIT__, store a placeholder user msg so history always starts with user
+      // (filtered from UI display — never shown to user)
+      const userEntry = isInit
+        ? { role: 'user' as const, content: '[abertura da etapa]', timestamp: new Date().toISOString() }
+        : lastMsg
+          ? { role: 'user' as const, content: lastText, timestamp: new Date().toISOString() }
+          : null
+
+      const newMsgs = [
+        ...prev,
+        ...(userEntry ? [userEntry] : []),
+        { role: 'assistant' as const, content: text, timestamp: new Date().toISOString() },
+      ]
+
+      if (existing) {
+        await supabase.from('wfp_stage_outputs').update({ mensagens: newMsgs }).eq('id', existing.id)
+      } else {
+        await supabase.from('wfp_stage_outputs').insert({ projeto_id: projectId, etapa_id: stageNum, mensagens: newMsgs })
       }
     },
   })
