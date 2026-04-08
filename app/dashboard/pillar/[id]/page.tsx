@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { notFound } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import { getPillarById } from '@/lib/agents/pillars'
 import { useChatStore } from '@/store/chat'
@@ -21,25 +22,19 @@ const MODULOS_POR_PILAR: Record<string, Array<{ href: string; numero: string; no
   ],
 }
 
-interface PillarPageProps {
-  params: Promise<{ id: string }>
-}
-
-export default function PillarPage({ params }: PillarPageProps) {
-  const [pillarId, setPillarId] = useState<string>('')
+export default function PillarPage() {
+  const params = useParams()
+  const pillarId = params.id as string
   const [activeAgentId, setActiveAgentId] = useState<string>('')
   const [quickActionMessage, setQuickActionMessage] = useState<string | undefined>()
   const { clearActive, setActivePillar } = useChatStore()
 
   useEffect(() => {
-    params.then(({ id }) => {
-      setPillarId(id)
+    if (pillarId) {
       clearActive()
-      setActivePillar(id)
-    })
-  }, [params, clearActive, setActivePillar])
-
-  if (!pillarId) return null
+      setActivePillar(pillarId)
+    }
+  }, [pillarId, clearActive, setActivePillar])
 
   const pillar = getPillarById(pillarId)
   if (!pillar) notFound()
@@ -102,3 +97,4 @@ export default function PillarPage({ params }: PillarPageProps) {
     </div>
   )
 }
+
