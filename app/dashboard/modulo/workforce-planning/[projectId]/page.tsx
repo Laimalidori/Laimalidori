@@ -83,15 +83,15 @@ export default function ProjectCanvasPage() {
         <div className="space-y-1">
           <h1 className="display-lg text-text-primary">{projeto.nome}</h1>
           <div className="flex items-center gap-3 flex-wrap">
-            {identidade.numColaboradores && (
+            {!!identidade.numColaboradores && (
               <span className="body-sm text-text-tertiary">
-                {COL_LABEL[identidade.numColaboradores as string] ?? identidade.numColaboradores} colaboradores
+                {COL_LABEL[identidade.numColaboradores as string] ?? (identidade.numColaboradores as string)} colaboradores
               </span>
             )}
-            {momento.momento && (
+            {!!momento.momento && (
               <>
                 <span className="text-border-medium">·</span>
-                <span className="body-sm text-text-tertiary">{MOMENTO_LABEL[momento.momento as string] ?? momento.momento}</span>
+                <span className="body-sm text-text-tertiary">{MOMENTO_LABEL[momento.momento as string] ?? (momento.momento as string)}</span>
               </>
             )}
             <span className="text-border-medium">·</span>
@@ -240,17 +240,17 @@ export default function ProjectCanvasPage() {
       <section className="border border-border-light rounded-lg p-5 space-y-4 bg-bg-surface">
         <p className="label-md text-text-tertiary">Contexto parametrizado</p>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {identidade.setor && <ContextItem label="Setor" value={SETOR_LABEL[identidade.setor as string] ?? (identidade.setor as string)} />}
-          {identidade.mercado && <ContextItem label="Mercado" value={MERCADO_LABEL[identidade.mercado as string] ?? (identidade.mercado as string)} />}
-          {financeiro.pressaoBudget && <ContextItem label="Pressão de budget" value={PRESSAO_LABEL[financeiro.pressaoBudget as string] ?? (financeiro.pressaoBudget as string)} />}
-          {financeiro.liderBudget && <ContextItem label="Quem lidera budget" value={LIDER_LABEL[financeiro.liderBudget as string] ?? (financeiro.liderBudget as string)} />}
-          {maturidade.historicoWFP && <ContextItem label="Histórico WFP" value={HISTORICO_LABEL[maturidade.historicoWFP as string] ?? (maturidade.historicoWFP as string)} />}
-          {politico.reacaoCEO && <ContextItem label="Reação do CEO" value={CEO_LABEL[politico.reacaoCEO as string] ?? (politico.reacaoCEO as string)} />}
+          {!!identidade.setor && <ContextItem label="Setor" value={SETOR_LABEL[identidade.setor as string] ?? (identidade.setor as string)} />}
+          {!!identidade.mercado && <ContextItem label="Mercado" value={MERCADO_LABEL[identidade.mercado as string] ?? (identidade.mercado as string)} />}
+          {!!financeiro.pressaoBudget && <ContextItem label="Pressão de budget" value={PRESSAO_LABEL[financeiro.pressaoBudget as string] ?? (financeiro.pressaoBudget as string)} />}
+          {!!financeiro.liderBudget && <ContextItem label="Quem lidera budget" value={LIDER_LABEL[financeiro.liderBudget as string] ?? (financeiro.liderBudget as string)} />}
+          {!!maturidade.historicoWFP && <ContextItem label="Histórico WFP" value={HISTORICO_LABEL[maturidade.historicoWFP as string] ?? (maturidade.historicoWFP as string)} />}
+          {!!politico.reacaoCEO && <ContextItem label="Reação do CEO" value={CEO_LABEL[politico.reacaoCEO as string] ?? (politico.reacaoCEO as string)} />}
         </div>
-        {momento.metaProximoAno && (
+        {!!momento.metaProximoAno && (
           <ContextItem label="Meta do próximo ano" value={momento.metaProximoAno as string} className="col-span-full" />
         )}
-        {politico.maiorRiscoPolitico && (
+        {!!politico.maiorRiscoPolitico && (
           <div className="border-t border-border-light pt-4">
             <p className="label-sm text-text-tertiary mb-1">Risco político identificado</p>
             <p className="text-xs text-warning bg-warning-subtle border border-warning-border rounded px-3 py-2">
