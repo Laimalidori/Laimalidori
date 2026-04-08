@@ -231,7 +231,7 @@ const STAGE_GUIDES: Record<number, { sections: Array<{ title: string; items: str
 
 export function EtapaFrameworks({ def, stageNum }: Props) {
   const [activeTab, setActiveTab] = useState<'frameworks' | 'guia'>('guia')
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
 
   const guide = STAGE_GUIDES[stageNum]
 

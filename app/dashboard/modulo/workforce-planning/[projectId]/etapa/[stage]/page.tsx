@@ -16,6 +16,15 @@ const STATUS_COLOR: Record<string, string> = {
   bloqueada:    'text-text-disabled bg-bg-subtle',
 }
 
+const POR_QUE_IMPORTA: Record<number, string> = {
+  1: 'Se você entrar na reunião sem saber os 4 números financeiros, perde credibilidade em 3 minutos. O executivo vai perguntar sobre custo/receita — você precisa ter a resposta antes dele.',
+  2: 'Responder a pergunta errada é o erro que mais faz projetos de WFP virarem relatório de gaveta. Uma análise tecnicamente perfeita para a pergunta errada não serve para nada.',
+  3: 'Sem mapa de gargalo, qualquer recomendação de alocação é baseada em feeling. Você vai recomendar contratação onde não há gargalo e deixar de contratar onde há.',
+  4: 'Sem classificar o portfólio, você não sabe o que pode cortar sem destruir capacidade competitiva. Empresas têm 15–25% das funções em Legacy sem saber — e pagam por isso.',
+  5: 'Todo plano tecnicamente correto pode falhar por razões políticas ou culturais. Esta etapa é o que separa o plano que vai para o board do plano que fica na gaveta.',
+  6: 'Uma recomendação única força o executivo a aprovar ou negar tudo. Três cenários com trade-offs devolvem a decisão para quem tem o mandato — e aumentam a taxa de aprovação.',
+}
+
 export default function EtapaPage() {
   const params    = useParams()
   const projectId = params.projectId as string
@@ -139,6 +148,27 @@ export default function EtapaPage() {
             </div>
             <h1 className="display-sm text-text-primary">{def.nome}</h1>
             <p className="body-sm text-text-secondary leading-relaxed">{def.objetivo}</p>
+          </div>
+
+          {/* Por que esta etapa importa */}
+          {POR_QUE_IMPORTA[stageNum] && (
+            <div className="border-l-2 border-accent pl-4 py-1 space-y-1">
+              <p className="label-sm text-text-tertiary">Por que esta etapa é crítica</p>
+              <p className="text-xs text-text-secondary leading-relaxed">{POR_QUE_IMPORTA[stageNum]}</p>
+            </div>
+          )}
+
+          {/* Outputs desta etapa */}
+          <div className="space-y-2">
+            <p className="label-sm text-text-tertiary">O que você vai produzir</p>
+            <ul className="space-y-1.5">
+              {def.outputs.map((out, i) => (
+                <li key={i} className="flex items-start gap-2 text-xs text-text-secondary">
+                  <span className="text-success mt-0.5 shrink-0">✓</span>
+                  {out}
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Frameworks / Guia accordion */}

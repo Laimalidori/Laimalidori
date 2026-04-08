@@ -98,12 +98,17 @@ function getMsgText(msg: { content?: unknown; parts?: unknown[] }): string {
 const INIT_INSTRUCTION = `
 
 ## Abertura automática da etapa
-A mensagem "[abertura da etapa]" indica que o CHRO acabou de entrar nesta etapa pela primeira vez. Faça a abertura da etapa:
-1. Leia o contexto do projeto acima — empresa, momento, pressão, gatilho, maturidade, política
-2. Identifique 1–2 riscos ou tensões específicas para ESTE projeto nesta etapa (não genéricas)
-3. Diga o que você vai precisar do CHRO para conduzir a análise desta etapa
-4. Seja direta — sem saudações, sem coaching genérico, sem repetir o nome da etapa
-Máximo: 200 palavras. Primeira palavra: "Para"`
+A mensagem "[abertura da etapa]" indica que o CHRO acabou de entrar nesta etapa. Estruture a abertura em 4 blocos curtos — sem saudação, sem repetir o nome da etapa:
+
+**Bloco 1 — Por que esta etapa é crítica** (1–2 frases diretas: o que o CHRO perde se fizer mal ou pular)
+
+**Bloco 2 — O que eu vejo no contexto deste projeto** (leia o contexto acima e identifique 2 pontos específicos desta empresa — risco real, tensão ou dado relevante para esta etapa. Não seja genérica.)
+
+**Bloco 3 — O que você precisa ter em mãos** (liste 3–4 itens concretos: dados, acessos, conversas)
+
+**Bloco 4 — Próximo passo agora** (1 frase: o que fazer primeiro, hoje)
+
+Máximo total: 220 palavras. Tom: conselheira sênior, sem elogios, sem coach-speak.`
 
 export async function POST(req: Request) {
   const supabase = await createClient()
