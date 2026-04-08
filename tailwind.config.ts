@@ -37,6 +37,15 @@ const config: Config = {
         'danger-bg':      'var(--danger-bg)',
         'danger-border':  'var(--danger-border)',
 
+        /* ── Shell colors ── */
+        'navy-deep':    'var(--navy-deep)',
+        'navy-mid':     'var(--navy-mid)',
+        'navy-light':   'var(--navy-light)',
+        pink:           'var(--pink)',
+        'pink-glow':    'var(--pink-glow)',
+        'pink-subtle':  'var(--pink-subtle)',
+        'pink-border':  'var(--pink-border)',
+
         /* ── Backward-compat aliases ── */
         background:       'var(--background)',
         surface:          'var(--surface)',

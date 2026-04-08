@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { Header } from '@/components/layout/Header'
-import { CompanyStrip } from '@/components/layout/CompanyStrip'
+import { Sidebar } from '@/components/layout/Sidebar'
 import { MobileNav } from '@/components/layout/MobileNav'
 import { EmpresaProvider } from '@/components/layout/EmpresaProvider'
 
@@ -20,12 +20,16 @@ export default async function DashboardLayout({
 
   return (
     <EmpresaProvider>
-      <div className="min-h-screen bg-background flex flex-col">
+      <div className="min-h-screen bg-navy-deep flex flex-col">
         <Header />
-        <CompanyStrip />
-        <main className="flex-1 w-full max-w-content mx-auto px-4 md:px-6 py-8 pb-20 md:pb-8">
-          {children}
-        </main>
+        <div className="flex flex-1 overflow-hidden">
+          <Sidebar />
+          <main className="flex-1 bg-bg-base overflow-y-auto">
+            <div className="max-w-[900px] mx-auto px-6 md:px-8 py-8 pb-24 lg:pb-8">
+              {children}
+            </div>
+          </main>
+        </div>
         <MobileNav />
       </div>
     </EmpresaProvider>

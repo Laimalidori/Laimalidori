@@ -10,7 +10,6 @@ export function ToolsGrid() {
 
   function handleToolSelect(prompt: string) {
     clearActive()
-    // Encode the prompt as a search param and navigate to home
     const params = new URLSearchParams({ tool: prompt })
     router.push(`/dashboard?${params.toString()}`)
   }
@@ -21,10 +20,12 @@ export function ToolsGrid() {
         <button
           key={tool.id}
           onClick={() => handleToolSelect(tool.prompt)}
-          className="px-4 py-2 bg-surface border border-[var(--border)] rounded hover:border-[var(--border-strong)] hover:bg-surface-subtle transition-colors text-left"
+          className="px-3 py-2 bg-bg-surface border border-border-light rounded-lg hover:border-border-medium hover:bg-bg-subtle transition-all text-left group"
         >
-          <span className="body-sm text-text-secondary font-medium block">{tool.name}</span>
-          <span className="body-sm text-text-tertiary">{tool.description}</span>
+          <span className="text-xs font-medium text-text-secondary group-hover:text-text-primary transition-colors block">
+            {tool.name}
+          </span>
+          <span className="text-[11px] text-text-tertiary leading-snug">{tool.description}</span>
         </button>
       ))}
     </div>
