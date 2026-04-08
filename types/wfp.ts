@@ -1,242 +1,286 @@
 /* ─────────────────────────────────────────────────────────
    Módulo 01 — Workforce Planning
-   Tipos TypeScript completos
+   Tipos TypeScript — alinhados à spec v1.0
 ───────────────────────────────────────────────────────── */
 
-/* ── Enums ─────────────────────────────────────────────── */
+/* ── Bloco 1 — Identidade da empresa ───────────────────── */
 
-export type SetorEmpresa =
-  | 'tecnologia'
-  | 'financeiro'
-  | 'saude'
-  | 'varejo'
-  | 'industria'
-  | 'servicos'
-  | 'educacao'
-  | 'energia'
-  | 'agronegocio'
-  | 'outro'
+export type SetorWFP =
+  | 'tech' | 'fintech' | 'varejo' | 'saude'
+  | 'industria' | 'servicos' | 'educacao' | 'outro'
 
-export type FaturamentoFaixa =
-  | 'ate_50m'
-  | '50m_200m'
-  | '200m_1b'
-  | '1b_5b'
-  | 'acima_5b'
+export type MercadoWFP = 'b2b' | 'b2c' | 'b2b2c' | 'governo' | 'misto'
 
-export type EstagioCrescimento =
-  | 'startup'
-  | 'crescimento'
-  | 'maturidade'
+export type ColaboradoresFaixa = '50_100' | '101_200' | '201_400' | '401_800'
+
+export type LocalizacaoWFP = 'sp' | 'rj' | 'nacional' | 'internacional'
+
+export interface IdentidadeEmpresa {
+  nomeEmpresa:     string
+  setor:           SetorWFP
+  mercado:         MercadoWFP
+  numColaboradores: ColaboradoresFaixa
+  localizacao:     LocalizacaoWFP
+}
+
+/* ── Bloco 2 — Momento estratégico ─────────────────────── */
+
+export type MomentoWFP =
+  | 'hypergrowth'
+  | 'crescimento_saudavel'
+  | 'eficiencia_margem'
   | 'transformacao'
-  | 'consolidacao'
-
-export type HorizontePlanejamento =
-  | '12_meses'
-  | '18_meses'
-  | '24_meses'
-  | '36_meses'
-  | '5_anos'
-
-export type NivelMaturidadeWFP =
-  | 'inicial'         // Sem processo formal
-  | 'em_construcao'   // Primeiros passos
-  | 'definido'        // Processos básicos
-  | 'gerenciado'      // Dados e métricas
-  | 'otimizado'       // Preditivo e integrado
-
-export type TipoProjetoWFP =
-  | 'diagnostico_inicial'
-  | 'planejamento_anual'
   | 'reestruturacao'
-  | 'crescimento_acelerado'
-  | 'reducao_headcount'
-  | 'transformacao_digital'
-  | 'fusao_aquisicao'
+  | 'turnaround'
+  | 'ma'
 
-export type StatusProjeto = 'parametrizando' | 'ativo' | 'pausado' | 'concluido'
-
-export type StatusEtapa = 'bloqueada' | 'disponivel' | 'em_andamento' | 'concluida'
-
-/* ── Parametrização ─────────────────────────────────────── */
-
-export interface PerfilNegocio {
-  nomeEmpresa: string
-  setor: SetorEmpresa
-  faturamentoFaixa: FaturamentoFaixa
-  numFuncionarios: number
-  estagio: EstagioCrescimento
-  anosOperacao?: number
-  presencaGeografica?: string  // ex: "Nacional — 5 estados"
+export interface MomentoEstrategico {
+  momento:        MomentoWFP
+  metaProximoAno: string   // campo livre — 1 frase
+  gatilhoWFP:     string   // o que desencadeou essa necessidade agora
 }
 
-export interface ContextoEstrategico {
-  horizonte: HorizontePlanejamento
-  drivers: string[]           // ex: ["expansão geográfica", "automação"]
-  metasCrescimento?: string   // descrição livre
-  restricoesOrçamento?: string
-  mandatoRH?: string          // ex: "Reduzir custo com pessoal em 15%"
+/* ── Bloco 3 — Contexto financeiro ─────────────────────── */
+
+export type CustoPessoasReceita = 'abaixo_30' | '30_45' | '45_60' | 'acima_60' | 'nao_sei'
+
+export type PressaoBudget =
+  | 'alta_cortes'
+  | 'moderada_otimizacao'
+  | 'baixa_crescimento'
+  | 'sem_pressao'
+
+export type LiderBudget = 'ceo' | 'cfo' | 'coo' | 'chro' | 'comite' | 'nao_definido'
+
+export interface ContextoFinanceiro {
+  custoPessoasReceita: CustoPessoasReceita
+  pressaoBudget:       PressaoBudget
+  liderBudget:         LiderBudget
 }
 
-export interface DadosForcaTrabalho {
-  turnoverAnual: number           // percentual
-  distribuicaoNiveis: {           // % por nível
-    executivo: number
-    gestao: number
-    especialista: number
-    operacional: number
-  }
-  riscoAutomacao: 'baixo' | 'medio' | 'alto'
-  areasCriticas: string[]         // ex: ["Engenharia", "Comercial"]
-  gapHabilidades?: string         // descrição livre
-  sourcingDificuldade?: 'baixa' | 'media' | 'alta'
+/* ── Bloco 4 — Maturidade organizacional ───────────────── */
+
+export type MaturidadeDados =
+  | 'baixa_planilhas'
+  | 'media_hris'
+  | 'alta_analytics'
+
+export type MaturidadeLideranca =
+  | 'baixa_feeling'
+  | 'media_estrutura'
+  | 'alta_data_driven'
+
+export type HistoricoWFP = 'nunca' | 'tentamos' | 'basico' | 'bem'
+
+export interface MaturidadeOrganizacional {
+  maturidadeDados:      MaturidadeDados
+  maturidadeLideranca:  MaturidadeLideranca
+  historicoWFP:         HistoricoWFP
 }
 
-export interface MaturidadeRecursos {
-  nivelMaturidade: NivelMaturidadeWFP
-  ferramentasAtivas: string[]     // ex: ["Excel", "SAP SuccessFactors"]
-  restricoesRecursos?: string
-  stakeholdersChave?: string      // ex: "CFO, CEO, CTO"
-  tempoDisponivel?: string        // ex: "6 semanas para diagnóstico"
+/* ── Bloco 5 — Contexto político ───────────────────────── */
+
+export type ReacaoCEO = 'cetico' | 'aberto' | 'parceiro' | 'nao_se_envolve'
+export type LiderTravar = 'sim' | 'nao' | 'nao_sei'
+
+export interface ContextoPolitico {
+  reacaoCEO:           ReacaoCEO
+  maiorRiscoPolitico:  string    // campo livre — 1 frase
+  liderPoderTravar:    LiderTravar
+  liderPoderTravarQuem?: string
 }
 
-export interface FocoProjeto {
-  tipo: TipoProjetoWFP
-  areasEscopo: string[]           // ex: ["TI", "Operações", "Vendas"]
-  outputsEsperados: string[]      // ex: ["Relatório de gaps", "Plano de ação 12m"]
-  prioridade: 'custo' | 'capacidade' | 'competencias' | 'estrutura'
-  benchmarkDesejado?: boolean
-}
+/* ── Parametrização completa ────────────────────────────── */
 
 export interface ParametrizacaoWFP {
-  perfilNegocio: PerfilNegocio
-  contextoEstrategico: ContextoEstrategico
-  dadosForcaTrabalho: DadosForcaTrabalho
-  maturidadeRecursos: MaturidadeRecursos
-  focoProjeto: FocoProjeto
+  identidadeEmpresa:      IdentidadeEmpresa
+  momentoEstrategico:     MomentoEstrategico
+  contextoFinanceiro:     ContextoFinanceiro
+  maturidadeOrganizacional: MaturidadeOrganizacional
+  contextoPolitico:       ContextoPolitico
 }
 
-/* ── Projeto ────────────────────────────────────────────── */
+/* ── Projeto (snake_case = Supabase output) ─────────────── */
+
+export type StatusProjeto = 'parametrizando' | 'ativo' | 'pausado' | 'concluido'
+export type StatusEtapa   = 'bloqueada' | 'disponivel' | 'em_andamento' | 'concluida'
+
+export interface WFPEtapaStatus {
+  etapaId:     1 | 2 | 3 | 4 | 5 | 6
+  status:      StatusEtapa
+  concluidoEm?: string
+  resumo?:     string
+}
 
 export interface WFPProject {
-  id: string
-  userId: string
-  nome: string
-  status: StatusProjeto
+  id:             string
+  user_id:        string
+  nome:           string
+  status:         StatusProjeto
   parametrizacao: ParametrizacaoWFP
-  etapas: WFPEtapaStatus[]
-  criadoEm: string
-  atualizadoEm: string
+  etapas_status:  WFPEtapaStatus[]
+  created_at:     string
+  updated_at:     string
 }
 
-/* ── Etapas ─────────────────────────────────────────────── */
+/* ── Etapa — definição ──────────────────────────────────── */
 
 export type EtapaId = 1 | 2 | 3 | 4 | 5 | 6
 
 export interface EtapaDefinicao {
-  id: EtapaId
-  numero: string
-  nome: string
-  descricao: string
-  objetivo: string
-  frameworks: string[]
-  inputs: string[]
-  outputs: string[]
+  id:            EtapaId
+  numero:        string
+  nome:          string
+  descricao:     string
+  objetivo:      string
+  frameworks:    string[]
+  inputs:        string[]
+  outputs:       string[]
   tempoEstimado: string
 }
 
-export interface WFPEtapaStatus {
-  etapaId: EtapaId
-  status: StatusEtapa
-  iniciadoEm?: string
-  concluidoEm?: string
-  resumo?: string             // síntese gerada pela Nina
-  arquivosGerados?: string[]
-}
-
-export interface WFPEtapaOutput {
-  id: string
-  projetoId: string
-  etapaId: EtapaId
-  conteudo: Record<string, unknown>   // structured JSON per stage
-  mensagens: EtapaMensagem[]
-  criadoEm: string
-  atualizadoEm: string
-}
-
-export interface EtapaMensagem {
-  role: 'user' | 'assistant'
-  content: string
-  timestamp: string
-}
-
-/* ── Definições das 6 etapas ────────────────────────────── */
+/* ── Definições das 6 etapas (alinhadas à spec v1.0) ────── */
 
 export const ETAPAS_WFP: EtapaDefinicao[] = [
   {
     id: 1,
     numero: '01',
-    nome: 'Diagnóstico da Força de Trabalho',
-    descricao: 'Mapeamento completo da força de trabalho atual: composição, competências, custos e dinâmicas.',
-    objetivo: 'Estabelecer a fotografia atual da força de trabalho como baseline para todas as análises subsequentes.',
-    frameworks: ['Pirâmide de headcount', 'Matriz de competências críticas', 'Análise de custo por função'],
-    inputs: ['Dados de headcount por área', 'Estrutura salarial', 'Perfis de cargo', 'Indicadores de turnover'],
-    outputs: ['Relatório de diagnóstico', 'Mapa de competências', 'Análise de custo-pessoa'],
+    nome: 'Ler o Negócio e a Estratégia',
+    descricao: 'Diagnóstico financeiro e leitura da postura estratégica antes de qualquer análise de pessoas.',
+    objetivo: 'Chegar na conversa com o executivo sabendo mais sobre a empresa do que ele espera que você saiba.',
+    frameworks: [
+      '4 números de diagnóstico financeiro (Receita/FTE, Custo pessoas/receita, Margem por área, Runway)',
+      'Playing to Win — Roger Martin (Where to play + How to win)',
+      'Cruzamento modo financeiro × postura estratégica',
+    ],
+    inputs: [
+      'DRE / Relatório financeiro dos últimos 12 meses',
+      'Planejamento estratégico ou plano de negócio',
+      'Headcount atual por área',
+    ],
+    outputs: [
+      'Diagnóstico de 1 página com modo financeiro + postura estratégica',
+      'Os 4 números no contexto da empresa',
+      'Frase-síntese da tensão implícita (se houver)',
+    ],
     tempoEstimado: '1–2 semanas',
   },
   {
     id: 2,
     numero: '02',
-    nome: 'Projeção de Demanda',
-    descricao: 'Modelagem da força de trabalho necessária para entregar a estratégia do negócio no horizonte definido.',
-    objetivo: 'Traduzir os objetivos estratégicos em demanda de pessoas: quantidade, perfil e localização.',
-    frameworks: ['Ratio-based modeling', 'Regression-based forecasting', 'Scenario planning'],
-    inputs: ['Plano estratégico', 'Metas de crescimento', 'Drivers de negócio', 'Benchmarks do setor'],
-    outputs: ['Modelo de projeção', 'Cenários (base, otimista, conservador)', 'Gap quantitativo inicial'],
-    tempoEstimado: '1–2 semanas',
+    nome: 'Decifrar a Pergunta Real',
+    descricao: 'Descobrir qual das 4 perguntas o executivo está realmente fazendo antes de começar qualquer análise.',
+    objetivo: 'Garantir que a análise responde à pergunta certa — não à pergunta declarada.',
+    frameworks: [
+      '5 perguntas de diagnóstico de intenção',
+      'As 4 perguntas reais: A (cortar mantendo output), B (realocar capacidade), C (sustentar com menos), D (adquirir capacidade nova)',
+    ],
+    inputs: [
+      'Conversa com o executivo patrocinador',
+      'Contexto da Etapa 1 (modo financeiro + postura)',
+    ],
+    outputs: [
+      'Frase que define a pergunta real do executivo',
+      'Alinhamento documentado sobre o tipo de análise a fazer',
+    ],
+    tempoEstimado: '0,5 semana',
   },
   {
     id: 3,
     numero: '03',
-    nome: 'Análise de Lacunas',
-    descricao: 'Comparação entre a força de trabalho atual e a necessária, identificando gaps quantitativos e qualitativos.',
-    objetivo: 'Priorizar gaps críticos que demandam intervenção imediata versus os que podem ser tratados no médio prazo.',
-    frameworks: ['Gap analysis matrix', 'Criticality scoring', 'Time-to-fill modeling'],
-    inputs: ['Diagnóstico (Etapa 1)', 'Projeção de demanda (Etapa 2)', 'Dados de mercado de talento'],
-    outputs: ['Mapa de gaps priorizados', 'Heatmap de risco por área', 'Gaps críticos vs. desejáveis'],
-    tempoEstimado: '1 semana',
+    nome: 'Mapear os Gargalos',
+    descricao: 'Identificar onde a empresa está deixando crescimento na mesa por falta de capacidade humana.',
+    objetivo: 'Revelar onde está o gargalo real usando método, não feeling.',
+    frameworks: [
+      'Theory of Constraints — Goldratt (onde forma fila = onde está o gargalo)',
+      'Mapa da cadeia de valor (até 7 estágios)',
+      'Teste do gargalo (3 perguntas: fila, capacidade, impacto de dobrar)',
+      'Classificação: Crítico (vermelho) / Emergente (amarelo) / Sem gargalo (verde)',
+    ],
+    inputs: [
+      'Mapa da cadeia de valor da empresa',
+      'Dados de output por função/área',
+      'Entrevistas com líderes de área',
+    ],
+    outputs: [
+      'Ranking de 3–5 capacidades críticas para crescimento',
+      'Evidência do gargalo por função (dado ou observação validada)',
+      'Planilha de mapa da cadeia de valor',
+    ],
+    tempoEstimado: '1–2 semanas',
   },
   {
     id: 4,
     numero: '04',
-    nome: 'Estratégias de WFP',
-    descricao: 'Desenvolvimento das alavancas estratégicas para endereçar os gaps identificados: build, buy, borrow, bot.',
-    objetivo: 'Definir o mix estratégico de soluções para cada gap, considerando custo, velocidade e viabilidade.',
-    frameworks: ['Build-Buy-Borrow-Bot framework', 'Talent strategy matrix', 'Cost-benefit analysis'],
-    inputs: ['Análise de gaps (Etapa 3)', 'Capacidade orçamentária', 'Benchmarks de mercado', 'Maturidade interna'],
-    outputs: ['Estratégia por gap', 'Business case por iniciativa', 'Roadmap de implementação'],
-    tempoEstimado: '1–2 semanas',
+    nome: 'Mapear a Capacidade Atual',
+    descricao: 'Classificar cada função em Core / Enabler / Run / Legacy com critério e evidência.',
+    objetivo: 'Entender o que a empresa tem hoje — e onde realocar para onde investir.',
+    frameworks: [
+      'Portfólio organizacional BCG / Jesuthasan — Core / Enabler / Run / Legacy',
+      'Teste de classificação (3 perguntas: cliente externo, interrupção, unicidade)',
+      'Cruzamento gargalo × portfólio (4 situações possíveis)',
+    ],
+    inputs: [
+      'Organograma atualizado (funções, não cargos)',
+      'Custo de pessoas por função (últimos 12 meses)',
+      'Validação com pelo menos 2 líderes de área',
+    ],
+    outputs: [
+      'Matriz completa Core/Enabler/Run/Legacy com evidências',
+      'Top 3 candidatos a desinvestimento com evidência documentada',
+      'Slide de mapa visual do portfólio para apresentação',
+    ],
+    tempoEstimado: '2–3 semanas',
   },
   {
     id: 5,
     numero: '05',
-    nome: 'Plano de Ação',
-    descricao: 'Tradução das estratégias em iniciativas concretas com responsáveis, prazos, orçamento e KPIs.',
-    objetivo: 'Criar um plano executável que a liderança possa aprovar, monitorar e cobrar resultados.',
-    frameworks: ['OKR framework', 'Initiative roadmap', 'RACI matrix', 'Change management plan'],
-    inputs: ['Estratégias definidas (Etapa 4)', 'Capacidade de execução', 'Prioridades do negócio'],
-    outputs: ['Plano de ação detalhado', 'Budget consolidado', 'Cronograma master', 'Matriz RACI'],
+    nome: 'Lente de Realidade',
+    descricao: 'Filtrar as recomendações técnicas pela realidade humana, política e contextual da empresa.',
+    objetivo: 'Identificar o que pode comprometer a execução antes de apresentar para o executivo.',
+    frameworks: [
+      'Filtro 1: Maturidade de liderança — Heifetz & Linsky (adaptive work)',
+      'Filtro 2: Escassez de mercado — ManpowerGroup + LinkedIn Economic Graph',
+      'Filtro 3: Dinâmica política — Pfeffer (inteligência organizacional)',
+      'Filtro 4: Prontidão cultural — Kotter + Gallup',
+      'Matriz de semáforos (Verde / Amarelo / Vermelho)',
+    ],
+    inputs: [
+      'Resultado das Etapas 1–4',
+      'Avaliação de líderes impactados pelo plano',
+      'Contexto político preenchido na parametrização',
+    ],
+    outputs: [
+      'Matriz de semáforos por filtro',
+      'Implicações práticas por filtro amarelo/vermelho',
+      'Plano de mitigação para os riscos identificados',
+    ],
     tempoEstimado: '1 semana',
   },
   {
     id: 6,
     numero: '06',
-    nome: 'Governança & Monitoramento',
-    descricao: 'Estrutura de acompanhamento e atualização contínua do plano de workforce planning.',
-    objetivo: 'Garantir que o WFP não seja um exercício pontual, mas um processo vivo integrado ao ciclo de gestão.',
-    frameworks: ['People metrics dashboard', 'Review cadence design', 'Early warning indicators'],
-    inputs: ['Plano de ação (Etapa 5)', 'Estrutura de governança existente', 'Ferramentas disponíveis'],
-    outputs: ['Dashboard de KPIs', 'Cadência de revisão', 'Relatório de governança', 'Modelo de atualização'],
-    tempoEstimado: '1 semana',
+    nome: 'Três Cenários e a Decisão',
+    descricao: 'Transformar as análises em três caminhos defensáveis com premissas explícitas e trade-offs claros.',
+    objetivo: 'Apresentar ao executivo opções — não uma resposta única — para que a decisão fique no lugar certo.',
+    frameworks: [
+      'McKinsey Dynamic Resource Allocation',
+      'Estrutura Conservador / Base / Agressivo',
+      '4 elementos por cenário: premissa, headcount, custo, trade-off',
+      '3 frases-âncora para a reunião executiva',
+    ],
+    inputs: [
+      'Resultados das Etapas 1–5',
+      'Parâmetros financeiros aprovados',
+      'Semáforos da Lente de Realidade',
+    ],
+    outputs: [
+      'Planilha de 3 cenários com cálculos automáticos',
+      'Slide executivo de 1 página (tabela comparativa)',
+      'Apresentação de defesa do plano (7 slides)',
+      'Apresentação de tracking trimestral',
+      'Apresentação de encerramento',
+    ],
+    tempoEstimado: '1–2 semanas',
   },
 ]

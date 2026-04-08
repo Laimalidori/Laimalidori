@@ -31,19 +31,16 @@ export default function EtapaPage() {
     setLoading(false)
   }, [projectId])
 
-  useEffect(() => {
-    loadProjeto()
-  }, [loadProjeto])
+  useEffect(() => { loadProjeto() }, [loadProjeto])
 
   async function handleConcluir() {
     if (!projeto) return
     setCompletando(true)
     const supabase = createClient()
 
-    // Update etapa status to concluida + unlock next
-    const etapas = (projeto.etapas as unknown as Array<{ etapaId: number; status: string }>) ?? []
+    const etapas = projeto.etapas_status ?? []
     const updated = etapas.map((e) => {
-      if (e.etapaId === stageNum) return { ...e, status: 'concluida', concluidoEm: new Date().toISOString() }
+      if (e.etapaId === stageNum)       return { ...e, status: 'concluida', concluidoEm: new Date().toISOString() }
       if (e.etapaId === stageNum + 1 && e.status === 'bloqueada') return { ...e, status: 'disponivel' }
       return e
     })
@@ -61,9 +58,7 @@ export default function EtapaPage() {
     return <div className="h-64 flex items-center justify-center text-text-tertiary body-sm">Carregando…</div>
   }
 
-  const etapaStatus = (projeto?.etapas as unknown as Array<{ etapaId: number; status: string }>)?.find(
-    (e) => e.etapaId === stageNum
-  )
+  const etapaStatus = (projeto?.etapas_status ?? []).find((e) => e.etapaId === stageNum)
   const isConcluida = etapaStatus?.status === 'concluida'
 
   return (
@@ -97,8 +92,9 @@ export default function EtapaPage() {
           </div>
           <h1 className="display-md text-text-primary">{def.nome}</h1>
           <p className="body-sm text-text-secondary max-w-2xl">{def.objetivo}</p>
+          <p className="text-xs text-text-tertiary">⏱ {def.tempoEstimado}</p>
         </div>
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-3 shrink-0">
           {stageNum > 1 && (
             <Link
               href={`/dashboard/modulo/workforce-planning/${projectId}/etapa/${stageNum - 1}`}
@@ -118,8 +114,8 @@ export default function EtapaPage() {
         </div>
       </div>
 
-      {/* Detalhes e frameworks */}
-      <EtapaFrameworks def={def} />
+      {/* Frameworks, inputs e outputs */}
+      <EtapaFrameworks def={def} stageNum={stageNum} />
 
       {/* Chat principal */}
       <section className="space-y-3">

@@ -3,14 +3,13 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import type { ParametrizacaoWFP } from '@/types/wfp'
 
 const BLOCOS = [
-  { id: 1, titulo: 'Perfil do Negócio',          subtitulo: 'Contexto da empresa' },
-  { id: 2, titulo: 'Contexto Estratégico',        subtitulo: 'Horizonte e drivers' },
-  { id: 3, titulo: 'Força de Trabalho',           subtitulo: 'Dados atuais' },
-  { id: 4, titulo: 'Maturidade & Recursos',       subtitulo: 'Capacidade de execução' },
-  { id: 5, titulo: 'Foco do Projeto',             subtitulo: 'Escopo e outputs' },
+  { id: 1, titulo: 'Identidade da empresa',      subtitulo: 'Quem é a empresa' },
+  { id: 2, titulo: 'Momento estratégico',         subtitulo: 'Em que fase está' },
+  { id: 3, titulo: 'Contexto financeiro',         subtitulo: 'Budget e pressões' },
+  { id: 4, titulo: 'Maturidade organizacional',   subtitulo: 'Dados e liderança' },
+  { id: 5, titulo: 'Contexto político',           subtitulo: 'Dinâmica do poder — não pular' },
 ]
 
 const ETAPAS_INIT = [
@@ -26,78 +25,68 @@ export default function NovoProjetoPage() {
   const router = useRouter()
   const [bloco, setBloco] = useState(1)
   const [saving, setSaving] = useState(false)
+  const [error, setError] = useState('')
 
-  // Form state
+  // Bloco 1
   const [nomeEmpresa, setNomeEmpresa] = useState('')
   const [setor, setSetor] = useState('')
-  const [faturamento, setFaturamento] = useState('')
-  const [numFuncionarios, setNumFuncionarios] = useState('')
-  const [estagio, setEstagio] = useState('')
+  const [mercado, setMercado] = useState('')
+  const [numColaboradores, setNumColaboradores] = useState('')
+  const [localizacao, setLocalizacao] = useState('')
 
-  const [horizonte, setHorizonte] = useState('')
-  const [drivers, setDrivers] = useState('')
-  const [mandatoRH, setMandatoRH] = useState('')
+  // Bloco 2
+  const [momento, setMomento] = useState('')
+  const [metaProximoAno, setMetaProximoAno] = useState('')
+  const [gatilhoWFP, setGatilhoWFP] = useState('')
 
-  const [turnover, setTurnover] = useState('')
-  const [riscoAutomacao, setRiscoAutomacao] = useState('')
-  const [areasCriticas, setAreasCriticas] = useState('')
-  const [gapHabilidades, setGapHabilidades] = useState('')
+  // Bloco 3
+  const [custoPessoasReceita, setCustoPessoasReceita] = useState('')
+  const [pressaoBudget, setPressaoBudget] = useState('')
+  const [liderBudget, setLiderBudget] = useState('')
 
-  const [nivelMaturidade, setNivelMaturidade] = useState('')
-  const [ferramentas, setFerramentas] = useState('')
-  const [stakeholders, setStakeholders] = useState('')
-  const [restricoes, setRestricoesR] = useState('')
+  // Bloco 4
+  const [maturidadeDados, setMaturidadeDados] = useState('')
+  const [maturidadeLideranca, setMaturidadeLideranca] = useState('')
+  const [historicoWFP, setHistoricoWFP] = useState('')
 
-  const [tipoProjeto, setTipoProjeto] = useState('')
-  const [areasEscopo, setAreasEscopo] = useState('')
-  const [outputs, setOutputs] = useState('')
-  const [prioridade, setPrioridade] = useState('')
+  // Bloco 5
+  const [reacaoCEO, setReacaoCEO] = useState('')
+  const [maiorRiscoPolitico, setMaiorRiscoPolitico] = useState('')
+  const [liderPoderTravar, setLiderPoderTravar] = useState('')
+  const [liderPoderTravarQuem, setLiderPoderTravarQuem] = useState('')
+
+  function canAdvance() {
+    if (bloco === 1) return nomeEmpresa && setor && mercado && numColaboradores && localizacao
+    if (bloco === 2) return momento && metaProximoAno && gatilhoWFP
+    if (bloco === 3) return custoPessoasReceita && pressaoBudget && liderBudget
+    if (bloco === 4) return maturidadeDados && maturidadeLideranca && historicoWFP
+    if (bloco === 5) return reacaoCEO && maiorRiscoPolitico && liderPoderTravar
+    return false
+  }
 
   async function handleSalvar() {
     setSaving(true)
+    setError('')
     const supabase = createClient()
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) { router.push('/login'); return }
 
-    const parametrizacao: ParametrizacaoWFP = {
-      perfilNegocio: {
-        nomeEmpresa,
-        setor: setor as ParametrizacaoWFP['perfilNegocio']['setor'],
-        faturamentoFaixa: faturamento as ParametrizacaoWFP['perfilNegocio']['faturamentoFaixa'],
-        numFuncionarios: parseInt(numFuncionarios) || 0,
-        estagio: estagio as ParametrizacaoWFP['perfilNegocio']['estagio'],
-      },
-      contextoEstrategico: {
-        horizonte: horizonte as ParametrizacaoWFP['contextoEstrategico']['horizonte'],
-        drivers: drivers.split(',').map((d) => d.trim()).filter(Boolean),
-        mandatoRH: mandatoRH || undefined,
-      },
-      dadosForcaTrabalho: {
-        turnoverAnual: parseFloat(turnover) || 0,
-        distribuicaoNiveis: { executivo: 0, gestao: 0, especialista: 0, operacional: 0 },
-        riscoAutomacao: (riscoAutomacao || 'medio') as 'baixo' | 'medio' | 'alto',
-        areasCriticas: areasCriticas.split(',').map((a) => a.trim()).filter(Boolean),
-        gapHabilidades: gapHabilidades || undefined,
-      },
-      maturidadeRecursos: {
-        nivelMaturidade: nivelMaturidade as ParametrizacaoWFP['maturidadeRecursos']['nivelMaturidade'],
-        ferramentasAtivas: ferramentas.split(',').map((f) => f.trim()).filter(Boolean),
-        stakeholdersChave: stakeholders || undefined,
-        restricoesRecursos: restricoes || undefined,
-      },
-      focoProjeto: {
-        tipo: tipoProjeto as ParametrizacaoWFP['focoProjeto']['tipo'],
-        areasEscopo: areasEscopo.split(',').map((a) => a.trim()).filter(Boolean),
-        outputsEsperados: outputs.split(',').map((o) => o.trim()).filter(Boolean),
-        prioridade: (prioridade || 'capacidade') as ParametrizacaoWFP['focoProjeto']['prioridade'],
+    const parametrizacao = {
+      identidadeEmpresa: { nomeEmpresa, setor, mercado, numColaboradores, localizacao },
+      momentoEstrategico: { momento, metaProximoAno, gatilhoWFP },
+      contextoFinanceiro: { custoPessoasReceita, pressaoBudget, liderBudget },
+      maturidadeOrganizacional: { maturidadeDados, maturidadeLideranca, historicoWFP },
+      contextoPolitico: {
+        reacaoCEO, maiorRiscoPolitico, liderPoderTravar,
+        ...(liderPoderTravar === 'sim' && liderPoderTravarQuem ? { liderPoderTravarQuem } : {}),
       },
     }
 
-    const { data, error } = await supabase
+    const { data, error: dbError } = await supabase
       .from('wfp_projects')
       .insert({
         user_id: user.id,
-        nome: `WFP — ${nomeEmpresa || 'Novo Projeto'}`,
+        nome: `WFP — ${nomeEmpresa}`,
         status: 'ativo',
         parametrizacao,
         etapas_status: ETAPAS_INIT,
@@ -105,9 +94,10 @@ export default function NovoProjetoPage() {
       .select()
       .single()
 
-    if (!error && data) {
+    if (!dbError && data) {
       router.push(`/dashboard/modulo/workforce-planning/${data.id}`)
     } else {
+      setError('Erro ao criar projeto. Tente novamente.')
       setSaving(false)
     }
   }
@@ -119,18 +109,17 @@ export default function NovoProjetoPage() {
         <p className="label-sm text-text-tertiary mb-1">Novo projeto · Workforce Planning</p>
         <h1 className="display-lg text-text-primary">Parametrização de contexto</h1>
         <p className="body-sm text-text-secondary mt-1">
-          5 blocos · ~10 minutos · Salvo automaticamente
+          5 blocos · ~10 minutos · Alimenta toda a análise da Nina
         </p>
       </div>
 
       {/* Stepper */}
       <div className="flex gap-2">
         {BLOCOS.map((b) => (
-          <button
+          <div
             key={b.id}
-            onClick={() => setBloco(b.id)}
             className={`flex-1 h-1.5 rounded-full transition-colors ${
-              b.id < bloco ? 'bg-accent' : b.id === bloco ? 'bg-accent' : 'bg-bg-muted'
+              b.id <= bloco ? 'bg-accent' : 'bg-bg-muted'
             }`}
           />
         ))}
@@ -143,203 +132,233 @@ export default function NovoProjetoPage() {
         <span className="body-sm text-text-tertiary">{BLOCOS[bloco - 1].subtitulo}</span>
       </div>
 
-      {/* Bloco 1 — Perfil do Negócio */}
+      {/* ── Bloco 1 — Identidade da empresa ────────────── */}
       {bloco === 1 && (
         <div className="space-y-5">
           <Field label="Nome da empresa" required>
-            <input className="form-input" value={nomeEmpresa} onChange={(e) => setNomeEmpresa(e.target.value)} placeholder="Ex: Acme Corp" />
-          </Field>
-          <Field label="Setor de atuação" required>
-            <select className="form-input" value={setor} onChange={(e) => setSetor(e.target.value)}>
-              <option value="">Selecione…</option>
-              <option value="tecnologia">Tecnologia</option>
-              <option value="financeiro">Financeiro</option>
-              <option value="saude">Saúde</option>
-              <option value="varejo">Varejo</option>
-              <option value="industria">Indústria</option>
-              <option value="servicos">Serviços</option>
-              <option value="educacao">Educação</option>
-              <option value="energia">Energia</option>
-              <option value="agronegocio">Agronegócio</option>
-              <option value="outro">Outro</option>
-            </select>
+            <input
+              className="form-input"
+              value={nomeEmpresa}
+              onChange={(e) => setNomeEmpresa(e.target.value)}
+              placeholder="Ex: Acme Corp"
+            />
           </Field>
           <div className="grid grid-cols-2 gap-4">
-            <Field label="Faixa de faturamento" required>
-              <select className="form-input" value={faturamento} onChange={(e) => setFaturamento(e.target.value)}>
+            <Field label="Setor" required>
+              <select className="form-input" value={setor} onChange={(e) => setSetor(e.target.value)}>
                 <option value="">Selecione…</option>
-                <option value="ate_50m">Até R$ 50 milhões</option>
-                <option value="50m_200m">R$ 50–200 milhões</option>
-                <option value="200m_1b">R$ 200 mi – 1 bilhão</option>
-                <option value="1b_5b">R$ 1–5 bilhões</option>
-                <option value="acima_5b">Acima de R$ 5 bilhões</option>
+                <option value="tech">Tech</option>
+                <option value="fintech">Fintech</option>
+                <option value="varejo">Varejo</option>
+                <option value="saude">Saúde</option>
+                <option value="industria">Indústria</option>
+                <option value="servicos">Serviços</option>
+                <option value="educacao">Educação</option>
+                <option value="outro">Outro</option>
               </select>
             </Field>
-            <Field label="Número de funcionários" required>
-              <input className="form-input" type="number" value={numFuncionarios} onChange={(e) => setNumFuncionarios(e.target.value)} placeholder="Ex: 1500" />
+            <Field label="Mercado" required>
+              <select className="form-input" value={mercado} onChange={(e) => setMercado(e.target.value)}>
+                <option value="">Selecione…</option>
+                <option value="b2b">B2B</option>
+                <option value="b2c">B2C</option>
+                <option value="b2b2c">B2B2C</option>
+                <option value="governo">Governo</option>
+                <option value="misto">Misto</option>
+              </select>
             </Field>
           </div>
-          <Field label="Estágio da empresa" required>
-            <select className="form-input" value={estagio} onChange={(e) => setEstagio(e.target.value)}>
-              <option value="">Selecione…</option>
-              <option value="startup">Startup / early stage</option>
-              <option value="crescimento">Crescimento acelerado</option>
-              <option value="maturidade">Maturidade</option>
-              <option value="transformacao">Transformação / turnaround</option>
-              <option value="consolidacao">Consolidação / M&A</option>
-            </select>
-          </Field>
+          <div className="grid grid-cols-2 gap-4">
+            <Field label="Número de colaboradores" required>
+              <select className="form-input" value={numColaboradores} onChange={(e) => setNumColaboradores(e.target.value)}>
+                <option value="">Selecione…</option>
+                <option value="50_100">50–100</option>
+                <option value="101_200">101–200</option>
+                <option value="201_400">201–400</option>
+                <option value="401_800">401–800</option>
+              </select>
+            </Field>
+            <Field label="Localização principal" required>
+              <select className="form-input" value={localizacao} onChange={(e) => setLocalizacao(e.target.value)}>
+                <option value="">Selecione…</option>
+                <option value="sp">São Paulo</option>
+                <option value="rj">Rio de Janeiro</option>
+                <option value="nacional">Nacional (multi-estado)</option>
+                <option value="internacional">Internacional</option>
+              </select>
+            </Field>
+          </div>
         </div>
       )}
 
-      {/* Bloco 2 — Contexto Estratégico */}
+      {/* ── Bloco 2 — Momento estratégico ──────────────── */}
       {bloco === 2 && (
         <div className="space-y-5">
-          <Field label="Horizonte de planejamento" required>
-            <select className="form-input" value={horizonte} onChange={(e) => setHorizonte(e.target.value)}>
-              <option value="">Selecione…</option>
-              <option value="12_meses">12 meses</option>
-              <option value="18_meses">18 meses</option>
-              <option value="24_meses">24 meses</option>
-              <option value="36_meses">36 meses</option>
-              <option value="5_anos">5 anos</option>
+          <Field label="Momento atual da empresa" required>
+            <select className="form-input" value={momento} onChange={(e) => setMomento(e.target.value)}>
+              <option value="">Selecione o mais próximo…</option>
+              <option value="hypergrowth">Hypergrowth — crescimento acima de 50% a.a.</option>
+              <option value="crescimento_saudavel">Crescimento saudável — expansão controlada</option>
+              <option value="eficiencia_margem">Eficiência e margem — otimizar, não crescer</option>
+              <option value="transformacao">Transformação — mudança de modelo de negócio</option>
+              <option value="reestruturacao">Reestruturação — revisão estrutural significativa</option>
+              <option value="turnaround">Turnaround — recuperação de crise</option>
+              <option value="ma">M&A — fusão, aquisição ou desinvestimento</option>
             </select>
           </Field>
-          <Field label="Principais drivers do negócio" hint="Separe por vírgula" required>
-            <input
-              className="form-input"
-              value={drivers}
-              onChange={(e) => setDrivers(e.target.value)}
-              placeholder="Ex: expansão geográfica, automação, crescimento de receita"
-            />
-          </Field>
-          <Field label="Mandato do RH" hint="O que o CEO/board espera do RH neste momento?">
+          <Field
+            label="Principal meta do próximo ano"
+            hint="Uma frase. O que a empresa precisa entregar em 12 meses?"
+            required
+          >
             <textarea
               className="form-input min-h-[80px]"
-              value={mandatoRH}
-              onChange={(e) => setMandatoRH(e.target.value)}
-              placeholder="Ex: Reduzir custo com pessoal em 15% sem impactar entregas críticas"
+              value={metaProximoAno}
+              onChange={(e) => setMetaProximoAno(e.target.value)}
+              placeholder="Ex: Dobrar a receita de R$50M para R$100M mantendo margem de 15%"
+            />
+          </Field>
+          <Field
+            label="O que desencadeou essa necessidade de WFP agora?"
+            hint="O gatilho que fez o tema chegar à sua mesa"
+            required
+          >
+            <textarea
+              className="form-input min-h-[80px]"
+              value={gatilhoWFP}
+              onChange={(e) => setGatilhoWFP(e.target.value)}
+              placeholder="Ex: O CFO pediu uma revisão do custo de pessoas antes do planejamento de 2025"
             />
           </Field>
         </div>
       )}
 
-      {/* Bloco 3 — Força de Trabalho */}
+      {/* ── Bloco 3 — Contexto financeiro ──────────────── */}
       {bloco === 3 && (
         <div className="space-y-5">
-          <div className="grid grid-cols-2 gap-4">
-            <Field label="Turnover anual (%)" required>
-              <input className="form-input" type="number" step="0.1" value={turnover} onChange={(e) => setTurnover(e.target.value)} placeholder="Ex: 18" />
-            </Field>
-            <Field label="Risco de automação" required>
-              <select className="form-input" value={riscoAutomacao} onChange={(e) => setRiscoAutomacao(e.target.value)}>
-                <option value="">Selecione…</option>
-                <option value="baixo">Baixo (&lt;20% dos cargos)</option>
-                <option value="medio">Médio (20–50%)</option>
-                <option value="alto">Alto (&gt;50%)</option>
-              </select>
-            </Field>
+          <div className="bg-bg-subtle border border-border-light rounded-lg p-4">
+            <p className="body-sm text-text-secondary">
+              Esses dados alimentam o diagnóstico financeiro da Etapa 1. Se não souber com precisão, escolha a opção mais próxima.
+            </p>
           </div>
-          <Field label="Áreas críticas de talento" hint="Áreas com maior impacto no negócio ou dificuldade de sourcing" required>
-            <input
-              className="form-input"
-              value={areasCriticas}
-              onChange={(e) => setAreasCriticas(e.target.value)}
-              placeholder="Ex: Engenharia, Comercial, Supply Chain"
-            />
+          <Field label="Custo total de pessoas sobre receita" required>
+            <select className="form-input" value={custoPessoasReceita} onChange={(e) => setCustoPessoasReceita(e.target.value)}>
+              <option value="">Selecione…</option>
+              <option value="abaixo_30">Abaixo de 30%</option>
+              <option value="30_45">30–45%</option>
+              <option value="45_60">45–60%</option>
+              <option value="acima_60">Acima de 60%</option>
+              <option value="nao_sei">Não sei / não tenho esse dado</option>
+            </select>
           </Field>
-          <Field label="Principal gap de habilidades" hint="Em sua opinião, qual a maior lacuna de competências hoje?">
-            <textarea
-              className="form-input min-h-[80px]"
-              value={gapHabilidades}
-              onChange={(e) => setGapHabilidades(e.target.value)}
-              placeholder="Ex: Faltam líderes técnicos sênior e especialistas em dados"
-            />
+          <Field label="Pressão atual de budget" required>
+            <select className="form-input" value={pressaoBudget} onChange={(e) => setPressaoBudget(e.target.value)}>
+              <option value="">Selecione…</option>
+              <option value="alta_cortes">Alta — cortes são necessários</option>
+              <option value="moderada_otimizacao">Moderada — precisamos otimizar</option>
+              <option value="baixa_crescimento">Baixa — temos espaço para crescer</option>
+              <option value="sem_pressao">Sem pressão definida no momento</option>
+            </select>
+          </Field>
+          <Field label="Quem lidera a discussão de budget de pessoas?" required>
+            <select className="form-input" value={liderBudget} onChange={(e) => setLiderBudget(e.target.value)}>
+              <option value="">Selecione…</option>
+              <option value="ceo">CEO</option>
+              <option value="cfo">CFO</option>
+              <option value="coo">COO</option>
+              <option value="chro">CHRO / VP de RH</option>
+              <option value="comite">Comitê executivo</option>
+              <option value="nao_definido">Não está claro / não definido</option>
+            </select>
           </Field>
         </div>
       )}
 
-      {/* Bloco 4 — Maturidade & Recursos */}
+      {/* ── Bloco 4 — Maturidade organizacional ────────── */}
       {bloco === 4 && (
         <div className="space-y-5">
-          <Field label="Maturidade atual em WFP" required>
-            <select className="form-input" value={nivelMaturidade} onChange={(e) => setNivelMaturidade(e.target.value)}>
+          <Field label="Maturidade dos dados de pessoas" required>
+            <select className="form-input" value={maturidadeDados} onChange={(e) => setMaturidadeDados(e.target.value)}>
               <option value="">Selecione…</option>
-              <option value="inicial">Inicial — sem processo formal</option>
-              <option value="em_construcao">Em construção — primeiros passos</option>
-              <option value="definido">Definido — processos básicos em uso</option>
-              <option value="gerenciado">Gerenciado — dados e métricas consistentes</option>
-              <option value="otimizado">Otimizado — preditivo e integrado ao negócio</option>
+              <option value="baixa_planilhas">Baixa — planilhas dispersas, sem centralização</option>
+              <option value="media_hris">Média — HRIS ativo, mas sem analytics estruturado</option>
+              <option value="alta_analytics">Alta — analytics estruturado, dashboards ativos</option>
             </select>
           </Field>
-          <Field label="Ferramentas de RH disponíveis" hint="Separe por vírgula">
-            <input
-              className="form-input"
-              value={ferramentas}
-              onChange={(e) => setFerramentas(e.target.value)}
-              placeholder="Ex: SAP SuccessFactors, Excel, Tableau"
-            />
+          <Field label="Maturidade da liderança para decisões difíceis" required>
+            <select className="form-input" value={maturidadeLideranca} onChange={(e) => setMaturidadeLideranca(e.target.value)}>
+              <option value="">Selecione…</option>
+              <option value="baixa_feeling">Baixa — decisões predominantemente por feeling</option>
+              <option value="media_estrutura">Média — alguma estrutura, mas inconsistente</option>
+              <option value="alta_data_driven">Alta — data-driven, conversas difíceis acontecem</option>
+            </select>
           </Field>
-          <Field label="Stakeholders-chave" hint="Quem precisa aprovar ou será impactado?">
-            <input
-              className="form-input"
-              value={stakeholders}
-              onChange={(e) => setStakeholders(e.target.value)}
-              placeholder="Ex: CFO, CEO, heads de área"
-            />
-          </Field>
-          <Field label="Restrições de recursos" hint="Orçamento, tempo, equipe">
-            <input
-              className="form-input"
-              value={restricoes}
-              onChange={(e) => setRestricoesR(e.target.value)}
-              placeholder="Ex: Equipe de RH pequena, sem budget extra"
-            />
+          <Field label="Histórico de workforce planning na empresa" required>
+            <select className="form-input" value={historicoWFP} onChange={(e) => setHistoricoWFP(e.target.value)}>
+              <option value="">Selecione…</option>
+              <option value="nunca">Nunca fizemos de forma estruturada</option>
+              <option value="tentamos">Tentamos, mas não funcionou / ficou no papel</option>
+              <option value="basico">Fazemos de forma básica (headcount por área)</option>
+              <option value="bem">Fazemos bem, mas queremos ir mais fundo</option>
+            </select>
           </Field>
         </div>
       )}
 
-      {/* Bloco 5 — Foco do Projeto */}
+      {/* ── Bloco 5 — Contexto político ─────────────────── */}
       {bloco === 5 && (
         <div className="space-y-5">
-          <Field label="Tipo de projeto" required>
-            <select className="form-input" value={tipoProjeto} onChange={(e) => setTipoProjeto(e.target.value)}>
+          <div className="bg-warning-bg border border-warning-border rounded-lg p-4">
+            <p className="body-sm text-warning font-medium mb-1">Bloco crítico — não pular</p>
+            <p className="text-xs text-warning opacity-80">
+              Esses dados filtram as recomendações técnicas pela realidade política da empresa.
+              Ignorar isso é o erro que mais faz projetos virarem relatório de gaveta.
+            </p>
+          </div>
+          <Field label="Como o CEO/board reage a propostas de RH?" required>
+            <select className="form-input" value={reacaoCEO} onChange={(e) => setReacaoCEO(e.target.value)}>
               <option value="">Selecione…</option>
-              <option value="diagnostico_inicial">Diagnóstico inicial</option>
-              <option value="planejamento_anual">Planejamento anual</option>
-              <option value="reestruturacao">Reestruturação organizacional</option>
-              <option value="crescimento_acelerado">Suporte a crescimento acelerado</option>
-              <option value="reducao_headcount">Redução de headcount</option>
-              <option value="transformacao_digital">Transformação digital</option>
-              <option value="fusao_aquisicao">Fusão & Aquisição</option>
+              <option value="cetico">Cético — precisa de muito dado para se convencer</option>
+              <option value="aberto">Aberto — mas exige clareza e objetividade</option>
+              <option value="parceiro">Parceiro — co-constrói as soluções com o RH</option>
+              <option value="nao_se_envolve">Não se envolve — delega completamente</option>
             </select>
           </Field>
-          <Field label="Áreas no escopo" hint="Separe por vírgula" required>
-            <input
-              className="form-input"
-              value={areasEscopo}
-              onChange={(e) => setAreasEscopo(e.target.value)}
-              placeholder="Ex: TI, Operações, Vendas"
+          <Field
+            label="Qual é o maior risco político desse projeto?"
+            hint="Uma frase honesta. Ninguém vai ler além de você."
+            required
+          >
+            <textarea
+              className="form-input min-h-[80px]"
+              value={maiorRiscoPolitico}
+              onChange={(e) => setMaiorRiscoPolitico(e.target.value)}
+              placeholder="Ex: O VP de Operações vai perceber que o projeto pode reduzir o time dele e vai resistir"
             />
           </Field>
-          <Field label="Outputs esperados" hint="O que precisa ser entregue ao final?">
-            <input
-              className="form-input"
-              value={outputs}
-              onChange={(e) => setOutputs(e.target.value)}
-              placeholder="Ex: Relatório de gaps, Plano de ação 12 meses, Apresentação para board"
-            />
-          </Field>
-          <Field label="Prioridade central" required>
-            <select className="form-input" value={prioridade} onChange={(e) => setPrioridade(e.target.value)}>
+          <Field label="Tem líder de área que pode travar o projeto?" required>
+            <select className="form-input" value={liderPoderTravar} onChange={(e) => setLiderPoderTravar(e.target.value)}>
               <option value="">Selecione…</option>
-              <option value="custo">Otimizar custo com pessoal</option>
-              <option value="capacidade">Aumentar capacidade de entrega</option>
-              <option value="competencias">Desenvolver competências críticas</option>
-              <option value="estrutura">Redesenhar estrutura organizacional</option>
+              <option value="sim">Sim</option>
+              <option value="nao">Não</option>
+              <option value="nao_sei">Não sei ainda</option>
             </select>
           </Field>
+          {liderPoderTravar === 'sim' && (
+            <Field label="Quem? (cargo ou área)" hint="Não precisa ser o nome — cargo ou área basta">
+              <input
+                className="form-input"
+                value={liderPoderTravarQuem}
+                onChange={(e) => setLiderPoderTravarQuem(e.target.value)}
+                placeholder="Ex: VP de Engenharia, Diretor Comercial"
+              />
+            </Field>
+          )}
         </div>
+      )}
+
+      {error && (
+        <p className="text-xs text-danger">{error}</p>
       )}
 
       {/* Navegação */}
@@ -354,15 +373,16 @@ export default function NovoProjetoPage() {
 
         {bloco < 5 ? (
           <button
-            onClick={() => setBloco((b) => Math.min(5, b + 1))}
-            className="bg-accent text-white px-5 py-2.5 rounded body-sm font-medium hover:bg-accent-hover transition-colors"
+            onClick={() => setBloco((b) => b + 1)}
+            disabled={!canAdvance()}
+            className="bg-accent text-white px-5 py-2.5 rounded body-sm font-medium hover:bg-accent-hover transition-colors disabled:opacity-40 disabled:pointer-events-none"
           >
             Próximo →
           </button>
         ) : (
           <button
             onClick={handleSalvar}
-            disabled={saving}
+            disabled={saving || !canAdvance()}
             className="bg-accent text-white px-5 py-2.5 rounded body-sm font-medium hover:bg-accent-hover transition-colors disabled:opacity-60"
           >
             {saving ? 'Criando projeto…' : 'Criar projeto →'}
@@ -374,15 +394,9 @@ export default function NovoProjetoPage() {
 }
 
 function Field({
-  label,
-  hint,
-  required,
-  children,
+  label, hint, required, children,
 }: {
-  label: string
-  hint?: string
-  required?: boolean
-  children: React.ReactNode
+  label: string; hint?: string; required?: boolean; children: React.ReactNode
 }) {
   return (
     <div className="space-y-1.5">

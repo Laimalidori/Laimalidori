@@ -7,42 +7,41 @@ import type { WFPProject, EtapaDefinicao } from '@/types/wfp'
 
 interface Props {
   projectId: string
-  stageNum: number
-  projeto: WFPProject | null
-  etapaDef: EtapaDefinicao
+  stageNum:  number
+  projeto:   WFPProject | null
+  etapaDef:  EtapaDefinicao
 }
 
-// Suggested prompts per stage
 const SUGESTOES: Record<number, string[]> = {
   1: [
-    'Faça o diagnóstico completo da minha força de trabalho com base nos dados fornecidos.',
-    'Quais são os principais riscos da minha estrutura de headcount atual?',
-    'Monte uma análise de custo-pessoa por área crítica.',
+    'Calcule os 4 números de diagnóstico financeiro com base nos dados que vou fornecer.',
+    'Leia a postura estratégica da empresa e identifique a tensão implícita.',
+    'Monte o diagnóstico de 1 página: modo financeiro + postura estratégica + tensão.',
   ],
   2: [
-    'Projete a demanda de workforce para os próximos 24 meses.',
-    'Construa 3 cenários (conservador, base e otimista) de evolução do headcount.',
-    'Quais drivers de negócio mais impactam minha necessidade de pessoas?',
+    'Aplique as 5 perguntas de diagnóstico e me ajude a identificar qual das 4 perguntas o executivo está fazendo.',
+    'Com base no contexto, qual é a pergunta real: A (cortar), B (realocar), C (sustentar) ou D (adquirir)?',
+    'Redija a frase que define a pergunta real do executivo para eu levar à reunião.',
   ],
   3: [
-    'Faça a análise de gaps entre minha força de trabalho atual e a necessária.',
-    'Quais são os gaps mais críticos e urgentes de endereçar?',
-    'Monte um heatmap de risco de talento por área.',
+    'Monte o mapa da cadeia de valor da empresa e identifique onde estão os gargalos.',
+    'Aplique o teste do gargalo (fila, capacidade, impacto de dobrar) nas áreas que vou descrever.',
+    'Classifique os gargalos em Crítico, Emergente ou Sem gargalo e priorize o investimento.',
   ],
   4: [
-    'Defina a estratégia Build-Buy-Borrow-Bot para os principais gaps identificados.',
-    'Qual é o business case para as 3 maiores iniciativas de WFP?',
-    'Como priorizar as alavancas estratégicas dado meu orçamento limitado?',
+    'Classifique as funções que vou descrever na matriz Core / Enabler / Run / Legacy.',
+    'Aplique o teste de classificação (cliente externo, interrupção, unicidade) nas funções listadas.',
+    'Mostre o cruzamento gargalo × portfólio e indique os top 3 candidatos a desinvestimento.',
   ],
   5: [
-    'Monte o plano de ação detalhado com responsáveis, prazos e KPIs.',
-    'Construa o budget consolidado para todas as iniciativas do plano.',
-    'Defina a matriz RACI para a execução do plano.',
+    'Aplique os 4 filtros de realidade ao plano e gere a matriz de semáforos.',
+    'Qual é o filtro de maior risco para esse projeto dado o contexto parametrizado?',
+    'Monte o plano de mitigação para os filtros amarelos e vermelhos identificados.',
   ],
   6: [
-    'Projete o dashboard de métricas de WFP com os 4 KPIs principais.',
-    'Defina a cadência de revisão e os responsáveis pela governança.',
-    'Quais são os early warning indicators que devo monitorar?',
+    'Construa os 3 cenários (conservador, base, agressivo) com premissas, headcount e trade-offs.',
+    'Verifique se os cenários têm contraste suficiente (diferença mínima de 15%). Ajuste se necessário.',
+    'Prepare as 3 frases-âncora que vou usar na reunião com o board para defender o plano.',
   ],
 }
 
@@ -90,8 +89,9 @@ export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) 
         {messages.length === 0 && (
           <div className="space-y-4">
             <p className="body-sm text-text-tertiary">
-              Nina está pronta para conduzir a análise de <span className="text-text-primary font-medium">{etapaDef.nome}</span>.
-              Use as sugestões abaixo ou faça sua pergunta.
+              Nina está pronta para conduzir{' '}
+              <span className="text-text-primary font-medium">{etapaDef.nome}</span>.
+              Use as sugestões abaixo ou descreva sua situação específica.
             </p>
             <div className="space-y-2">
               {sugestoes.map((s, i) => (
@@ -151,12 +151,9 @@ export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) 
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault()
-              handleSend()
-            }
+            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend() }
           }}
-          placeholder="Faça uma pergunta ou solicite uma análise…"
+          placeholder="Descreva sua situação ou faça uma pergunta específica…"
           rows={2}
           className="flex-1 resize-none text-sm bg-transparent text-text-primary placeholder-text-disabled outline-none py-1"
           disabled={isLoading}
@@ -178,21 +175,24 @@ export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) 
 function buildSystemContext(projeto: WFPProject | null, etapa: EtapaDefinicao): string {
   if (!projeto) return ''
   const p = (projeto.parametrizacao as unknown) as Record<string, Record<string, unknown>>
-  const perfil = p?.perfilNegocio ?? {}
-  const contexto = p?.contextoEstrategico ?? {}
-  const dados = p?.dadosForcaTrabalho ?? {}
-  const foco = p?.focoProjeto ?? {}
+  const id     = p?.identidadeEmpresa      ?? {}
+  const mom    = p?.momentoEstrategico     ?? {}
+  const fin    = p?.contextoFinanceiro     ?? {}
+  const mat    = p?.maturidadeOrganizacional ?? {}
+  const pol    = p?.contextoPolitico       ?? {}
 
   return `
 Projeto: ${projeto.nome}
-Empresa: ${perfil.nomeEmpresa ?? ''} | Setor: ${perfil.setor ?? ''} | Funcionários: ${perfil.numFuncionarios ?? ''}
-Horizonte: ${contexto.horizonte ?? ''} | Drivers: ${(contexto.drivers as string[])?.join(', ') ?? ''}
-Turnover: ${dados.turnoverAnual ?? ''}% | Áreas críticas: ${(dados.areasCriticas as string[])?.join(', ') ?? ''}
-Tipo projeto: ${foco.tipo ?? ''} | Prioridade: ${foco.prioridade ?? ''}
-Mandato RH: ${contexto.mandatoRH ?? 'não informado'}
+Empresa: ${id.nomeEmpresa ?? ''} | Setor: ${id.setor ?? ''} | Mercado: ${id.mercado ?? ''} | Colaboradores: ${id.numColaboradores ?? ''}
+Momento: ${mom.momento ?? ''} | Meta próximo ano: ${mom.metaProximoAno ?? ''}
+Gatilho WFP: ${mom.gatilhoWFP ?? ''}
+Custo pessoas/receita: ${fin.custoPessoasReceita ?? ''} | Pressão budget: ${fin.pressaoBudget ?? ''} | Lidera budget: ${fin.liderBudget ?? ''}
+Maturidade dados: ${mat.maturidadeDados ?? ''} | Maturidade liderança: ${mat.maturidadeLideranca ?? ''} | Histórico WFP: ${mat.historicoWFP ?? ''}
+Reação CEO: ${pol.reacaoCEO ?? ''} | Risco político: ${pol.maiorRiscoPolitico ?? ''}
+Líder pode travar: ${pol.liderPoderTravar ?? ''}${pol.liderPoderTravarQuem ? ` (${pol.liderPoderTravarQuem})` : ''}
 
 Etapa atual: ${etapa.numero} — ${etapa.nome}
 Objetivo: ${etapa.objetivo}
-Frameworks aplicáveis: ${etapa.frameworks.join(', ')}
+Frameworks: ${etapa.frameworks.join('; ')}
 `.trim()
 }
