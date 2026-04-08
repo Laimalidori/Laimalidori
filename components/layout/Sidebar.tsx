@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
-  Users, Sparkles, Target, TrendingUp, Heart, Globe, BarChart2, Shield,
+  Users, Sparkles, Target, TrendingUp, Heart, BarChart2, Shield,
   FileText, Search, Presentation, MessageCircle, ChevronRight,
 } from 'lucide-react'
 
