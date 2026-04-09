@@ -5,17 +5,21 @@ import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { ETAPAS_WFP } from '@/types/wfp'
-import type { WFPProject, EtapaDefinicao, WFPEtapaStatus } from '@/types/wfp'
+import type { WFPProject, EtapaDefinicao } from '@/types/wfp'
 import { WFPStageChat } from '@/components/wfp/WFPStageChat'
-import { EtapaFrameworks } from '@/components/wfp/EtapaFrameworks'
+import { SintesePanel } from '@/components/wfp/SintesePanel'
 
-const STATUS_COLOR: Record<string, string> = {
-  concluida:    'text-success bg-success-subtle',
-  em_andamento: 'text-warning bg-warning-subtle',
-  disponivel:   'text-accent-text bg-accent-light',
-  bloqueada:    'text-text-disabled bg-bg-subtle',
+/* ── Per-stage thesis quote ────────────────────────────────── */
+const STAGE_QUOTE: Record<number, { text: string; author?: string }> = {
+  1: { text: 'Chegar na reunião sabendo mais sobre a empresa do que o executivo espera que você saiba.', },
+  2: { text: 'Responder a pergunta errada é pior do que não responder nada.', },
+  3: { text: 'Onde forma fila, está o gargalo.', author: 'Goldratt' },
+  4: { text: '20% das funções geram 80% da vantagem competitiva. O resto é custo com disfarcé de estratégia.', },
+  5: { text: 'Todo plano tecnicamente correto pode falhar por razões que não estavam no plano.', },
+  6: { text: 'Uma recomendação única força o executivo a dizer sim ou não. Três caminhos devolvem a decisão para quem tem o mandato.', },
 }
 
+/* ── Per-stage "why it matters" ────────────────────────────── */
 const POR_QUE_IMPORTA: Record<number, string> = {
   1: 'Se você entrar na reunião sem saber os 4 números financeiros, perde credibilidade em 3 minutos. O executivo vai perguntar sobre custo/receita — você precisa ter a resposta antes dele.',
   2: 'Responder a pergunta errada é o erro que mais faz projetos de WFP virarem relatório de gaveta. Uma análise tecnicamente perfeita para a pergunta errada não serve para nada.',
@@ -76,59 +80,96 @@ export default function EtapaPage() {
     )
   }
 
-  const etapas       = projeto?.etapas_status ?? []
-  const etapaStatus  = etapas.find((e) => e.etapaId === stageNum)
-  const isConcluida  = etapaStatus?.status === 'concluida'
+  const etapas      = projeto?.etapas_status ?? []
+  const etapaStatus = etapas.find((e) => e.etapaId === stageNum)
+  const isConcluida = etapaStatus?.status === 'concluida'
 
-  // Previous stages that are completed (for the synthesis panel)
-  const prevStages: Array<WFPEtapaStatus & { def: EtapaDefinicao }> = etapas
-    .filter((e) => e.etapaId < stageNum && e.status === 'concluida')
-    .map((e) => ({ ...e, def: ETAPAS_WFP.find((d) => d.id === e.etapaId)! }))
-    .filter((e) => !!e.def)
+  const p          = (projeto?.parametrizacao as unknown as Record<string, Record<string, unknown>>) ?? {}
+  const id         = p.identidadeEmpresa     ?? {}
+  const mom        = p.momentoEstrategico    ?? {}
+  const fin        = p.contextoFinanceiro    ?? {}
+  const quote      = STAGE_QUOTE[stageNum]
+  const concluidas = etapas.filter((e) => e.status === 'concluida').length
 
   return (
     <div className="max-w-[1200px] mx-auto space-y-5">
-      {/* ── Breadcrumb ── */}
-      <div className="flex items-center gap-2 text-xs text-text-tertiary">
-        <Link href="/dashboard/modulo/workforce-planning" className="hover:text-text-primary transition-colors">
-          Workforce Planning
-        </Link>
-        <span>/</span>
-        <Link
-          href={`/dashboard/modulo/workforce-planning/${projectId}`}
-          className="hover:text-text-primary transition-colors"
-        >
-          {projeto?.nome ?? 'Projeto'}
-        </Link>
-        <span>/</span>
-        <span className="text-text-primary">{def.nome}</span>
-      </div>
 
-      {/* ── Top nav: prev / next ── */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          {isConcluida && (
-            <span className="text-xs px-2.5 py-1 rounded-full bg-success-subtle text-success font-medium">
-              ✓ Concluída
-            </span>
+      {/* ── Project context strip ── */}
+      <div className="flex items-center justify-between gap-4 pb-1 border-b border-border-light">
+        <div className="flex items-center gap-2 flex-wrap">
+          <Link
+            href={`/dashboard/modulo/workforce-planning/${projectId}`}
+            className="text-xs font-medium text-text-primary hover:text-accent transition-colors"
+          >
+            {projeto?.nome ?? 'Projeto'}
+          </Link>
+          {!!id.nomeEmpresa && (
+            <>
+              <span className="text-border-medium">·</span>
+              <span className="text-xs text-text-tertiary">{id.nomeEmpresa as string}</span>
+            </>
+          )}
+          {!!id.setor && (
+            <>
+              <span className="text-border-medium">·</span>
+              <span className="text-xs text-text-tertiary capitalize">{id.setor as string}</span>
+            </>
+          )}
+          {!!mom.momento && (
+            <>
+              <span className="text-border-medium">·</span>
+              <span className="text-xs text-text-tertiary">{MOMENTO_LABEL[mom.momento as string] ?? (mom.momento as string)}</span>
+            </>
+          )}
+          {!!fin.pressaoBudget && (
+            <>
+              <span className="text-border-medium">·</span>
+              <span className={`text-xs font-medium ${PRESSAO_COLOR[fin.pressaoBudget as string] ?? 'text-text-tertiary'}`}>
+                {PRESSAO_SHORT[fin.pressaoBudget as string] ?? (fin.pressaoBudget as string)}
+              </span>
+            </>
           )}
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 shrink-0">
+          {/* Stage dots */}
+          <div className="flex items-center gap-1.5">
+            {ETAPAS_WFP.map((s) => {
+              const st = etapas.find((e) => e.etapaId === s.id)?.status ?? 'bloqueada'
+              return (
+                <div
+                  key={s.id}
+                  title={s.nome}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    st === 'concluida'    ? 'bg-success' :
+                    s.id === stageNum    ? 'bg-accent' :
+                    st !== 'bloqueada'   ? 'bg-accent/30' :
+                                          'bg-border-medium'
+                  }`}
+                />
+              )
+            })}
+          </div>
+          <span className="mono-sm text-text-tertiary">{concluidas}/6</span>
           {stageNum > 1 && (
             <Link
               href={`/dashboard/modulo/workforce-planning/${projectId}/etapa/${stageNum - 1}`}
-              className="text-xs text-text-tertiary hover:text-text-primary transition-colors flex items-center gap-1"
+              className="text-xs text-text-tertiary hover:text-text-primary transition-colors"
             >
-              ← Etapa anterior
+              ←
             </Link>
           )}
           {stageNum < 6 && (
             <Link
               href={`/dashboard/modulo/workforce-planning/${projectId}/etapa/${stageNum + 1}`}
-              className="text-xs text-text-tertiary hover:text-text-primary transition-colors flex items-center gap-1"
+              className="text-xs text-text-tertiary hover:text-text-primary transition-colors"
             >
-              Próxima etapa →
+              →
             </Link>
+          )}
+          {isConcluida && (
+            <span className="text-xs px-2 py-0.5 rounded-full bg-success-subtle text-success font-medium">
+              ✓ Concluída
+            </span>
           )}
         </div>
       </div>
@@ -136,80 +177,29 @@ export default function EtapaPage() {
       {/* ── 40 / 60 split ── */}
       <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-6 items-start">
 
-        {/* ── Left panel (40%) — Stage context + synthesis ── */}
-        <div className="space-y-5 lg:sticky lg:top-6">
+        {/* ── Left panel (40%) ── */}
+        <div className="space-y-6 lg:sticky lg:top-6">
 
           {/* Stage header */}
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="mono-sm text-text-tertiary">Etapa {def.numero}</span>
-              <span className="text-border-medium">·</span>
-              <span className="text-xs text-text-tertiary">{def.tempoEstimado}</span>
-            </div>
+          <div className="space-y-1.5">
+            <span className="mono-sm text-text-tertiary">Etapa {def.numero} · {def.tempoEstimado}</span>
             <h1 className="display-sm text-text-primary">{def.nome}</h1>
-            <p className="body-sm text-text-secondary leading-relaxed">{def.objetivo}</p>
           </div>
 
-          {/* Por que esta etapa importa */}
-          {POR_QUE_IMPORTA[stageNum] && (
-            <div className="border-l-2 border-accent pl-4 py-1 space-y-1">
-              <p className="label-sm text-text-tertiary">Por que esta etapa é crítica</p>
-              <p className="text-xs text-text-secondary leading-relaxed">{POR_QUE_IMPORTA[stageNum]}</p>
-            </div>
-          )}
-
-          {/* Outputs desta etapa */}
-          <div className="space-y-2">
-            <p className="label-sm text-text-tertiary">O que você vai produzir</p>
-            <ul className="space-y-1.5">
-              {def.outputs.map((out, i) => (
-                <li key={i} className="flex items-start gap-2 text-xs text-text-secondary">
-                  <span className="text-success mt-0.5 shrink-0">✓</span>
-                  {out}
-                </li>
-              ))}
-            </ul>
+          {/* Why it matters */}
+          <div className="border-l-2 border-accent pl-4 space-y-1">
+            <p className="label-sm text-text-tertiary">Por que é crítica</p>
+            <p className="text-xs text-text-secondary leading-relaxed">{POR_QUE_IMPORTA[stageNum]}</p>
           </div>
 
-          {/* Frameworks / Guia accordion */}
-          <EtapaFrameworks def={def} stageNum={stageNum} />
+          {/* Síntese do projeto — visual stage list */}
+          <SintesePanel projeto={projeto} stageNum={stageNum} projectId={projectId} />
 
-          {/* Previous completed stages — synthesis */}
-          {prevStages.length > 0 && (
-            <div className="space-y-2">
-              <p className="label-sm text-text-tertiary">Etapas anteriores</p>
-              <div className="space-y-2">
-                {prevStages.map((e) => (
-                  <Link
-                    key={e.etapaId}
-                    href={`/dashboard/modulo/workforce-planning/${projectId}/etapa/${e.etapaId}`}
-                    className="block border border-border-light rounded-lg px-4 py-3 bg-bg-surface hover:border-border-medium transition-all group"
-                  >
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-2 min-w-0">
-                        <span className="mono-sm text-text-disabled shrink-0">{e.def.numero}</span>
-                        <span className="text-xs font-medium text-text-secondary group-hover:text-text-primary transition-colors truncate">
-                          {e.def.nome}
-                        </span>
-                      </div>
-                      <span className={`text-xs px-2 py-0.5 rounded-full font-medium shrink-0 ${STATUS_COLOR[e.status]}`}>
-                        Concluída
-                      </span>
-                    </div>
-                    {e.resumo && (
-                      <p className="text-xs text-text-tertiary mt-1.5 line-clamp-2">{e.resumo}</p>
-                    )}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Concluir etapa CTA */}
+          {/* Concluir */}
           {!isConcluida && (
             <div className="border border-border-light rounded-lg p-4 space-y-3 bg-bg-surface">
               <p className="text-xs text-text-tertiary leading-relaxed">
-                Quando terminar a análise desta etapa, marque como concluída para desbloquear a próxima.
+                Quando terminar, marque como concluída para desbloquear a próxima etapa.
               </p>
               <button
                 onClick={handleConcluir}
@@ -223,8 +213,19 @@ export default function EtapaPage() {
         </div>
 
         {/* ── Right panel (60%) — Nina chat ── */}
-        <div className="space-y-2">
-          <p className="label-sm text-text-tertiary">Análise com Nina</p>
+        <div className="space-y-3">
+          {/* Stage quote */}
+          {quote && (
+            <blockquote className="border-l-2 border-border-medium pl-4 py-0.5">
+              <p className="text-xs text-text-tertiary italic leading-relaxed">
+                &ldquo;{quote.text}&rdquo;
+                {quote.author && (
+                  <span className="not-italic font-medium text-text-disabled"> — {quote.author}</span>
+                )}
+              </p>
+            </blockquote>
+          )}
+
           <WFPStageChat
             projectId={projectId}
             stageNum={stageNum}
@@ -235,4 +236,26 @@ export default function EtapaPage() {
       </div>
     </div>
   )
+}
+
+const MOMENTO_LABEL: Record<string, string> = {
+  hypergrowth:          'Hypergrowth',
+  crescimento_saudavel: 'Crescimento saudável',
+  eficiencia_margem:    'Eficiência e margem',
+  transformacao:        'Transformação',
+  reestruturacao:       'Reestruturação',
+  turnaround:           'Turnaround',
+  ma:                   'M&A',
+}
+const PRESSAO_SHORT: Record<string, string> = {
+  alta_cortes:          'Pressão alta',
+  moderada_otimizacao:  'Pressão moderada',
+  baixa_crescimento:    'Baixa pressão',
+  sem_pressao:          'Sem pressão',
+}
+const PRESSAO_COLOR: Record<string, string> = {
+  alta_cortes:         'text-error',
+  moderada_otimizacao: 'text-warning',
+  baixa_crescimento:   'text-success',
+  sem_pressao:         'text-text-tertiary',
 }
