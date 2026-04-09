@@ -254,7 +254,7 @@ const PRESSAO_SHORT: Record<string, string> = {
   sem_pressao:          'Sem pressão',
 }
 const PRESSAO_COLOR: Record<string, string> = {
-  alta_cortes:         'text-error',
+  alta_cortes:         'text-danger',
   moderada_otimizacao: 'text-warning',
   baixa_crescimento:   'text-success',
   sem_pressao:         'text-text-tertiary',
