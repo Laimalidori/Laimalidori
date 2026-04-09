@@ -26,7 +26,6 @@ export function SintesePanel({ projeto, stageNum, projectId }: Props) {
             const status      = etapaStatus?.status ?? 'bloqueada'
             const isCurrent   = def.id === stageNum
             const isCompleted = status === 'concluida'
-            const isLocked    = status === 'bloqueada'
             const clickable   = isCompleted || isCurrent
 
             return (
