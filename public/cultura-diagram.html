@@ -1,0 +1,479 @@
+<!DOCTYPE html><html data-src-ver="92ba3d75" lang="pt-BR"><head>
+
+
+<meta charset="utf-8">
+<title>Nina.AI — Diagnóstico Cultural</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#060812;display:flex;align-items:center;justify-content:center;width:100vw;height:100vh;overflow:hidden;}
+#wrap{position:relative;}
+svg{display:block;}
+
+.inode{cursor:pointer;}
+.inode .nb{transition:fill .16s;}
+.inode:hover .nb{fill:rgba(61,108,255,.1);}
+.inode:hover .nk{stroke:rgba(61,108,255,.5)!important;}
+.inode.lit .nb{fill:rgba(61,108,255,.13);}
+.inode.lit .nk{stroke:#3D6CFF!important;}
+
+.panel{
+  position:fixed;top:0;right:0;width:400px;height:100vh;
+  background:#0C1024;border-left:1px solid rgba(255,255,255,.1);
+  transform:translateX(100%);transition:transform .36s cubic-bezier(.22,.61,.36,1);
+  z-index:200;display:flex;flex-direction:column;
+}
+.panel.open{transform:translateX(0);}
+.ph{padding:30px 28px 22px;border-bottom:1px solid rgba(255,255,255,.07);position:relative;}
+.pid{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.28);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.ptitle{font-family:'Newsreader',serif;font-size:24px;font-weight:600;color:#fff;letter-spacing:-.02em;line-height:1.1;}
+.pclose{position:absolute;top:26px;right:22px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,.35);font-size:16px;border:1px solid rgba(255,255,255,.12);font-family:'Inter Tight',sans-serif;transition:all .15s;}
+.pclose:hover{color:#fff;border-color:rgba(255,255,255,.35);}
+.pb{flex:1;padding:26px;overflow-y:auto;}
+.pdesc{font-family:'Newsreader',serif;font-style:italic;font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:24px;}
+.psec{font-family:'Inter Tight',sans-serif;font-size:9px;font-weight:500;color:rgba(255,255,255,.25);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.pitems{list-style:none;margin-bottom:24px;}
+.pitems li{font-family:'Inter Tight',sans-serif;font-size:13px;color:rgba(255,255,255,.65);padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;gap:10px;line-height:1.45;}
+.pitems li::before{content:'—';color:#C4267A;flex-shrink:0;}
+.psrc{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.25);letter-spacing:.05em;padding-top:14px;border-top:1px solid rgba(255,255,255,.06);}
+
+@keyframes orbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes rpulse{0%,100%{opacity:.08}50%{opacity:.22}}
+</style>
+<meta id="bbafmabaelnnkondpfpjmdklbmfnbmol"></head>
+<body data-cc-id="cc-1" style="font-family: &quot;JetBrains Mono&quot;; font-size: 16px; cursor: crosshair;">
+<div id="wrap" style="width: 1098.67px; height: 618px;">
+<svg id="diagram" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" style="width: 1098.67px; height: 618px;">
+<defs>
+<pattern id="dots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+  <circle cx="0" cy="0" r="1" fill="white" opacity=".036"></circle>
+</pattern>
+<radialGradient id="rg-brain" cx="50%" cy="50%" r="50%">
+  <stop offset="0%" stop-color="#3D6CFF" stop-opacity=".2"></stop>
+  <stop offset="70%" stop-color="#3D6CFF" stop-opacity=".04"></stop>
+  <stop offset="100%" stop-color="#3D6CFF" stop-opacity="0"></stop>
+</radialGradient>
+<radialGradient id="rg-cf" cx="50%" cy="50%" r="50%">
+  <stop offset="0%" stop-color="#C4267A" stop-opacity=".18"></stop>
+  <stop offset="100%" stop-color="#C4267A" stop-opacity="0"></stop>
+</radialGradient>
+<radialGradient id="rg-bf" cx="50%" cy="50%" r="50%">
+  <stop offset="0%" stop-color="#1C2347"></stop>
+  <stop offset="100%" stop-color="#0C1024"></stop>
+</radialGradient>
+<filter id="fg" x="-60%" y="-60%" width="220%" height="220%">
+  <feGaussianBlur stdDeviation="3" result="b"></feGaussianBlur>
+  <feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+</filter>
+<filter id="fgg" x="-40%" y="-40%" width="180%" height="180%">
+  <feGaussianBlur stdDeviation="14" result="b"></feGaussianBlur>
+  <feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+</filter>
+<filter id="fgt" x="-20%" y="-40%" width="140%" height="180%">
+  <feGaussianBlur stdDeviation="4" result="b"></feGaussianBlur>
+  <feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+</filter>
+<marker id="aw" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto">
+  <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(255,255,255,.3)"></path>
+</marker>
+<marker id="ac" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto">
+  <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(61,108,255,.7)"></path>
+</marker>
+<marker id="ar" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto">
+  <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(196,38,122,.7)"></path>
+</marker>
+
+<!-- clipPaths for Venn intersections -->
+<clipPath id="clip-asp"><circle cx="1055" cy="420" r="148"></circle></clipPath>
+<clipPath id="clip-exg"><circle cx="1265" cy="420" r="148"></circle></clipPath>
+<clipPath id="clip-atu"><circle cx="1160" cy="562" r="88"></circle></clipPath>
+
+<!-- particle motion paths -->
+<path id="pi1" d="M 302,210 H 332 V 474 H 558"></path>
+<path id="pi2" d="M 302,298 H 332 V 474 H 558"></path>
+<path id="pi3" d="M 302,386 H 332 V 474 H 558"></path>
+<path id="pi4" d="M 302,474 H 558"></path>
+<path id="pi5" d="M 302,562 H 332 V 474 H 558"></path>
+<path id="pi6" d="M 302,650 H 332 V 474 H 558"></path>
+<path id="pi7" d="M 302,738 H 332 V 474 H 558"></path>
+<path id="pva" d="M 802,474 H 940 V 420 H 907"></path>
+<path id="pve" d="M 802,474 H 940 V 420 H 1117"></path>
+<path id="pout" d="M 1413,420 H 1480"></path>
+</defs>
+
+<!-- BACKGROUND -->
+<rect width="1920" height="1080" fill="#0C1024"></rect>
+<rect width="1920" height="1080" fill="url(#dots)"></rect>
+
+<!-- ambient glows -->
+<ellipse cx="690" cy="474" rx="360" ry="290" fill="url(#rg-brain)">
+  <animate attributeName="opacity" values=".7;1;.7" dur="6s" repeatCount="indefinite"></animate>
+</ellipse>
+<ellipse cx="1630" cy="440" rx="300" ry="250" fill="url(#rg-cf)" opacity=".55"></ellipse>
+
+<!-- zone tint strips -->
+<rect x="52" y="90" width="268" height="860" fill="rgba(61,108,255,.01)"></rect>
+<rect x="560" y="90" width="260" height="860" fill="rgba(61,108,255,.014)"></rect>
+<rect x="1470" y="90" width="450" height="860" fill="rgba(196,38,122,.012)"></rect>
+
+<!-- HEADER -->
+<text x="60" y="52" font-family="'Newsreader',serif" font-weight="600" font-size="30" fill="white" letter-spacing="-.02em">Nina<tspan fill="#C4267A">.AI</tspan></text>
+<text x="60" y="76" font-family="'Inter Tight',sans-serif" font-size="11" fill="rgba(255,255,255,.28)" letter-spacing=".1em">DIAGNÓSTICO CULTURAL — ARQUITETURA DE FLUXO</text>
+<rect x="1726" y="38" width="134" height="24" rx="12" fill="rgba(61,108,255,.1)" stroke="rgba(61,108,255,.28)" stroke-width=".5"></rect>
+<circle cx="1742" cy="50" r="3.5" fill="#3D6CFF" filter="url(#fg)">
+  <animate attributeName="opacity" values="1;.2;1" dur="1.8s" repeatCount="indefinite"></animate>
+</circle>
+<text x="1751" y="54" font-family="'JetBrains Mono',monospace" font-size="9" fill="#3D6CFF" letter-spacing=".07em">SISTEMA ATIVO</text>
+<line x1="60" y1="88" x2="1860" y2="88" stroke="rgba(255,255,255,.06)" stroke-width="1"></line>
+
+<!-- ZONE LABELS -->
+<text x="186" y="108" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(255,255,255,.22)" letter-spacing=".1em">01 · FONTES</text>
+<text x="578" y="108" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(61,108,255,.55)" letter-spacing=".1em">02 · PROCESSAMENTO</text>
+<text x="1163" y="108" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(255,255,255,.22)" letter-spacing=".1em">03 · MAPEAMENTO CULTURAL</text>
+<text x="1720" y="108" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(196,38,122,.5)" letter-spacing=".1em">04 · CULTURA FINAL</text>
+
+<!-- zone separators -->
+<line x1="334" y1="88" x2="334" y2="920" stroke="rgba(255,255,255,.045)" stroke-width="1"></line>
+<line x1="920" y1="88" x2="920" y2="920" stroke="rgba(255,255,255,.045)" stroke-width="1"></line>
+<line x1="1468" y1="88" x2="1468" y2="920" stroke="rgba(255,255,255,.045)" stroke-width="1"></line>
+
+<!-- ═══════════════ CONNECTIONS ═══════════════ -->
+
+<!-- input vertical bus x=332 -->
+<line x1="332" y1="210" x2="332" y2="738" stroke="rgba(61,108,255,.15)" stroke-width="1"></line>
+
+<!-- input → bus stubs -->
+<line x1="302" y1="210" x2="332" y2="210" stroke="rgba(61,108,255,.22)" stroke-width="1"></line>
+<line x1="302" y1="298" x2="332" y2="298" stroke="rgba(61,108,255,.22)" stroke-width="1"></line>
+<line x1="302" y1="386" x2="332" y2="386" stroke="rgba(61,108,255,.22)" stroke-width="1"></line>
+<line x1="302" y1="474" x2="332" y2="474" stroke="rgba(61,108,255,.35)" stroke-width="1"></line>
+<line x1="302" y1="562" x2="332" y2="562" stroke="rgba(61,108,255,.22)" stroke-width="1"></line>
+<line x1="302" y1="650" x2="332" y2="650" stroke="rgba(61,108,255,.22)" stroke-width="1"></line>
+<line x1="302" y1="738" x2="332" y2="738" stroke="rgba(61,108,255,.22)" stroke-width="1"></line>
+
+<!-- bus → brain -->
+<line x1="332" y1="474" x2="558" y2="474" stroke="rgba(61,108,255,.5)" stroke-width="1.5" marker-end="url(#ac)"></line>
+
+<!-- brain → venn (horizontal stub then two branches) -->
+<line x1="802" y1="474" x2="940" y2="474" stroke="rgba(255,255,255,.25)" stroke-width="1.5"></line>
+<!-- vertical splitter -->
+<line x1="940" y1="420" x2="940" y2="474" stroke="rgba(255,255,255,.18)" stroke-width="1"></line>
+<!-- branch to Aspirada circle left edge -->
+<line x1="940" y1="420" x2="907" y2="420" stroke="rgba(61,108,255,.35)" stroke-width="1" marker-end="url(#ac)"></line>
+<!-- branch to Exigida region -->
+<line x1="940" y1="420" x2="1117" y2="420" stroke="rgba(196,38,122,.35)" stroke-width="1" marker-end="url(#ar)"></line>
+
+<!-- junction dots -->
+<circle cx="332" cy="474" r="3" fill="#3D6CFF" filter="url(#fg)"></circle>
+<circle cx="940" cy="474" r="2.5" fill="rgba(255,255,255,.5)"></circle>
+<circle cx="940" cy="420" r="2.5" fill="rgba(255,255,255,.4)"></circle>
+
+<!-- bus junction dots -->
+<circle cx="332" cy="210" r="1.8" fill="rgba(61,108,255,.5)"></circle>
+<circle cx="332" cy="298" r="1.8" fill="rgba(61,108,255,.5)"></circle>
+<circle cx="332" cy="386" r="1.8" fill="rgba(61,108,255,.5)"></circle>
+<circle cx="332" cy="562" r="1.8" fill="rgba(61,108,255,.5)"></circle>
+<circle cx="332" cy="650" r="1.8" fill="rgba(61,108,255,.5)"></circle>
+<circle cx="332" cy="738" r="1.8" fill="rgba(61,108,255,.5)"></circle>
+
+<!-- Venn → Final Values -->
+<line x1="1413" y1="420" x2="1488" y2="420" stroke="rgba(196,38,122,.55)" stroke-width="1.5" marker-end="url(#ar)"></line>
+
+<!-- ═══════════════ PARTICLES ═══════════════ -->
+<circle r="2.5" fill="#3D6CFF" filter="url(#fg)"><animateMotion dur="4.2s" repeatCount="indefinite" begin="0s"><mpath href="#pi1"></mpath></animateMotion></circle>
+<circle r="2" fill="#3D6CFF" filter="url(#fg)" opacity=".6"><animateMotion dur="4.2s" repeatCount="indefinite" begin="2.1s"><mpath href="#pi1"></mpath></animateMotion></circle>
+<circle r="2.5" fill="#3D6CFF" filter="url(#fg)"><animateMotion dur="3.8s" repeatCount="indefinite" begin=".6s"><mpath href="#pi2"></mpath></animateMotion></circle>
+<circle r="2.5" fill="#3D6CFF" filter="url(#fg)"><animateMotion dur="3.4s" repeatCount="indefinite" begin="1.1s"><mpath href="#pi3"></mpath></animateMotion></circle>
+<circle r="2.5" fill="#3D6CFF" filter="url(#fg)"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0s"><mpath href="#pi4"></mpath></animateMotion></circle>
+<circle r="2" fill="#3D6CFF" filter="url(#fg)" opacity=".6"><animateMotion dur="2.4s" repeatCount="indefinite" begin="1.2s"><mpath href="#pi4"></mpath></animateMotion></circle>
+<circle r="2.5" fill="#3D6CFF" filter="url(#fg)"><animateMotion dur="3.6s" repeatCount="indefinite" begin=".9s"><mpath href="#pi5"></mpath></animateMotion></circle>
+<circle r="2.5" fill="#3D6CFF" filter="url(#fg)"><animateMotion dur="3.9s" repeatCount="indefinite" begin="1.5s"><mpath href="#pi6"></mpath></animateMotion></circle>
+<circle r="2.5" fill="#3D6CFF" filter="url(#fg)"><animateMotion dur="4.4s" repeatCount="indefinite" begin=".4s"><mpath href="#pi7"></mpath></animateMotion></circle>
+<circle r="2.5" fill="#3D6CFF" filter="url(#fg)"><animateMotion dur="2.8s" repeatCount="indefinite" begin=".2s"><mpath href="#pva"></mpath></animateMotion></circle>
+<circle r="2.5" fill="#C4267A" filter="url(#fg)"><animateMotion dur="2.8s" repeatCount="indefinite" begin=".8s"><mpath href="#pve"></mpath></animateMotion></circle>
+<circle r="3" fill="#C4267A" filter="url(#fg)"><animateMotion dur="1.6s" repeatCount="indefinite" begin="0s"><mpath href="#pout"></mpath></animateMotion></circle>
+<circle r="2" fill="#C4267A" filter="url(#fg)" opacity=".6"><animateMotion dur="1.6s" repeatCount="indefinite" begin=".8s"><mpath href="#pout"></mpath></animateMotion></circle>
+
+<!-- ═══════════════ 01 — INPUT NODES ═══════════════ -->
+<!-- I01 Mercado -->
+<g class="inode" id="in-01" onclick="openPanel('01')">
+  <rect class="nb" x="52" y="184" width="250" height="52" fill="rgba(255,255,255,.022)"></rect>
+  <rect class="nk" x="52" y="184" width="250" height="52" fill="none" stroke="rgba(255,255,255,.08)" stroke-width=".5"></rect>
+  <rect x="52" y="184" width="2" height="52" fill="#3D6CFF"></rect>
+  <text x="65" y="205" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(61,108,255,.65)" letter-spacing=".08em">01</text>
+  <text x="65" y="222" font-family="'Inter Tight',sans-serif" font-size="15" font-weight="600" fill="white">Mercado</text>
+  <text x="294" y="214" text-anchor="end" font-family="'Inter Tight',sans-serif" font-size="11" fill="rgba(255,255,255,.16)">↗</text>
+</g>
+<!-- I02 Estratégia -->
+<g class="inode" id="in-02" onclick="openPanel('02')">
+  <rect class="nb" x="52" y="272" width="250" height="52" fill="rgba(255,255,255,.022)"></rect>
+  <rect class="nk" x="52" y="272" width="250" height="52" fill="none" stroke="rgba(255,255,255,.08)" stroke-width=".5"></rect>
+  <rect x="52" y="272" width="2" height="52" fill="#C4267A"></rect>
+  <text x="65" y="293" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(196,38,122,.65)" letter-spacing=".08em">02</text>
+  <text x="65" y="310" font-family="'Inter Tight',sans-serif" font-size="15" font-weight="600" fill="white">Estratégia</text>
+  <text x="294" y="302" text-anchor="end" font-family="'Inter Tight',sans-serif" font-size="11" fill="rgba(255,255,255,.16)">↗</text>
+</g>
+<!-- I03 Cap. Fin. & Op. -->
+<g class="inode" id="in-03" onclick="openPanel('03')">
+  <rect class="nb" x="52" y="360" width="250" height="52" fill="rgba(255,255,255,.022)"></rect>
+  <rect class="nk" x="52" y="360" width="250" height="52" fill="none" stroke="rgba(255,255,255,.08)" stroke-width=".5"></rect>
+  <rect x="52" y="360" width="2" height="52" fill="#B45309"></rect>
+  <text x="65" y="381" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(180,83,9,.8)" letter-spacing=".08em">03</text>
+  <text x="65" y="394" font-family="'Inter Tight',sans-serif" font-size="13" font-weight="600" fill="white">Cap. Financeira</text>
+  <text x="65" y="407" font-family="'Inter Tight',sans-serif" font-size="11" fill="rgba(255,255,255,.42)">e Operacional</text>
+  <text x="294" y="390" text-anchor="end" font-family="'Inter Tight',sans-serif" font-size="11" fill="rgba(255,255,255,.16)">↗</text>
+</g>
+<!-- I04 Perfil CEO -->
+<g class="inode" id="in-04" onclick="openPanel('04')">
+  <rect class="nb" x="52" y="448" width="250" height="52" fill="rgba(255,255,255,.028)"></rect>
+  <rect class="nk" x="52" y="448" width="250" height="52" fill="none" stroke="rgba(255,255,255,.1)" stroke-width=".5"></rect>
+  <rect x="52" y="448" width="2" height="52" fill="#C4267A"></rect>
+  <text x="65" y="469" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(196,38,122,.65)" letter-spacing=".08em">04</text>
+  <text x="65" y="486" font-family="'Inter Tight',sans-serif" font-size="15" font-weight="600" fill="white">Perfil do CEO</text>
+  <text x="294" y="478" text-anchor="end" font-family="'Inter Tight',sans-serif" font-size="11" fill="rgba(255,255,255,.16)">↗</text>
+</g>
+<!-- I05 Perfil Liderança -->
+<g class="inode" id="in-05" onclick="openPanel('05')">
+  <rect class="nb" x="52" y="536" width="250" height="52" fill="rgba(255,255,255,.022)"></rect>
+  <rect class="nk" x="52" y="536" width="250" height="52" fill="none" stroke="rgba(255,255,255,.08)" stroke-width=".5"></rect>
+  <rect x="52" y="536" width="2" height="52" fill="#C4267A"></rect>
+  <text x="65" y="557" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(196,38,122,.65)" letter-spacing=".08em">05</text>
+  <text x="65" y="570" font-family="'Inter Tight',sans-serif" font-size="13" font-weight="600" fill="white">Perfil e Maturidade</text>
+  <text x="65" y="583" font-family="'Inter Tight',sans-serif" font-size="11" fill="rgba(255,255,255,.42)">da Liderança</text>
+  <text x="294" y="566" text-anchor="end" font-family="'Inter Tight',sans-serif" font-size="11" fill="rgba(255,255,255,.16)">↗</text>
+</g>
+<!-- I06 Cultura Instalada -->
+<g class="inode" id="in-06" onclick="openPanel('06')">
+  <rect class="nb" x="52" y="624" width="250" height="52" fill="rgba(255,255,255,.022)"></rect>
+  <rect class="nk" x="52" y="624" width="250" height="52" fill="none" stroke="rgba(255,255,255,.08)" stroke-width=".5"></rect>
+  <rect x="52" y="624" width="2" height="52" fill="rgba(255,255,255,.45)"></rect>
+  <text x="65" y="645" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(255,255,255,.35)" letter-spacing=".08em">06</text>
+  <text x="65" y="662" font-family="'Inter Tight',sans-serif" font-size="15" font-weight="600" fill="white">Cultura Instalada</text>
+  <text x="294" y="654" text-anchor="end" font-family="'Inter Tight',sans-serif" font-size="11" fill="rgba(255,255,255,.16)">↗</text>
+</g>
+<!-- I07 Blockers -->
+<g class="inode" id="in-07" onclick="openPanel('07')">
+  <rect class="nb" x="52" y="712" width="250" height="52" fill="rgba(255,255,255,.022)"></rect>
+  <rect class="nk" x="52" y="712" width="250" height="52" fill="none" stroke="rgba(255,255,255,.08)" stroke-width=".5"></rect>
+  <rect x="52" y="712" width="2" height="52" fill="#B45309"></rect>
+  <text x="65" y="733" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(180,83,9,.8)" letter-spacing=".08em">07</text>
+  <text x="65" y="750" font-family="'Inter Tight',sans-serif" font-size="15" font-weight="600" fill="white">Blockers Mapeados</text>
+  <text x="294" y="742" text-anchor="end" font-family="'Inter Tight',sans-serif" font-size="11" fill="rgba(255,255,255,.16)">↗</text>
+</g>
+<text x="186" y="802" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="10" fill="rgba(255,255,255,.16)">clique para expandir</text>
+
+<!-- ═══════════════ 02 — NINA BRAIN ═══════════════ -->
+<!-- ambient -->
+<circle cx="690" cy="474" r="134" fill="rgba(61,108,255,.07)" filter="url(#fgg)">
+  <animate attributeName="opacity" values=".6;1;.6" dur="5s" repeatCount="indefinite"></animate>
+</circle>
+<!-- pulse rings -->
+<circle cx="690" cy="474" r="124" fill="none" stroke="#3D6CFF" stroke-width=".5">
+  <animate attributeName="r" values="124;195;124" dur="4s" repeatCount="indefinite"></animate>
+  <animate attributeName="opacity" values=".35;0;.35" dur="4s" repeatCount="indefinite"></animate>
+</circle>
+<circle cx="690" cy="474" r="124" fill="none" stroke="#3D6CFF" stroke-width=".5">
+  <animate attributeName="r" values="124;175;124" dur="4s" repeatCount="indefinite" begin="1.6s"></animate>
+  <animate attributeName="opacity" values=".2;0;.2" dur="4s" repeatCount="indefinite" begin="1.6s"></animate>
+</circle>
+<!-- main circle -->
+<circle cx="690" cy="474" r="120" fill="url(#rg-bf)" stroke="#3D6CFF" stroke-width="1.5" opacity=".95"></circle>
+<!-- inner ring -->
+<circle cx="690" cy="474" r="105" fill="none" stroke="rgba(61,108,255,.18)" stroke-width=".5"></circle>
+<!-- orbit ring + dot -->
+<circle cx="690" cy="474" r="140" fill="none" stroke="rgba(61,108,255,.1)" stroke-width=".5" stroke-dasharray="3,9"></circle>
+<g style="transform-origin:690px 474px;animation:orbit 20s linear infinite">
+  <circle cx="830" cy="474" r="5" fill="#3D6CFF" filter="url(#fg)"></circle>
+</g>
+<!-- text -->
+<text x="690" y="457" text-anchor="middle" font-family="'Newsreader',serif" font-style="italic" font-size="38" font-weight="600" fill="white" letter-spacing="-.02em">Nina<tspan fill="#C4267A">.AI</tspan></text>
+<line x1="638" y1="466" x2="742" y2="466" stroke="rgba(255,255,255,.14)" stroke-width=".5"></line>
+<text x="690" y="485" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(61,108,255,.65)" letter-spacing=".14em">CÉREBRO</text>
+<!-- processing dots -->
+<circle cx="661" cy="506" r="3" fill="rgba(61,108,255,.4)"><animate attributeName="opacity" values=".2;1;.2" dur="1.2s" repeatCount="indefinite" begin="0s"></animate></circle>
+<circle cx="674" cy="506" r="3" fill="rgba(61,108,255,.4)"><animate attributeName="opacity" values=".2;1;.2" dur="1.2s" repeatCount="indefinite" begin=".2s"></animate></circle>
+<circle cx="687" cy="506" r="3" fill="rgba(61,108,255,.4)"><animate attributeName="opacity" values=".2;1;.2" dur="1.2s" repeatCount="indefinite" begin=".4s"></animate></circle>
+<circle cx="700" cy="506" r="3" fill="rgba(61,108,255,.4)"><animate attributeName="opacity" values=".2;1;.2" dur="1.2s" repeatCount="indefinite" begin=".6s"></animate></circle>
+<circle cx="713" cy="506" r="3" fill="rgba(61,108,255,.4)"><animate attributeName="opacity" values=".2;1;.2" dur="1.2s" repeatCount="indefinite" begin=".8s"></animate></circle>
+<circle cx="726" cy="506" r="3" fill="rgba(61,108,255,.4)"><animate attributeName="opacity" values=".2;1;.2" dur="1.2s" repeatCount="indefinite" begin="1.0s"></animate></circle>
+
+<!-- ═══════════════ 03 — VENN CULTURAL ═══════════════ -->
+
+<!-- circle labels above -->
+<text x="1000" y="252" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="13" font-weight="500" fill="rgba(61,108,255,.8)">Cultura Aspirada</text>
+<text x="1320" y="252" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="13" font-weight="500" fill="rgba(196,38,122,.8)">Cultura Exigida</text>
+<text x="1160" y="240" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="11" font-weight="500" fill="rgba(255,255,255,.5)">até 7 valores</text>
+<text x="1160" y="256" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="11" fill="rgba(255,255,255,.3)">zona de convergência</text>
+
+<!-- base circles -->
+<circle cx="1055" cy="420" r="148" fill="rgba(61,108,255,.06)" stroke="rgba(61,108,255,.28)" stroke-width="1.5"></circle>
+<circle cx="1265" cy="420" r="148" fill="rgba(196,38,122,.06)" stroke="rgba(196,38,122,.28)" stroke-width="1.5"></circle>
+
+<!-- intersection A∩E highlight (draw circle B clipped to circle A shape) -->
+<circle cx="1265" cy="420" r="148" fill="rgba(120,40,160,.12)" clip-path="url(#clip-asp)"></circle>
+<!-- and mirror -->
+<circle cx="1055" cy="420" r="148" fill="rgba(120,40,160,.08)" clip-path="url(#clip-exg)"></circle>
+
+<!-- Cultura Atual — smaller, less prominent, lower -->
+<circle cx="1160" cy="562" r="88" fill="rgba(180,83,9,.04)" stroke="rgba(180,83,9,.2)" stroke-width="1" stroke-dasharray="5,4"></circle>
+<!-- A∩Atual subtle -->
+<circle cx="1055" cy="420" r="148" fill="rgba(100,60,20,.07)" clip-path="url(#clip-atu)"></circle>
+<!-- E∩Atual subtle -->
+<circle cx="1265" cy="420" r="148" fill="rgba(130,50,20,.06)" clip-path="url(#clip-atu)"></circle>
+
+<!-- ── Values — Aspirada exclusive zone (left, ~x=865) ── -->
+<text x="968" y="378" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="12" fill="rgba(61,108,255,.85)">Autonomia radical</text>
+<text x="968" y="397" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="12" fill="rgba(61,108,255,.85)">Velocidade decisória</text>
+<text x="968" y="416" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="12" fill="rgba(61,108,255,.85)">Test-and-learn</text>
+<text x="968" y="435" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="12" fill="rgba(61,108,255,.75)">Intraempreendedorismo</text>
+<text x="968" y="454" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="12" fill="rgba(61,108,255,.65)">Transparência total</text>
+
+<!-- small dash separators for aspirada values -->
+<line x1="920" y1="366" x2="1020" y2="366" stroke="rgba(61,108,255,.12)" stroke-width=".5"></line>
+<line x1="920" y1="464" x2="1020" y2="464" stroke="rgba(61,108,255,.12)" stroke-width=".5"></line>
+
+<!-- ── Values — intersection A∩E (center, ~x=1060) ── -->
+<!-- intersection label -->
+<text x="1160" y="366" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="rgba(255,255,255,.3)" letter-spacing=".08em">CONVERGÊNCIA</text>
+<line x1="1110" y1="372" x2="1210" y2="372" stroke="rgba(255,255,255,.12)" stroke-width=".5"></line>
+<!-- intersection values -->
+<text x="1160" y="390" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="13" font-weight="600" fill="white">Ownership pessoal</text>
+<text x="1160" y="410" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="13" font-weight="600" fill="white">Colaboração orientada</text>
+<text x="1160" y="430" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="13" font-weight="600" fill="white">Inovação c/ disciplina</text>
+<line x1="1110" y1="440" x2="1210" y2="440" stroke="rgba(255,255,255,.12)" stroke-width=".5"></line>
+
+<!-- ── Values — Exigida exclusive zone (right, ~x=1252) ── -->
+<text x="1355" y="378" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="12" fill="rgba(196,38,122,.85)">Disciplina de execução</text>
+<text x="1355" y="397" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="12" fill="rgba(196,38,122,.85)">Orientação ao cliente</text>
+<text x="1355" y="416" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="12" fill="rgba(196,38,122,.85)">Resultados mensuráveis</text>
+<text x="1355" y="435" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="12" fill="rgba(196,38,122,.75)">Responsabilidade p/ entrega</text>
+<text x="1355" y="454" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="12" fill="rgba(196,38,122,.65)">Escalabilidade</text>
+
+<line x1="1290" y1="366" x2="1410" y2="366" stroke="rgba(196,38,122,.12)" stroke-width=".5"></line>
+<line x1="1290" y1="464" x2="1410" y2="464" stroke="rgba(196,38,122,.12)" stroke-width=".5"></line>
+
+<!-- ── Cultura Atual label + values ── -->
+<text x="1160" y="546" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="rgba(180,83,9,.5)" letter-spacing=".08em">ATUAL</text>
+<text x="1160" y="562" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="11" fill="rgba(180,83,9,.6)">Hierarquia respeitada</text>
+<text x="1160" y="577" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="11" fill="rgba(180,83,9,.5)">Processos consolidados</text>
+<text x="1160" y="592" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="11" fill="rgba(180,83,9,.45)">Estabilidade valorizada</text>
+<text x="1160" y="638" text-anchor="middle" font-family="'Newsreader',serif" font-style="italic" font-size="11" fill="rgba(255,255,255,.18)">ponto de partida</text>
+
+<!-- A∩Atual tiny overlap hint -->
+<text x="1094" y="502" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="9" fill="rgba(255,255,255,.22)">alguma</text>
+<text x="1094" y="513" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="9" fill="rgba(255,255,255,.22)">transparência</text>
+<!-- E∩Atual tiny overlap hint -->
+<text x="1226" y="502" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="9" fill="rgba(255,255,255,.22)">algum foco</text>
+<text x="1226" y="513" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="9" fill="rgba(255,255,255,.22)">em resultado</text>
+
+<!-- arrow label near Venn→Final -->
+<text x="1452" y="410" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="9" fill="rgba(196,38,122,.4)">síntese</text>
+<text x="1452" y="422" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="9" fill="rgba(196,38,122,.4)">refinada</text>
+
+<!-- ═══════════════ 04 — CULTURA FINAL ═══════════════ -->
+<!-- ambient glow -->
+<rect x="1495" y="290" width="300" height="290" fill="rgba(196,38,122,.05)" filter="url(#fgg)" opacity=".6"></rect>
+<!-- box -->
+<rect x="1495" y="295" width="300" height="280" fill="rgba(14,12,36,.95)" stroke="#C4267A" stroke-width="1"></rect>
+<!-- header -->
+<rect x="1495" y="295" width="300" height="38" fill="rgba(196,38,122,.1)"></rect>
+<text x="1645" y="318" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#C4267A" letter-spacing=".12em">CULTURA FINAL</text>
+<line x1="1495" y1="333" x2="1795" y2="333" stroke="rgba(196,38,122,.2)" stroke-width=".5"></line>
+
+<!-- value list (5 values) -->
+<text x="1515" y="358" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(196,38,122,.5)">01</text>
+<text x="1538" y="358" font-family="'Inter Tight',sans-serif" font-size="14" font-weight="500" fill="white">Ownership pessoal</text>
+<line x1="1515" y1="368" x2="1785" y2="368" stroke="rgba(255,255,255,.05)" stroke-width=".5"></line>
+
+<text x="1515" y="390" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(196,38,122,.5)">02</text>
+<text x="1538" y="390" font-family="'Inter Tight',sans-serif" font-size="14" font-weight="500" fill="white">Colaboração orientada</text>
+<line x1="1515" y1="400" x2="1785" y2="400" stroke="rgba(255,255,255,.05)" stroke-width=".5"></line>
+
+<text x="1515" y="422" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(196,38,122,.5)">03</text>
+<text x="1538" y="422" font-family="'Inter Tight',sans-serif" font-size="14" font-weight="500" fill="white">Inovação c/ disciplina</text>
+<line x1="1515" y1="432" x2="1785" y2="432" stroke="rgba(255,255,255,.05)" stroke-width=".5"></line>
+
+<text x="1515" y="454" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(196,38,122,.5)">04</text>
+<text x="1538" y="454" font-family="'Inter Tight',sans-serif" font-size="14" font-weight="500" fill="white">Velocidade decisória</text>
+<line x1="1515" y1="464" x2="1785" y2="464" stroke="rgba(255,255,255,.05)" stroke-width=".5"></line>
+
+<text x="1515" y="486" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(196,38,122,.5)">05</text>
+<text x="1538" y="486" font-family="'Inter Tight',sans-serif" font-size="14" font-weight="500" fill="rgba(255,255,255,.75)">Responsabilidade</text>
+<line x1="1515" y1="496" x2="1785" y2="496" stroke="rgba(255,255,255,.05)" stroke-width=".5"></line>
+
+<!-- value count placeholder -->
+<text x="1645" y="527" text-anchor="middle" font-family="'Newsreader',serif" font-style="italic" font-size="13" fill="rgba(196,38,122,.4)">valores não-negociáveis</text>
+<text x="1645" y="545" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="10" fill="rgba(255,255,255,.22)">refinados com consultoras + cliente</text>
+
+<!-- corner accent dots -->
+<circle cx="1495" cy="295" r="3" fill="#C4267A" filter="url(#fg)"></circle>
+<circle cx="1795" cy="295" r="3" fill="#C4267A" filter="url(#fg)"></circle>
+<circle cx="1495" cy="575" r="3" fill="#C4267A" filter="url(#fg)"></circle>
+<circle cx="1795" cy="575" r="3" fill="#C4267A" filter="url(#fg)"></circle>
+
+<!-- link to figure 2 -->
+<text x="1645" y="618" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(255,255,255,.22)" letter-spacing=".06em">↓ ver Figura 2 — McKinsey 7S</text>
+
+<!-- FOOTER -->
+<line x1="60" y1="900" x2="1860" y2="900" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
+<text x="60" y="932" font-family="'Newsreader',serif" font-style="italic" font-size="15" fill="rgba(255,255,255,.15)">"a figura que um CTO mostraria ao board para explicar por que construiu esse sistema"</text>
+<text x="1860" y="932" text-anchor="end" font-family="'Newsreader',serif" font-size="15" font-weight="600" fill="rgba(255,255,255,.18)" letter-spacing="-.02em">Nina<tspan fill="rgba(196,38,122,.4)">.AI</tspan></text>
+
+</svg>
+
+<!-- PANEL -->
+<div class="panel" id="panel">
+  <div class="ph">
+    <div class="pid" id="p-id">01 · FONTE</div>
+    <div class="ptitle" id="p-title">—</div>
+    <div class="pclose" onclick="closePanel()">×</div>
+  </div>
+  <div class="pb">
+    <p class="pdesc" id="p-desc"></p>
+    <div class="psec">PERGUNTAS RESPONDIDAS</div>
+    <ul class="pitems" id="p-items"></ul>
+    <div class="psrc" id="p-src"></div>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  function resize(){
+    var s=document.getElementById('diagram'),w=document.getElementById('wrap');
+    var sc=Math.min(window.innerWidth/1920,window.innerHeight/1080);
+    s.style.width=1920*sc+'px';s.style.height=1080*sc+'px';
+    w.style.width=1920*sc+'px';w.style.height=1080*sc+'px';
+  }
+  resize();window.addEventListener('resize',resize);
+})();
+
+var DATA={
+  '01':{id:'01 · FONTE',title:'Mercado',desc:'O que o ambiente competitivo exige culturalmente da empresa para vencer no setor?',items:['Benchmarks culturais de concorrentes diretos','Tendências de atração e retenção no setor','Pressões regulatórias que moldam comportamento','Expectativas do mercado de talentos'],src:'Fonte: pesquisa documental + briefing estratégico'},
+  '02':{id:'02 · FONTE',title:'Estratégia',desc:'O que a estratégia de crescimento exige culturalmente para ser executada com sucesso?',items:['Onde a empresa quer chegar em 3 a 5 anos','Como o modelo de negócio muda requisitos de comportamento','Iniciativas estratégicas em curso e seus impactos culturais','Decisões de alocação de capital que sinalizam prioridades'],src:'Fonte: CEO Briefing · 90 minutos · gravado'},
+  '03':{id:'03 · FONTE',title:'Cap. Financeira e Operacional',desc:'Qual é o ritmo possível? O que a empresa consegue sustentar de fato?',items:['Headcount atual e projeção 18 meses','Budget disponível para desenvolvimento e mudança','Maturidade dos processos de RH existentes','Histórico de transformações e seus resultados'],src:'Fonte: CHRO · 60min + formulário assíncrono 48h'},
+  '04':{id:'04 · FONTE',title:'Perfil do CEO',desc:'Qual é o teto real? O que o CEO consegue sustentar, modelar e defender com consistência?',items:['Estilo de liderança e valores pessoais observados','Tolerância a conflito, ambiguidade e velocidade','Comportamentos que o CEO modela hoje — intencional ou não','Histórico de decisões difíceis que revelam caráter real'],src:'Fonte: entrevista estruturada 90min + observação'},
+  '05':{id:'05 · FONTE',title:'Perfil e Maturidade da Liderança',desc:'O time de liderança consegue ser vetor da cultura desejada — ou é o principal obstáculo?',items:['Alinhamento entre C-Level e CEO na prática','Maturidade de cada VP como líder de cultura','Pontos de tensão política e rivalidades mapeadas','Capacidade do time de sustentar mudança sob pressão'],src:'Fonte: entrevistas individuais C-Level + survey N-2'},
+  '06':{id:'06 · FONTE',title:'Cultura Instalada',desc:'Qual é o ponto de partida real — não o declarado, mas o que acontece de fato?',items:['Rituais e símbolos que operam na empresa hoje','Heróis, histórias e mitos organizacionais ativos','O que é recompensado e punido na prática','Gap entre cultura declarada e cultura vivida'],src:'Fonte: pulse survey anônimo + análise documental'},
+  '07':{id:'07 · FONTE',title:'Blockers Mapeados',desc:'O que pode travar a mudança antes de ela começar — e que ninguém está dizendo em voz alta?',items:['Obstáculos políticos identificados nas entrevistas','Restrições estruturais que limitam velocidade','Histórico de iniciativas culturais que falharam','Grupos de poder com interesse no status quo'],src:'Fonte: síntese diagnóstica Nina + entrevistas'},
+};
+
+function openPanel(id){
+  var d=DATA[id]; if(!d)return;
+  document.getElementById('p-id').textContent=d.id;
+  document.getElementById('p-title').textContent=d.title;
+  document.getElementById('p-desc').textContent=d.desc;
+  document.getElementById('p-items').innerHTML=d.items.map(function(t){return'<li>'+t+'</li>';}).join('');
+  document.getElementById('p-src').textContent=d.src;
+  document.getElementById('panel').classList.add('open');
+  document.querySelectorAll('.inode').forEach(function(n){n.classList.remove('lit');});
+  var n=document.getElementById('in-0'+id); if(n)n.classList.add('lit');
+}
+function closePanel(){
+  document.getElementById('panel').classList.remove('open');
+  document.querySelectorAll('.inode').forEach(function(n){n.classList.remove('lit');});
+}
+</script>
+
+
+</body></html>
