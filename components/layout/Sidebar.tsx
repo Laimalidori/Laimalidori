@@ -8,7 +8,7 @@ import {
 } from 'lucide-react'
 
 const MODULES = [
-  { num: '01', name: 'Workforce Planning', icon: Users,   href: '/dashboard/modulo/workforce-planning', pillar: 'estrategia' },
+  // { num: '01', name: 'Workforce Planning', icon: Users,   href: '/dashboard/modulo/workforce-planning', pillar: 'estrategia' },
   { num: '02', name: 'Atração',            icon: Sparkles, href: '/dashboard/pillar/atracao',    pillar: 'atracao' },
   { num: '03', name: 'Performance',        icon: Target,   href: '/dashboard/pillar/performance', pillar: 'performance' },
   { num: '04', name: 'Liderança',          icon: TrendingUp, href: '/dashboard/pillar/lideranca', pillar: 'lideranca' },
