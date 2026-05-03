@@ -42,6 +42,17 @@ Sistema de advisory executivo para CHROs e líderes de RH. Funciona como um pain
 - [[Pesquisa de Mercado]]
 - [[Apresentações]]
 
+## Módulos
+
+- [[Workforce Planning]] — 6 etapas do diagnóstico ao board
+
+## Dados & Estado
+
+- [[Modelos de Dados]] — todos os tipos TypeScript
+- [[Contexto da Empresa]] — perfil que personaliza as respostas
+- [[API Routes]] — endpoints do sistema
+- [[Estado Global]] — stores Zustand
+
 ## Rotas
 
 | Rota | Descrição |
@@ -50,4 +61,5 @@ Sistema de advisory executivo para CHROs e líderes de RH. Funciona como um pain
 | `/dashboard/pillar/[id]` | Chat especializado por pilar |
 | `/dashboard/history` | Histórico e artefatos |
 | `/dashboard/empresa` | Contexto da empresa |
+| `/dashboard/modulo/workforce-planning` | Módulo WFP |
 | `/api/chat` | Streaming com Claude |
