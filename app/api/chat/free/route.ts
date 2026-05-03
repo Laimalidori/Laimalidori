@@ -3,6 +3,7 @@ import { anthropic } from '@ai-sdk/anthropic'
 import { createClient } from '@/lib/supabase/server'
 import { ORCHESTRATOR_PROMPT } from '@/lib/agents/orchestrator'
 import { formatEmpresaContext } from '@/lib/context'
+import { saveConversationMessage } from '@/lib/chat-helpers'
 
 export const runtime = 'edge'
 
@@ -26,21 +27,13 @@ export async function POST(req: Request) {
       : '\n\nContexto da empresa não configurado.')
 
   const result = streamText({
-    model: anthropic('claude-sonnet-4-5'),
+    model: anthropic('claude-sonnet-4-6'),
     system: systemPrompt,
     messages,
     maxOutputTokens: 4000,
     onFinish: async ({ text }: { text: string }) => {
       if (conversationId) {
-        await supabase.from('messages').insert({
-          conversation_id: conversationId,
-          role: 'assistant',
-          content: text,
-        })
-        await supabase
-          .from('conversations')
-          .update({ updated_at: new Date().toISOString() })
-          .eq('id', conversationId)
+        await saveConversationMessage(supabase, conversationId, text)
       }
     },
   })

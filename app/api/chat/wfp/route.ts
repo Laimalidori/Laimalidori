@@ -1,6 +1,7 @@
 import { streamText } from 'ai'
 import { anthropic } from '@ai-sdk/anthropic'
 import { createClient } from '@/lib/supabase/server'
+import { getMsgText } from '@/lib/chat-helpers'
 
 export const runtime = 'edge'
 
@@ -77,23 +78,6 @@ Nesses casos: pause, nomeie o problema, explique a consequência e redirecione.
 - Acurácia da lente de realidade: % de riscos que se materializaram e foram previstos na Etapa 5 (meta: >80%)
 `
 
-/** Extract text content from a message (handles both string and parts[] formats) */
-function getMsgText(msg: { content?: unknown; parts?: unknown[] }): string {
-  if (typeof msg.content === 'string') return msg.content
-  if (Array.isArray(msg.parts)) {
-    return (msg.parts as Array<{ type: string; text?: string }>)
-      .filter((p) => p.type === 'text')
-      .map((p) => p.text ?? '')
-      .join('')
-  }
-  if (Array.isArray(msg.content)) {
-    return (msg.content as Array<{ type: string; text?: string }>)
-      .filter((p) => p.type === 'text')
-      .map((p) => p.text ?? '')
-      .join('')
-  }
-  return ''
-}
 
 const INIT_INSTRUCTION = `
 
