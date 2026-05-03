@@ -1,0 +1,3557 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "nina_brain_cultural_mapping",
+        "label": "Nina Brain processes inputs through Venn cultural mapping to produce final culture",
+        "nodes": [
+          "zona_processamento",
+          "zona_mapeamento",
+          "convergencia_valores",
+          "cultura_final"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "public/cultura-diagram.html"
+      },
+      {
+        "id": "agent_layer_pillars",
+        "label": "Orchestrator + Pillars + Specialists form Nina agent layer",
+        "nodes": [
+          "orchestrator_ts",
+          "pillars_ts",
+          "specialists_ts"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "README.md"
+      },
+      {
+        "id": "venn_three_cultures",
+        "label": "Aspirada, Exigida, and Atual cultures intersect to define Final Culture",
+        "nodes": [
+          "cultura_aspirada",
+          "cultura_exigida",
+          "cultura_atual",
+          "cultura_final"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "public/cultura-diagram.html"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "next.config.mjs",
+      "file_type": "code",
+      "source_file": "next.config.mjs",
+      "source_location": "L1",
+      "id": "next_config_mjs",
+      "community": 14,
+      "norm_label": "next.config.mjs"
+    },
+    {
+      "label": "middleware.ts",
+      "file_type": "code",
+      "source_file": "middleware.ts",
+      "source_location": "L1",
+      "id": "middleware_ts",
+      "community": 10,
+      "norm_label": "middleware.ts"
+    },
+    {
+      "label": "middleware()",
+      "file_type": "code",
+      "source_file": "middleware.ts",
+      "source_location": "L4",
+      "id": "laimalidori_middleware_middleware",
+      "community": 10,
+      "norm_label": "middleware()"
+    },
+    {
+      "label": "tailwind.config.ts",
+      "file_type": "code",
+      "source_file": "tailwind.config.ts",
+      "source_location": "L1",
+      "id": "tailwind_config_ts",
+      "community": 15,
+      "norm_label": "tailwind.config.ts"
+    },
+    {
+      "label": "postcss.config.mjs",
+      "file_type": "code",
+      "source_file": "postcss.config.mjs",
+      "source_location": "L1",
+      "id": "postcss_config_mjs",
+      "community": 16,
+      "norm_label": "postcss.config.mjs"
+    },
+    {
+      "label": "module.ts",
+      "file_type": "code",
+      "source_file": "types/module.ts",
+      "source_location": "L1",
+      "id": "types_module_ts",
+      "community": 17,
+      "norm_label": "module.ts"
+    },
+    {
+      "label": "history.ts",
+      "file_type": "code",
+      "source_file": "types/history.ts",
+      "source_location": "L1",
+      "id": "types_history_ts",
+      "community": 18,
+      "norm_label": "history.ts"
+    },
+    {
+      "label": "agent.ts",
+      "file_type": "code",
+      "source_file": "types/agent.ts",
+      "source_location": "L1",
+      "id": "types_agent_ts",
+      "community": 19,
+      "norm_label": "agent.ts"
+    },
+    {
+      "label": "chat.ts",
+      "file_type": "code",
+      "source_file": "types/chat.ts",
+      "source_location": "L1",
+      "id": "types_chat_ts",
+      "community": 20,
+      "norm_label": "chat.ts"
+    },
+    {
+      "label": "empresa.ts",
+      "file_type": "code",
+      "source_file": "types/empresa.ts",
+      "source_location": "L1",
+      "id": "types_empresa_ts",
+      "community": 21,
+      "norm_label": "empresa.ts"
+    },
+    {
+      "label": "wfp.ts",
+      "file_type": "code",
+      "source_file": "types/wfp.ts",
+      "source_location": "L1",
+      "id": "types_wfp_ts",
+      "community": 22,
+      "norm_label": "wfp.ts"
+    },
+    {
+      "label": "WFPStageChat.tsx",
+      "file_type": "code",
+      "source_file": "components/wfp/WFPStageChat.tsx",
+      "source_location": "L1",
+      "id": "components_wfp_wfpstagechat_tsx",
+      "community": 0,
+      "norm_label": "wfpstagechat.tsx"
+    },
+    {
+      "label": "extractText()",
+      "file_type": "code",
+      "source_file": "components/wfp/WFPStageChat.tsx",
+      "source_location": "L57",
+      "id": "wfp_wfpstagechat_extracttext",
+      "community": 0,
+      "norm_label": "extracttext()"
+    },
+    {
+      "label": "parseContent()",
+      "file_type": "code",
+      "source_file": "components/wfp/WFPStageChat.tsx",
+      "source_location": "L73",
+      "id": "wfp_wfpstagechat_parsecontent",
+      "community": 0,
+      "norm_label": "parsecontent()"
+    },
+    {
+      "label": "handleSend()",
+      "file_type": "code",
+      "source_file": "components/wfp/WFPStageChat.tsx",
+      "source_location": "L170",
+      "id": "wfp_wfpstagechat_handlesend",
+      "community": 0,
+      "norm_label": "handlesend()"
+    },
+    {
+      "label": "handleSugestao()",
+      "file_type": "code",
+      "source_file": "components/wfp/WFPStageChat.tsx",
+      "source_location": "L177",
+      "id": "wfp_wfpstagechat_handlesugestao",
+      "community": 0,
+      "norm_label": "handlesugestao()"
+    },
+    {
+      "label": "EtapaFrameworks.tsx",
+      "file_type": "code",
+      "source_file": "components/wfp/EtapaFrameworks.tsx",
+      "source_location": "L1",
+      "id": "components_wfp_etapaframeworks_tsx",
+      "community": 23,
+      "norm_label": "etapaframeworks.tsx"
+    },
+    {
+      "label": "SintesePanel.tsx",
+      "file_type": "code",
+      "source_file": "components/wfp/SintesePanel.tsx",
+      "source_location": "L1",
+      "id": "components_wfp_sintesepanel_tsx",
+      "community": 24,
+      "norm_label": "sintesepanel.tsx"
+    },
+    {
+      "label": "Separator.tsx",
+      "file_type": "code",
+      "source_file": "components/ui/Separator.tsx",
+      "source_location": "L1",
+      "id": "components_ui_separator_tsx",
+      "community": 5,
+      "norm_label": "separator.tsx"
+    },
+    {
+      "label": "Separator()",
+      "file_type": "code",
+      "source_file": "components/ui/Separator.tsx",
+      "source_location": "L8",
+      "id": "ui_separator_separator",
+      "community": 5,
+      "norm_label": "separator()"
+    },
+    {
+      "label": "Input.tsx",
+      "file_type": "code",
+      "source_file": "components/ui/Input.tsx",
+      "source_location": "L1",
+      "id": "components_ui_input_tsx",
+      "community": 5,
+      "norm_label": "input.tsx"
+    },
+    {
+      "label": "cn()",
+      "file_type": "code",
+      "source_file": "components/ui/Input.tsx",
+      "source_location": "L23",
+      "id": "ui_input_cn",
+      "community": 5,
+      "norm_label": "cn()"
+    },
+    {
+      "label": "Select.tsx",
+      "file_type": "code",
+      "source_file": "components/ui/Select.tsx",
+      "source_location": "L1",
+      "id": "components_ui_select_tsx",
+      "community": 5,
+      "norm_label": "select.tsx"
+    },
+    {
+      "label": "cn()",
+      "file_type": "code",
+      "source_file": "components/ui/Select.tsx",
+      "source_location": "L25",
+      "id": "ui_select_cn",
+      "community": 5,
+      "norm_label": "cn()"
+    },
+    {
+      "label": "Button.tsx",
+      "file_type": "code",
+      "source_file": "components/ui/Button.tsx",
+      "source_location": "L1",
+      "id": "components_ui_button_tsx",
+      "community": 5,
+      "norm_label": "button.tsx"
+    },
+    {
+      "label": "Textarea.tsx",
+      "file_type": "code",
+      "source_file": "components/ui/Textarea.tsx",
+      "source_location": "L1",
+      "id": "components_ui_textarea_tsx",
+      "community": 5,
+      "norm_label": "textarea.tsx"
+    },
+    {
+      "label": "Badge.tsx",
+      "file_type": "code",
+      "source_file": "components/ui/Badge.tsx",
+      "source_location": "L1",
+      "id": "components_ui_badge_tsx",
+      "community": 6,
+      "norm_label": "badge.tsx"
+    },
+    {
+      "label": "Badge()",
+      "file_type": "code",
+      "source_file": "components/ui/Badge.tsx",
+      "source_location": "L9",
+      "id": "ui_badge_badge",
+      "community": 6,
+      "norm_label": "badge()"
+    },
+    {
+      "label": "SectionLabel.tsx",
+      "file_type": "code",
+      "source_file": "components/ui/SectionLabel.tsx",
+      "source_location": "L1",
+      "id": "components_ui_sectionlabel_tsx",
+      "community": 9,
+      "norm_label": "sectionlabel.tsx"
+    },
+    {
+      "label": "SectionLabel()",
+      "file_type": "code",
+      "source_file": "components/ui/SectionLabel.tsx",
+      "source_location": "L9",
+      "id": "ui_sectionlabel_sectionlabel",
+      "community": 9,
+      "norm_label": "sectionlabel()"
+    },
+    {
+      "label": "HistoryItem.tsx",
+      "file_type": "code",
+      "source_file": "components/history/HistoryItem.tsx",
+      "source_location": "L1",
+      "id": "components_history_historyitem_tsx",
+      "community": 6,
+      "norm_label": "historyitem.tsx"
+    },
+    {
+      "label": "HistoryItem()",
+      "file_type": "code",
+      "source_file": "components/history/HistoryItem.tsx",
+      "source_location": "L11",
+      "id": "history_historyitem_historyitem",
+      "community": 6,
+      "norm_label": "historyitem()"
+    },
+    {
+      "label": "HistoryFilter.tsx",
+      "file_type": "code",
+      "source_file": "components/history/HistoryFilter.tsx",
+      "source_location": "L1",
+      "id": "components_history_historyfilter_tsx",
+      "community": 5,
+      "norm_label": "historyfilter.tsx"
+    },
+    {
+      "label": "HistoryFilterBar()",
+      "file_type": "code",
+      "source_file": "components/history/HistoryFilter.tsx",
+      "source_location": "L20",
+      "id": "history_historyfilter_historyfilterbar",
+      "community": 5,
+      "norm_label": "historyfilterbar()"
+    },
+    {
+      "label": "ArtifactCard.tsx",
+      "file_type": "code",
+      "source_file": "components/history/ArtifactCard.tsx",
+      "source_location": "L1",
+      "id": "components_history_artifactcard_tsx",
+      "community": 6,
+      "norm_label": "artifactcard.tsx"
+    },
+    {
+      "label": "ArtifactCard()",
+      "file_type": "code",
+      "source_file": "components/history/ArtifactCard.tsx",
+      "source_location": "L20",
+      "id": "history_artifactcard_artifactcard",
+      "community": 6,
+      "norm_label": "artifactcard()"
+    },
+    {
+      "label": "EmpresaForm.tsx",
+      "file_type": "code",
+      "source_file": "components/empresa/EmpresaForm.tsx",
+      "source_location": "L1",
+      "id": "components_empresa_empresaform_tsx",
+      "community": 9,
+      "norm_label": "empresaform.tsx"
+    },
+    {
+      "label": "EmpresaForm()",
+      "file_type": "code",
+      "source_file": "components/empresa/EmpresaForm.tsx",
+      "source_location": "L55",
+      "id": "empresa_empresaform_empresaform",
+      "community": 9,
+      "norm_label": "empresaform()"
+    },
+    {
+      "label": "QuickActions.tsx",
+      "file_type": "code",
+      "source_file": "components/chat/QuickActions.tsx",
+      "source_location": "L1",
+      "id": "components_chat_quickactions_tsx",
+      "community": 4,
+      "norm_label": "quickactions.tsx"
+    },
+    {
+      "label": "QuickActions()",
+      "file_type": "code",
+      "source_file": "components/chat/QuickActions.tsx",
+      "source_location": "L8",
+      "id": "chat_quickactions_quickactions",
+      "community": 4,
+      "norm_label": "quickactions()"
+    },
+    {
+      "label": "Message.tsx",
+      "file_type": "code",
+      "source_file": "components/chat/Message.tsx",
+      "source_location": "L1",
+      "id": "components_chat_message_tsx",
+      "community": 8,
+      "norm_label": "message.tsx"
+    },
+    {
+      "label": "renderContent()",
+      "file_type": "code",
+      "source_file": "components/chat/Message.tsx",
+      "source_location": "L17",
+      "id": "chat_message_rendercontent",
+      "community": 8,
+      "norm_label": "rendercontent()"
+    },
+    {
+      "label": "ChatInput.tsx",
+      "file_type": "code",
+      "source_file": "components/chat/ChatInput.tsx",
+      "source_location": "L1",
+      "id": "components_chat_chatinput_tsx",
+      "community": 5,
+      "norm_label": "chatinput.tsx"
+    },
+    {
+      "label": "handleKeyDown()",
+      "file_type": "code",
+      "source_file": "components/chat/ChatInput.tsx",
+      "source_location": "L25",
+      "id": "chat_chatinput_handlekeydown",
+      "community": 5,
+      "norm_label": "handlekeydown()"
+    },
+    {
+      "label": "MessageList.tsx",
+      "file_type": "code",
+      "source_file": "components/chat/MessageList.tsx",
+      "source_location": "L1",
+      "id": "components_chat_messagelist_tsx",
+      "community": 25,
+      "norm_label": "messagelist.tsx"
+    },
+    {
+      "label": "ChatInterface.tsx",
+      "file_type": "code",
+      "source_file": "components/chat/ChatInterface.tsx",
+      "source_location": "L1",
+      "id": "components_chat_chatinterface_tsx",
+      "community": 4,
+      "norm_label": "chatinterface.tsx"
+    },
+    {
+      "label": "ChatInterface()",
+      "file_type": "code",
+      "source_file": "components/chat/ChatInterface.tsx",
+      "source_location": "L19",
+      "id": "chat_chatinterface_chatinterface",
+      "community": 4,
+      "norm_label": "chatinterface()"
+    },
+    {
+      "label": "TypingIndicator.tsx",
+      "file_type": "code",
+      "source_file": "components/chat/TypingIndicator.tsx",
+      "source_location": "L1",
+      "id": "components_chat_typingindicator_tsx",
+      "community": 26,
+      "norm_label": "typingindicator.tsx"
+    },
+    {
+      "label": "CompanyStrip.tsx",
+      "file_type": "code",
+      "source_file": "components/layout/CompanyStrip.tsx",
+      "source_location": "L1",
+      "id": "components_layout_companystrip_tsx",
+      "community": 11,
+      "norm_label": "companystrip.tsx"
+    },
+    {
+      "label": "CompanyStrip()",
+      "file_type": "code",
+      "source_file": "components/layout/CompanyStrip.tsx",
+      "source_location": "L2",
+      "id": "layout_companystrip_companystrip",
+      "community": 11,
+      "norm_label": "companystrip()"
+    },
+    {
+      "label": "EmpresaProvider.tsx",
+      "file_type": "code",
+      "source_file": "components/layout/EmpresaProvider.tsx",
+      "source_location": "L1",
+      "id": "components_layout_empresaprovider_tsx",
+      "community": 7,
+      "norm_label": "empresaprovider.tsx"
+    },
+    {
+      "label": "EmpresaProvider()",
+      "file_type": "code",
+      "source_file": "components/layout/EmpresaProvider.tsx",
+      "source_location": "L7",
+      "id": "layout_empresaprovider_empresaprovider",
+      "community": 7,
+      "norm_label": "empresaprovider()"
+    },
+    {
+      "label": "Header.tsx",
+      "file_type": "code",
+      "source_file": "components/layout/Header.tsx",
+      "source_location": "L1",
+      "id": "components_layout_header_tsx",
+      "community": 0,
+      "norm_label": "header.tsx"
+    },
+    {
+      "label": "handleSignOut()",
+      "file_type": "code",
+      "source_file": "components/layout/Header.tsx",
+      "source_location": "L22",
+      "id": "layout_header_handlesignout",
+      "community": 0,
+      "norm_label": "handlesignout()"
+    },
+    {
+      "label": "MobileNav.tsx",
+      "file_type": "code",
+      "source_file": "components/layout/MobileNav.tsx",
+      "source_location": "L1",
+      "id": "components_layout_mobilenav_tsx",
+      "community": 7,
+      "norm_label": "mobilenav.tsx"
+    },
+    {
+      "label": "MobileNav()",
+      "file_type": "code",
+      "source_file": "components/layout/MobileNav.tsx",
+      "source_location": "L14",
+      "id": "layout_mobilenav_mobilenav",
+      "community": 7,
+      "norm_label": "mobilenav()"
+    },
+    {
+      "label": "Sidebar.tsx",
+      "file_type": "code",
+      "source_file": "components/layout/Sidebar.tsx",
+      "source_location": "L1",
+      "id": "components_layout_sidebar_tsx",
+      "community": 7,
+      "norm_label": "sidebar.tsx"
+    },
+    {
+      "label": "Sidebar()",
+      "file_type": "code",
+      "source_file": "components/layout/Sidebar.tsx",
+      "source_location": "L26",
+      "id": "layout_sidebar_sidebar",
+      "community": 7,
+      "norm_label": "sidebar()"
+    },
+    {
+      "label": "PillarCard.tsx",
+      "file_type": "code",
+      "source_file": "components/pillars/PillarCard.tsx",
+      "source_location": "L1",
+      "id": "components_pillars_pillarcard_tsx",
+      "community": 4,
+      "norm_label": "pillarcard.tsx"
+    },
+    {
+      "label": "PillarCard()",
+      "file_type": "code",
+      "source_file": "components/pillars/PillarCard.tsx",
+      "source_location": "L10",
+      "id": "pillars_pillarcard_pillarcard",
+      "community": 4,
+      "norm_label": "pillarcard()"
+    },
+    {
+      "label": "ToolsGrid.tsx",
+      "file_type": "code",
+      "source_file": "components/pillars/ToolsGrid.tsx",
+      "source_location": "L1",
+      "id": "components_pillars_toolsgrid_tsx",
+      "community": 4,
+      "norm_label": "toolsgrid.tsx"
+    },
+    {
+      "label": "ToolsGrid()",
+      "file_type": "code",
+      "source_file": "components/pillars/ToolsGrid.tsx",
+      "source_location": "L7",
+      "id": "pillars_toolsgrid_toolsgrid",
+      "community": 4,
+      "norm_label": "toolsgrid()"
+    },
+    {
+      "label": "PillarGrid.tsx",
+      "file_type": "code",
+      "source_file": "components/pillars/PillarGrid.tsx",
+      "source_location": "L1",
+      "id": "components_pillars_pillargrid_tsx",
+      "community": 4,
+      "norm_label": "pillargrid.tsx"
+    },
+    {
+      "label": "PillarGrid()",
+      "file_type": "code",
+      "source_file": "components/pillars/PillarGrid.tsx",
+      "source_location": "L4",
+      "id": "pillars_pillargrid_pillargrid",
+      "community": 4,
+      "norm_label": "pillargrid()"
+    },
+    {
+      "label": "PillarHeader.tsx",
+      "file_type": "code",
+      "source_file": "components/pillars/PillarHeader.tsx",
+      "source_location": "L1",
+      "id": "components_pillars_pillarheader_tsx",
+      "community": 27,
+      "norm_label": "pillarheader.tsx"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/page.tsx",
+      "source_location": "L1",
+      "id": "app_page_tsx",
+      "community": 12,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "RootPage()",
+      "file_type": "code",
+      "source_file": "app/page.tsx",
+      "source_location": "L3",
+      "id": "app_page_rootpage",
+      "community": 12,
+      "norm_label": "rootpage()"
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L1",
+      "id": "app_layout_tsx",
+      "community": 13,
+      "norm_label": "layout.tsx"
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L9",
+      "id": "app_layout_rootlayout",
+      "community": 13,
+      "norm_label": "rootlayout()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/artefato/save/route.ts",
+      "source_location": "L1",
+      "id": "app_api_artefato_save_route_ts",
+      "community": 2,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/artefato/save/route.ts",
+      "source_location": "L3",
+      "id": "save_route_post",
+      "community": 2,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/chat/route.ts",
+      "source_location": "L1",
+      "id": "app_api_chat_route_ts",
+      "community": 2,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/chat/route.ts",
+      "source_location": "L9",
+      "id": "chat_route_post",
+      "community": 2,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/chat/wfp/route.ts",
+      "source_location": "L1",
+      "id": "app_api_chat_wfp_route_ts",
+      "community": 2,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "getMsgText()",
+      "file_type": "code",
+      "source_file": "app/api/chat/wfp/route.ts",
+      "source_location": "L81",
+      "id": "wfp_route_getmsgtext",
+      "community": 2,
+      "norm_label": "getmsgtext()"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/chat/wfp/route.ts",
+      "source_location": "L113",
+      "id": "wfp_route_post",
+      "community": 2,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/chat/title/route.ts",
+      "source_location": "L1",
+      "id": "app_api_chat_title_route_ts",
+      "community": 2,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/chat/title/route.ts",
+      "source_location": "L4",
+      "id": "title_route_post",
+      "community": 2,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/chat/free/route.ts",
+      "source_location": "L1",
+      "id": "app_api_chat_free_route_ts",
+      "community": 2,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/chat/free/route.ts",
+      "source_location": "L9",
+      "id": "free_route_post",
+      "community": 2,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/(auth)/callback/route.ts",
+      "source_location": "L1",
+      "id": "app_auth_callback_route_ts",
+      "community": 2,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/(auth)/callback/route.ts",
+      "source_location": "L4",
+      "id": "callback_route_get",
+      "community": 2,
+      "norm_label": "get()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/(auth)/login/page.tsx",
+      "source_location": "L1",
+      "id": "app_auth_login_page_tsx",
+      "community": 0,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "handleLogin()",
+      "file_type": "code",
+      "source_file": "app/(auth)/login/page.tsx",
+      "source_location": "L15",
+      "id": "login_page_handlelogin",
+      "community": 0,
+      "norm_label": "handlelogin()"
+    },
+    {
+      "label": "handleMagicLink()",
+      "file_type": "code",
+      "source_file": "app/(auth)/login/page.tsx",
+      "source_location": "L29",
+      "id": "login_page_handlemagiclink",
+      "community": 0,
+      "norm_label": "handlemagiclink()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/dashboard/page.tsx",
+      "source_location": "L1",
+      "id": "app_dashboard_page_tsx",
+      "community": 4,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "app/dashboard/layout.tsx",
+      "source_location": "L1",
+      "id": "app_dashboard_layout_tsx",
+      "community": 7,
+      "norm_label": "layout.tsx"
+    },
+    {
+      "label": "DashboardLayout()",
+      "file_type": "code",
+      "source_file": "app/dashboard/layout.tsx",
+      "source_location": "L8",
+      "id": "dashboard_layout_dashboardlayout",
+      "community": 7,
+      "norm_label": "dashboardlayout()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/dashboard/history/page.tsx",
+      "source_location": "L1",
+      "id": "app_dashboard_history_page_tsx",
+      "community": 6,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "load()",
+      "file_type": "code",
+      "source_file": "app/dashboard/history/page.tsx",
+      "source_location": "L21",
+      "id": "history_page_load",
+      "community": 6,
+      "norm_label": "load()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/dashboard/empresa/page.tsx",
+      "source_location": "L1",
+      "id": "app_dashboard_empresa_page_tsx",
+      "community": 9,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "EmpresaPage()",
+      "file_type": "code",
+      "source_file": "app/dashboard/empresa/page.tsx",
+      "source_location": "L4",
+      "id": "empresa_page_empresapage",
+      "community": 9,
+      "norm_label": "empresapage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/dashboard/modulo/workforce-planning/page.tsx",
+      "source_location": "L1",
+      "id": "app_dashboard_modulo_workforce_planning_page_tsx",
+      "community": 0,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/dashboard/modulo/workforce-planning/novo/page.tsx",
+      "source_location": "L1",
+      "id": "app_dashboard_modulo_workforce_planning_novo_page_tsx",
+      "community": 0,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "canAdvance()",
+      "file_type": "code",
+      "source_file": "app/dashboard/modulo/workforce-planning/novo/page.tsx",
+      "source_location": "L58",
+      "id": "novo_page_canadvance",
+      "community": 0,
+      "norm_label": "canadvance()"
+    },
+    {
+      "label": "handleSalvar()",
+      "file_type": "code",
+      "source_file": "app/dashboard/modulo/workforce-planning/novo/page.tsx",
+      "source_location": "L67",
+      "id": "novo_page_handlesalvar",
+      "community": 0,
+      "norm_label": "handlesalvar()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/dashboard/modulo/workforce-planning/[projectId]/page.tsx",
+      "source_location": "L1",
+      "id": "app_dashboard_modulo_workforce_planning_projectid_page_tsx",
+      "community": 0,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/dashboard/modulo/workforce-planning/[projectId]/metricas/page.tsx",
+      "source_location": "L1",
+      "id": "app_dashboard_modulo_workforce_planning_projectid_metricas_page_tsx",
+      "community": 0,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "MetricasPage()",
+      "file_type": "code",
+      "source_file": "app/dashboard/modulo/workforce-planning/[projectId]/metricas/page.tsx",
+      "source_location": "L17",
+      "id": "metricas_page_metricaspage",
+      "community": 0,
+      "norm_label": "metricaspage()"
+    },
+    {
+      "label": "KPIRow()",
+      "file_type": "code",
+      "source_file": "app/dashboard/modulo/workforce-planning/[projectId]/metricas/page.tsx",
+      "source_location": "L160",
+      "id": "metricas_page_kpirow",
+      "community": 0,
+      "norm_label": "kpirow()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/dashboard/modulo/workforce-planning/[projectId]/etapa/[stage]/page.tsx",
+      "source_location": "L1",
+      "id": "app_dashboard_modulo_workforce_planning_projectid_etapa_stage_page_tsx",
+      "community": 0,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "handleConcluir()",
+      "file_type": "code",
+      "source_file": "app/dashboard/modulo/workforce-planning/[projectId]/etapa/[stage]/page.tsx",
+      "source_location": "L56",
+      "id": "stage_page_handleconcluir",
+      "community": 0,
+      "norm_label": "handleconcluir()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/dashboard/artefato/[id]/page.tsx",
+      "source_location": "L1",
+      "id": "app_dashboard_artefato_id_page_tsx",
+      "community": 6,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/dashboard/pillar/[id]/page.tsx",
+      "source_location": "L1",
+      "id": "app_dashboard_pillar_id_page_tsx",
+      "community": 4,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "handleQuickAction()",
+      "file_type": "code",
+      "source_file": "app/dashboard/pillar/[id]/page.tsx",
+      "source_location": "L42",
+      "id": "id_page_handlequickaction",
+      "community": 4,
+      "norm_label": "handlequickaction()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/dashboard/pillar/cultura/page.tsx",
+      "source_location": "L1",
+      "id": "app_dashboard_pillar_cultura_page_tsx",
+      "community": 4,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "ui.ts",
+      "file_type": "code",
+      "source_file": "store/ui.ts",
+      "source_location": "L1",
+      "id": "store_ui_ts",
+      "community": 28,
+      "norm_label": "ui.ts"
+    },
+    {
+      "label": "chat.ts",
+      "file_type": "code",
+      "source_file": "store/chat.ts",
+      "source_location": "L1",
+      "id": "store_chat_ts",
+      "community": 29,
+      "norm_label": "chat.ts"
+    },
+    {
+      "label": "empresa.ts",
+      "file_type": "code",
+      "source_file": "store/empresa.ts",
+      "source_location": "L1",
+      "id": "store_empresa_ts",
+      "community": 30,
+      "norm_label": "empresa.ts"
+    },
+    {
+      "label": "context.ts",
+      "file_type": "code",
+      "source_file": "lib/context.ts",
+      "source_location": "L1",
+      "id": "lib_context_ts",
+      "community": 2,
+      "norm_label": "context.ts"
+    },
+    {
+      "label": "formatEmpresaContext()",
+      "file_type": "code",
+      "source_file": "lib/context.ts",
+      "source_location": "L3",
+      "id": "lib_context_formatempresacontext",
+      "community": 2,
+      "norm_label": "formatempresacontext()"
+    },
+    {
+      "label": "utils.ts",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": "L1",
+      "id": "lib_utils_ts",
+      "community": 8,
+      "norm_label": "utils.ts"
+    },
+    {
+      "label": "cn()",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": "L6",
+      "id": "lib_utils_cn",
+      "community": 5,
+      "norm_label": "cn()"
+    },
+    {
+      "label": "formatDate()",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": "L10",
+      "id": "lib_utils_formatdate",
+      "community": 8,
+      "norm_label": "formatdate()"
+    },
+    {
+      "label": "formatRelative()",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": "L25",
+      "id": "lib_utils_formatrelative",
+      "community": 8,
+      "norm_label": "formatrelative()"
+    },
+    {
+      "label": "groupByMonth()",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": "L30",
+      "id": "lib_utils_groupbymonth",
+      "community": 8,
+      "norm_label": "groupbymonth()"
+    },
+    {
+      "label": "detectArtifact()",
+      "file_type": "code",
+      "source_file": "lib/utils.ts",
+      "source_location": "L45",
+      "id": "lib_utils_detectartifact",
+      "community": 8,
+      "norm_label": "detectartifact()"
+    },
+    {
+      "label": "anthropic.ts",
+      "file_type": "code",
+      "source_file": "lib/anthropic.ts",
+      "source_location": "L1",
+      "id": "lib_anthropic_ts",
+      "community": 31,
+      "norm_label": "anthropic.ts"
+    },
+    {
+      "label": "specialists.ts",
+      "file_type": "code",
+      "source_file": "lib/agents/specialists.ts",
+      "source_location": "L1",
+      "id": "lib_agents_specialists_ts",
+      "community": 2,
+      "norm_label": "specialists.ts"
+    },
+    {
+      "label": "buildSystemPrompt()",
+      "file_type": "code",
+      "source_file": "lib/agents/specialists.ts",
+      "source_location": "L179",
+      "id": "agents_specialists_buildsystemprompt",
+      "community": 2,
+      "norm_label": "buildsystemprompt()"
+    },
+    {
+      "label": "pillars.ts",
+      "file_type": "code",
+      "source_file": "lib/agents/pillars.ts",
+      "source_location": "L1",
+      "id": "lib_agents_pillars_ts",
+      "community": 4,
+      "norm_label": "pillars.ts"
+    },
+    {
+      "label": "getPillarById()",
+      "file_type": "code",
+      "source_file": "lib/agents/pillars.ts",
+      "source_location": "L165",
+      "id": "agents_pillars_getpillarbyid",
+      "community": 4,
+      "norm_label": "getpillarbyid()"
+    },
+    {
+      "label": "orchestrator.ts",
+      "file_type": "code",
+      "source_file": "lib/agents/orchestrator.ts",
+      "source_location": "L1",
+      "id": "lib_agents_orchestrator_ts",
+      "community": 32,
+      "norm_label": "orchestrator.ts"
+    },
+    {
+      "label": "middleware.ts",
+      "file_type": "code",
+      "source_file": "lib/supabase/middleware.ts",
+      "source_location": "L1",
+      "id": "lib_supabase_middleware_ts",
+      "community": 10,
+      "norm_label": "middleware.ts"
+    },
+    {
+      "label": "updateSession()",
+      "file_type": "code",
+      "source_file": "lib/supabase/middleware.ts",
+      "source_location": "L4",
+      "id": "supabase_middleware_updatesession",
+      "community": 10,
+      "norm_label": "updatesession()"
+    },
+    {
+      "label": "server.ts",
+      "file_type": "code",
+      "source_file": "lib/supabase/server.ts",
+      "source_location": "L1",
+      "id": "lib_supabase_server_ts",
+      "community": 2,
+      "norm_label": "server.ts"
+    },
+    {
+      "label": "createClient()",
+      "file_type": "code",
+      "source_file": "lib/supabase/server.ts",
+      "source_location": "L4",
+      "id": "supabase_server_createclient",
+      "community": 2,
+      "norm_label": "createclient()"
+    },
+    {
+      "label": "client.ts",
+      "file_type": "code",
+      "source_file": "lib/supabase/client.ts",
+      "source_location": "L1",
+      "id": "lib_supabase_client_ts",
+      "community": 0,
+      "norm_label": "client.ts"
+    },
+    {
+      "label": "createClient()",
+      "file_type": "code",
+      "source_file": "lib/supabase/client.ts",
+      "source_location": "L8",
+      "id": "supabase_client_createclient",
+      "community": 0,
+      "norm_label": "createclient()"
+    },
+    {
+      "label": "Nina.AI \u2014 CHRO Advisory System",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_ninaai",
+      "community": 3,
+      "norm_label": "nina.ai \u2014 chro advisory system"
+    },
+    {
+      "label": "CLAUDE.md \u2014 Graphify Configuration",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_md_graphify",
+      "community": 3,
+      "norm_label": "claude.md \u2014 graphify configuration"
+    },
+    {
+      "label": "Nina.AI Cultural Diagnosis Flow Diagram",
+      "file_type": "document",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "cultura_diagram_html",
+      "community": 1,
+      "norm_label": "nina.ai cultural diagnosis flow diagram"
+    },
+    {
+      "label": "Nina.AI System",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "ninaai_system",
+      "community": 3,
+      "norm_label": "nina.ai system"
+    },
+    {
+      "label": "Next.js 14 (App Router)",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "nextjs_framework",
+      "community": 3,
+      "norm_label": "next.js 14 (app router)"
+    },
+    {
+      "label": "Tailwind CSS \u2014 Luxury Editorial Design System",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 8",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tailwind_css",
+      "community": 3,
+      "norm_label": "tailwind css \u2014 luxury editorial design system"
+    },
+    {
+      "label": "Supabase \u2014 PostgreSQL + Auth + Realtime",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 9",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "supabase_backend",
+      "community": 3,
+      "norm_label": "supabase \u2014 postgresql + auth + realtime"
+    },
+    {
+      "label": "Anthropic Claude (claude-sonnet-4-5) with Streaming",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 10",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "anthropic_claude",
+      "community": 3,
+      "norm_label": "anthropic claude (claude-sonnet-4-5) with streaming"
+    },
+    {
+      "label": "Vercel AI SDK v6",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 11",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "vercel_ai_sdk",
+      "community": 3,
+      "norm_label": "vercel ai sdk v6"
+    },
+    {
+      "label": "Zustand \u2014 Global State Management",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 12",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "zustand_state",
+      "community": 3,
+      "norm_label": "zustand \u2014 global state management"
+    },
+    {
+      "label": "lib/agents/orchestrator.ts \u2014 Nina Main System Prompt",
+      "file_type": "code",
+      "source_file": "README.md",
+      "source_location": "line 55",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "orchestrator_ts",
+      "community": 3,
+      "norm_label": "lib/agents/orchestrator.ts \u2014 nina main system prompt"
+    },
+    {
+      "label": "lib/agents/pillars.ts \u2014 8 Pillars + 4 Tools",
+      "file_type": "code",
+      "source_file": "README.md",
+      "source_location": "line 56",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pillars_ts",
+      "community": 3,
+      "norm_label": "lib/agents/pillars.ts \u2014 8 pillars + 4 tools"
+    },
+    {
+      "label": "lib/agents/specialists.ts \u2014 8 Specialized Prompts",
+      "file_type": "code",
+      "source_file": "README.md",
+      "source_location": "line 57",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "specialists_ts",
+      "community": 3,
+      "norm_label": "lib/agents/specialists.ts \u2014 8 specialized prompts"
+    },
+    {
+      "label": "app/api/chat \u2014 Streaming with Claude",
+      "file_type": "code",
+      "source_file": "README.md",
+      "source_location": "line 50",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "api_chat_route",
+      "community": 3,
+      "norm_label": "app/api/chat \u2014 streaming with claude"
+    },
+    {
+      "label": "app/dashboard \u2014 Home with Free Chat + Pillars",
+      "file_type": "code",
+      "source_file": "README.md",
+      "source_location": "line 45",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "dashboard_route",
+      "community": 3,
+      "norm_label": "app/dashboard \u2014 home with free chat + pillars"
+    },
+    {
+      "label": "app/(auth)/login \u2014 Login + Magic Link",
+      "file_type": "code",
+      "source_file": "README.md",
+      "source_location": "line 44",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_login_route",
+      "community": 3,
+      "norm_label": "app/(auth)/login \u2014 login + magic link"
+    },
+    {
+      "label": "app/dashboard/pillar/[id] \u2014 Specialized Chat by Pillar",
+      "file_type": "code",
+      "source_file": "README.md",
+      "source_location": "line 46",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pillar_chat_route",
+      "community": 3,
+      "norm_label": "app/dashboard/pillar/[id] \u2014 specialized chat by pillar"
+    },
+    {
+      "label": "app/dashboard/history \u2014 History and Artifacts",
+      "file_type": "code",
+      "source_file": "README.md",
+      "source_location": "line 47",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "history_route",
+      "community": 33,
+      "norm_label": "app/dashboard/history \u2014 history and artifacts"
+    },
+    {
+      "label": "app/dashboard/empresa \u2014 Company Context",
+      "file_type": "code",
+      "source_file": "README.md",
+      "source_location": "line 48",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "empresa_route",
+      "community": 34,
+      "norm_label": "app/dashboard/empresa \u2014 company context"
+    },
+    {
+      "label": "Pillar 01: Estrat\u00e9gia & Organiza\u00e7\u00e3o",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 62",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pilar_estrategia",
+      "community": 1,
+      "norm_label": "pillar 01: estrategia & organizacao"
+    },
+    {
+      "label": "Pillar 02: Atra\u00e7\u00e3o & Marca Empregadora",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 63",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pilar_atracao",
+      "community": 35,
+      "norm_label": "pillar 02: atracao & marca empregadora"
+    },
+    {
+      "label": "Pillar 03: Performance & Recompensa",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 64",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pilar_performance",
+      "community": 36,
+      "norm_label": "pillar 03: performance & recompensa"
+    },
+    {
+      "label": "Pillar 04: Lideran\u00e7a & Desenvolvimento",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 65",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pilar_lideranca",
+      "community": 37,
+      "norm_label": "pillar 04: lideranca & desenvolvimento"
+    },
+    {
+      "label": "Pillar 05: Cultura & Experi\u00eancia",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 66",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pilar_cultura",
+      "community": 1,
+      "norm_label": "pillar 05: cultura & experiencia"
+    },
+    {
+      "label": "Pillar 06: Diversidade & Inclus\u00e3o",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 67",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pilar_diversidade",
+      "community": 38,
+      "norm_label": "pillar 06: diversidade & inclusao"
+    },
+    {
+      "label": "Pillar 07: Dados & Tecnologia",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 68",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pilar_dados",
+      "community": 39,
+      "norm_label": "pillar 07: dados & tecnologia"
+    },
+    {
+      "label": "Pillar 08: Risco & Compliance",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "line 69",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pilar_risco",
+      "community": 40,
+      "norm_label": "pillar 08: risco & compliance"
+    },
+    {
+      "label": "Cultural Diagnosis Flow Architecture (4-Zone)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 121",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "cultural_diagnosis_flow",
+      "community": 1,
+      "norm_label": "cultural diagnosis flow architecture (4-zone)"
+    },
+    {
+      "label": "Zone 01: Fontes (Input Sources)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 130",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "zona_fontes",
+      "community": 1,
+      "norm_label": "zone 01: fontes (input sources)"
+    },
+    {
+      "label": "Zone 02: Processamento (Nina Brain)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 131",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "zona_processamento",
+      "community": 1,
+      "norm_label": "zone 02: processamento (nina brain)"
+    },
+    {
+      "label": "Zone 03: Mapeamento Cultural (Venn Diagram)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 132",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "zona_mapeamento",
+      "community": 1,
+      "norm_label": "zone 03: mapeamento cultural (venn diagram)"
+    },
+    {
+      "label": "Zone 04: Cultura Final (Output)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 133",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "zona_cultura_final",
+      "community": 1,
+      "norm_label": "zone 04: cultura final (output)"
+    },
+    {
+      "label": "Input 01: Mercado (Market)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 452",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "input_mercado",
+      "community": 1,
+      "norm_label": "input 01: mercado (market)"
+    },
+    {
+      "label": "Input 02: Estrat\u00e9gia (Strategy)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 453",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "input_estrategia",
+      "community": 1,
+      "norm_label": "input 02: estrategia (strategy)"
+    },
+    {
+      "label": "Input 03: Capacidade Financeira e Operacional",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 454",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "input_cap_fin",
+      "community": 1,
+      "norm_label": "input 03: capacidade financeira e operacional"
+    },
+    {
+      "label": "Input 04: Perfil do CEO",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 455",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "input_perfil_ceo",
+      "community": 1,
+      "norm_label": "input 04: perfil do ceo"
+    },
+    {
+      "label": "Input 05: Perfil e Maturidade da Lideran\u00e7a",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 456",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "input_lideranca",
+      "community": 1,
+      "norm_label": "input 05: perfil e maturidade da lideranca"
+    },
+    {
+      "label": "Input 06: Cultura Instalada (Current Culture)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 457",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "input_cultura_instalada",
+      "community": 1,
+      "norm_label": "input 06: cultura instalada (current culture)"
+    },
+    {
+      "label": "Input 07: Blockers Mapeados (Mapped Blockers)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 458",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "input_blockers",
+      "community": 1,
+      "norm_label": "input 07: blockers mapeados (mapped blockers)"
+    },
+    {
+      "label": "Cultura Aspirada (Aspired Culture)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 303",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "cultura_aspirada",
+      "community": 1,
+      "norm_label": "cultura aspirada (aspired culture)"
+    },
+    {
+      "label": "Cultura Exigida (Required Culture)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 304",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "cultura_exigida",
+      "community": 1,
+      "norm_label": "cultura exigida (required culture)"
+    },
+    {
+      "label": "Cultura Atual (Current Culture \u2014 Starting Point)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 317",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "cultura_atual",
+      "community": 1,
+      "norm_label": "cultura atual (current culture \u2014 starting point)"
+    },
+    {
+      "label": "Cultura Final (Final Culture Values)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 380",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "cultura_final",
+      "community": 1,
+      "norm_label": "cultura final (final culture values)"
+    },
+    {
+      "label": "Converg\u00eancia \u2014 Intersection Zone (up to 7 values)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 337",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "convergencia_valores",
+      "community": 1,
+      "norm_label": "convergencia \u2014 intersection zone (up to 7 values)"
+    },
+    {
+      "label": "McKinsey 7S Framework (referenced as Figure 2)",
+      "file_type": "rationale",
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 415",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "mckinsey_7s",
+      "community": 1,
+      "norm_label": "mckinsey 7s framework (referenced as figure 2)"
+    },
+    {
+      "label": "Graphify Knowledge Graph",
+      "file_type": "rationale",
+      "source_file": "CLAUDE.md",
+      "source_location": "line 1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "graphify_knowledge_graph",
+      "community": 3,
+      "norm_label": "graphify knowledge graph"
+    }
+  ],
+  "links": [
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "middleware.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "middleware_ts",
+      "target": "supabase_middleware_updatesession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "middleware.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "middleware_ts",
+      "target": "laimalidori_middleware_middleware",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "middleware.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "laimalidori_middleware_middleware",
+      "target": "supabase_middleware_updatesession"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/wfp/WFPStageChat.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "components_wfp_wfpstagechat_tsx",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/wfp/WFPStageChat.tsx",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "components_wfp_wfpstagechat_tsx",
+      "target": "wfp_wfpstagechat_extracttext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/wfp/WFPStageChat.tsx",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "components_wfp_wfpstagechat_tsx",
+      "target": "wfp_wfpstagechat_parsecontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/wfp/WFPStageChat.tsx",
+      "source_location": "L170",
+      "weight": 1.0,
+      "source": "components_wfp_wfpstagechat_tsx",
+      "target": "wfp_wfpstagechat_handlesend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/wfp/WFPStageChat.tsx",
+      "source_location": "L177",
+      "weight": 1.0,
+      "source": "components_wfp_wfpstagechat_tsx",
+      "target": "wfp_wfpstagechat_handlesugestao",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/Separator.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "components_ui_separator_tsx",
+      "target": "lib_utils_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/Separator.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "components_ui_separator_tsx",
+      "target": "ui_separator_separator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/Input.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_ui_input_tsx",
+      "target": "lib_utils_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/Input.tsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "components_ui_input_tsx",
+      "target": "ui_input_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/Select.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_ui_select_tsx",
+      "target": "lib_utils_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/Select.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "components_ui_select_tsx",
+      "target": "ui_select_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/Button.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_ui_button_tsx",
+      "target": "lib_utils_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/Textarea.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_ui_textarea_tsx",
+      "target": "lib_utils_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/Badge.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "components_ui_badge_tsx",
+      "target": "lib_utils_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/Badge.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "components_ui_badge_tsx",
+      "target": "ui_badge_badge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/history/HistoryItem.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_history_historyitem_tsx",
+      "target": "ui_badge_badge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/history/ArtifactCard.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_history_artifactcard_tsx",
+      "target": "ui_badge_badge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/artefato/[id]/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_dashboard_artefato_id_page_tsx",
+      "target": "ui_badge_badge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/SectionLabel.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "components_ui_sectionlabel_tsx",
+      "target": "lib_utils_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ui/SectionLabel.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "components_ui_sectionlabel_tsx",
+      "target": "ui_sectionlabel_sectionlabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/empresa/EmpresaForm.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "components_empresa_empresaform_tsx",
+      "target": "ui_sectionlabel_sectionlabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/history/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "app_dashboard_history_page_tsx",
+      "target": "ui_sectionlabel_sectionlabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/history/HistoryItem.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "components_history_historyitem_tsx",
+      "target": "history_historyitem_historyitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/history/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_dashboard_history_page_tsx",
+      "target": "history_historyitem_historyitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/history/HistoryFilter.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_history_historyfilter_tsx",
+      "target": "lib_utils_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/history/HistoryFilter.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "components_history_historyfilter_tsx",
+      "target": "history_historyfilter_historyfilterbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/history/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_dashboard_history_page_tsx",
+      "target": "history_historyfilter_historyfilterbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/history/ArtifactCard.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "components_history_artifactcard_tsx",
+      "target": "history_artifactcard_artifactcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/history/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_dashboard_history_page_tsx",
+      "target": "history_artifactcard_artifactcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/empresa/EmpresaForm.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "components_empresa_empresaform_tsx",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/empresa/EmpresaForm.tsx",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "components_empresa_empresaform_tsx",
+      "target": "empresa_empresaform_empresaform",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/empresa/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_dashboard_empresa_page_tsx",
+      "target": "empresa_empresaform_empresaform",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/chat/QuickActions.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "components_chat_quickactions_tsx",
+      "target": "chat_quickactions_quickactions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/pillar/[id]/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "app_dashboard_pillar_id_page_tsx",
+      "target": "chat_quickactions_quickactions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/pillar/cultura/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_dashboard_pillar_cultura_page_tsx",
+      "target": "chat_quickactions_quickactions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/chat/Message.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_chat_message_tsx",
+      "target": "lib_utils_detectartifact",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/chat/Message.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "components_chat_message_tsx",
+      "target": "chat_message_rendercontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/chat/ChatInput.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_chat_chatinput_tsx",
+      "target": "lib_utils_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/chat/ChatInput.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "components_chat_chatinput_tsx",
+      "target": "chat_chatinput_handlekeydown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/chat/ChatInterface.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "components_chat_chatinterface_tsx",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/chat/ChatInterface.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "components_chat_chatinterface_tsx",
+      "target": "chat_chatinterface_chatinterface",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_dashboard_page_tsx",
+      "target": "chat_chatinterface_chatinterface",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/pillar/[id]/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "app_dashboard_pillar_id_page_tsx",
+      "target": "chat_chatinterface_chatinterface",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/pillar/cultura/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_dashboard_pillar_cultura_page_tsx",
+      "target": "chat_chatinterface_chatinterface",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/layout/CompanyStrip.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "components_layout_companystrip_tsx",
+      "target": "layout_companystrip_companystrip",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/layout/EmpresaProvider.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_layout_empresaprovider_tsx",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/layout/EmpresaProvider.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "components_layout_empresaprovider_tsx",
+      "target": "layout_empresaprovider_empresaprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/layout.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_dashboard_layout_tsx",
+      "target": "layout_empresaprovider_empresaprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/layout/Header.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "components_layout_header_tsx",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/layout/Header.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "components_layout_header_tsx",
+      "target": "layout_header_handlesignout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/layout/MobileNav.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "components_layout_mobilenav_tsx",
+      "target": "layout_mobilenav_mobilenav",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/layout.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_dashboard_layout_tsx",
+      "target": "layout_mobilenav_mobilenav",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/layout/Sidebar.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "components_layout_sidebar_tsx",
+      "target": "layout_sidebar_sidebar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/layout.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_dashboard_layout_tsx",
+      "target": "layout_sidebar_sidebar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/pillars/PillarCard.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "components_pillars_pillarcard_tsx",
+      "target": "pillars_pillarcard_pillarcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/pillars/PillarGrid.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "components_pillars_pillargrid_tsx",
+      "target": "pillars_pillarcard_pillarcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/pillars/ToolsGrid.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "components_pillars_toolsgrid_tsx",
+      "target": "pillars_toolsgrid_toolsgrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "app_dashboard_page_tsx",
+      "target": "pillars_toolsgrid_toolsgrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/pillars/PillarGrid.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_pillars_pillargrid_tsx",
+      "target": "pillars_pillargrid_pillargrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_dashboard_page_tsx",
+      "target": "pillars_pillargrid_pillargrid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "app_page_tsx",
+      "target": "app_page_rootpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/layout.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "app_layout_tsx",
+      "target": "app_layout_rootlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/artefato/save/route.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "app_api_artefato_save_route_ts",
+      "target": "supabase_server_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/artefato/save/route.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "app_api_artefato_save_route_ts",
+      "target": "save_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/chat/route.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "app_api_chat_route_ts",
+      "target": "supabase_server_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/chat/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_chat_route_ts",
+      "target": "agents_specialists_buildsystemprompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/chat/route.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_api_chat_route_ts",
+      "target": "lib_context_formatempresacontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/chat/route.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "app_api_chat_route_ts",
+      "target": "chat_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/api/chat/route.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "chat_route_post",
+      "target": "lib_context_formatempresacontext"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/api/chat/route.ts",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "chat_route_post",
+      "target": "agents_specialists_buildsystemprompt"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/chat/wfp/route.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "app_api_chat_wfp_route_ts",
+      "target": "supabase_server_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/chat/wfp/route.ts",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "app_api_chat_wfp_route_ts",
+      "target": "wfp_route_getmsgtext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/chat/wfp/route.ts",
+      "source_location": "L113",
+      "weight": 1.0,
+      "source": "app_api_chat_wfp_route_ts",
+      "target": "wfp_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/chat/wfp/route.ts",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "wfp_route_post",
+      "target": "wfp_route_getmsgtext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/chat/title/route.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "app_api_chat_title_route_ts",
+      "target": "supabase_server_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/chat/title/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_chat_title_route_ts",
+      "target": "title_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/chat/free/route.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "app_api_chat_free_route_ts",
+      "target": "supabase_server_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/chat/free/route.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_api_chat_free_route_ts",
+      "target": "lib_context_formatempresacontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/chat/free/route.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "app_api_chat_free_route_ts",
+      "target": "free_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/api/chat/free/route.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "free_route_post",
+      "target": "lib_context_formatempresacontext"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(auth)/callback/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_auth_callback_route_ts",
+      "target": "supabase_server_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(auth)/callback/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_auth_callback_route_ts",
+      "target": "callback_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(auth)/login/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_auth_login_page_tsx",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(auth)/login/page.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "app_auth_login_page_tsx",
+      "target": "login_page_handlelogin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(auth)/login/page.tsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "app_auth_login_page_tsx",
+      "target": "login_page_handlemagiclink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/layout.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_dashboard_layout_tsx",
+      "target": "supabase_server_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/layout.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "app_dashboard_layout_tsx",
+      "target": "dashboard_layout_dashboardlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/history/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_dashboard_history_page_tsx",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/history/page.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "app_dashboard_history_page_tsx",
+      "target": "lib_utils_groupbymonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/history/page.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "app_dashboard_history_page_tsx",
+      "target": "history_page_load",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/empresa/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "app_dashboard_empresa_page_tsx",
+      "target": "supabase_server_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/empresa/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_dashboard_empresa_page_tsx",
+      "target": "empresa_page_empresapage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/modulo/workforce-planning/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_dashboard_modulo_workforce_planning_page_tsx",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/modulo/workforce-planning/novo/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_dashboard_modulo_workforce_planning_novo_page_tsx",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/modulo/workforce-planning/novo/page.tsx",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "app_dashboard_modulo_workforce_planning_novo_page_tsx",
+      "target": "novo_page_canadvance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/modulo/workforce-planning/novo/page.tsx",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "app_dashboard_modulo_workforce_planning_novo_page_tsx",
+      "target": "novo_page_handlesalvar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/modulo/workforce-planning/[projectId]/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_dashboard_modulo_workforce_planning_projectid_page_tsx",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/modulo/workforce-planning/[projectId]/metricas/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_dashboard_modulo_workforce_planning_projectid_metricas_page_tsx",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/modulo/workforce-planning/[projectId]/metricas/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "app_dashboard_modulo_workforce_planning_projectid_metricas_page_tsx",
+      "target": "metricas_page_metricaspage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/modulo/workforce-planning/[projectId]/metricas/page.tsx",
+      "source_location": "L160",
+      "weight": 1.0,
+      "source": "app_dashboard_modulo_workforce_planning_projectid_metricas_page_tsx",
+      "target": "metricas_page_kpirow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/modulo/workforce-planning/[projectId]/etapa/[stage]/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_dashboard_modulo_workforce_planning_projectid_etapa_stage_page_tsx",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/modulo/workforce-planning/[projectId]/etapa/[stage]/page.tsx",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "app_dashboard_modulo_workforce_planning_projectid_etapa_stage_page_tsx",
+      "target": "stage_page_handleconcluir",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/artefato/[id]/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "app_dashboard_artefato_id_page_tsx",
+      "target": "supabase_server_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/pillar/[id]/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_dashboard_pillar_id_page_tsx",
+      "target": "agents_pillars_getpillarbyid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/dashboard/pillar/[id]/page.tsx",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "app_dashboard_pillar_id_page_tsx",
+      "target": "id_page_handlequickaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/context.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "lib_context_ts",
+      "target": "lib_context_formatempresacontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/utils.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "lib_utils_ts",
+      "target": "lib_utils_cn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/utils.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "lib_utils_ts",
+      "target": "lib_utils_formatdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/utils.ts",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "lib_utils_ts",
+      "target": "lib_utils_formatrelative",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/utils.ts",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "lib_utils_ts",
+      "target": "lib_utils_groupbymonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/utils.ts",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "lib_utils_ts",
+      "target": "lib_utils_detectartifact",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/agents/specialists.ts",
+      "source_location": "L179",
+      "weight": 1.0,
+      "source": "lib_agents_specialists_ts",
+      "target": "agents_specialists_buildsystemprompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/agents/pillars.ts",
+      "source_location": "L165",
+      "weight": 1.0,
+      "source": "lib_agents_pillars_ts",
+      "target": "agents_pillars_getpillarbyid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/supabase/middleware.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_supabase_middleware_ts",
+      "target": "supabase_middleware_updatesession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/supabase/server.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_supabase_server_ts",
+      "target": "supabase_server_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/supabase/client.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "lib_supabase_client_ts",
+      "target": "supabase_client_createclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "line 1",
+      "weight": 1.0,
+      "source": "readme_ninaai",
+      "target": "ninaai_system"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "CLAUDE.md",
+      "source_location": "line 1",
+      "weight": 0.65,
+      "source": "readme_ninaai",
+      "target": "graphify_knowledge_graph"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": "line 1",
+      "weight": 1.0,
+      "source": "claude_md_graphify",
+      "target": "graphify_knowledge_graph"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 121",
+      "weight": 1.0,
+      "source": "cultura_diagram_html",
+      "target": "cultural_diagnosis_flow"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "line 7",
+      "weight": 1.0,
+      "source": "ninaai_system",
+      "target": "nextjs_framework"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "line 8",
+      "weight": 1.0,
+      "source": "ninaai_system",
+      "target": "tailwind_css"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "line 9",
+      "weight": 1.0,
+      "source": "ninaai_system",
+      "target": "supabase_backend"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "line 10",
+      "weight": 1.0,
+      "source": "ninaai_system",
+      "target": "anthropic_claude"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "line 11",
+      "weight": 1.0,
+      "source": "ninaai_system",
+      "target": "vercel_ai_sdk"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "line 12",
+      "weight": 1.0,
+      "source": "ninaai_system",
+      "target": "zustand_state"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "line 55",
+      "weight": 1.0,
+      "source": "ninaai_system",
+      "target": "orchestrator_ts"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "line 56",
+      "weight": 1.0,
+      "source": "ninaai_system",
+      "target": "pillars_ts"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "line 57",
+      "weight": 1.0,
+      "source": "ninaai_system",
+      "target": "specialists_ts"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 291",
+      "weight": 1.0,
+      "source": "zona_processamento",
+      "target": "ninaai_system"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "README.md",
+      "source_location": "line 44",
+      "weight": 0.85,
+      "source": "auth_login_route",
+      "target": "supabase_backend"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "line 50",
+      "weight": 1.0,
+      "source": "api_chat_route",
+      "target": "anthropic_claude"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "README.md",
+      "source_location": "line 50",
+      "weight": 0.85,
+      "source": "api_chat_route",
+      "target": "vercel_ai_sdk"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "README.md",
+      "source_location": "line 55",
+      "weight": 0.75,
+      "source": "orchestrator_ts",
+      "target": "specialists_ts"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "README.md",
+      "source_location": "line 55",
+      "weight": 0.75,
+      "source": "orchestrator_ts",
+      "target": "pillars_ts"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "README.md",
+      "source_location": "line 46",
+      "weight": 0.85,
+      "source": "pillar_chat_route",
+      "target": "pillars_ts"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "README.md",
+      "source_location": "line 46",
+      "weight": 0.75,
+      "source": "pillar_chat_route",
+      "target": "specialists_ts"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "README.md",
+      "source_location": "line 45",
+      "weight": 0.85,
+      "source": "dashboard_route",
+      "target": "api_chat_route"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "README.md",
+      "source_location": "line 46",
+      "weight": 0.85,
+      "source": "pillar_chat_route",
+      "target": "api_chat_route"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 0.75,
+      "source": "input_estrategia",
+      "target": "pilar_estrategia"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "README.md",
+      "source_location": "line 66",
+      "weight": 0.85,
+      "source": "pilar_cultura",
+      "target": "cultural_diagnosis_flow"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 130",
+      "weight": 1.0,
+      "source": "cultural_diagnosis_flow",
+      "target": "zona_fontes"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 131",
+      "weight": 1.0,
+      "source": "cultural_diagnosis_flow",
+      "target": "zona_processamento"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 132",
+      "weight": 1.0,
+      "source": "cultural_diagnosis_flow",
+      "target": "zona_mapeamento"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 133",
+      "weight": 1.0,
+      "source": "cultural_diagnosis_flow",
+      "target": "zona_cultura_final"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 452",
+      "weight": 1.0,
+      "source": "zona_fontes",
+      "target": "input_mercado"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 453",
+      "weight": 1.0,
+      "source": "zona_fontes",
+      "target": "input_estrategia"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 454",
+      "weight": 1.0,
+      "source": "zona_fontes",
+      "target": "input_cap_fin"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 455",
+      "weight": 1.0,
+      "source": "zona_fontes",
+      "target": "input_perfil_ceo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 456",
+      "weight": 1.0,
+      "source": "zona_fontes",
+      "target": "input_lideranca"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 457",
+      "weight": 1.0,
+      "source": "zona_fontes",
+      "target": "input_cultura_instalada"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 458",
+      "weight": 1.0,
+      "source": "zona_fontes",
+      "target": "input_blockers"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 303",
+      "weight": 1.0,
+      "source": "zona_mapeamento",
+      "target": "cultura_aspirada"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 304",
+      "weight": 1.0,
+      "source": "zona_mapeamento",
+      "target": "cultura_exigida"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 317",
+      "weight": 1.0,
+      "source": "zona_mapeamento",
+      "target": "cultura_atual"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 380",
+      "weight": 1.0,
+      "source": "zona_cultura_final",
+      "target": "cultura_final"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": null,
+      "weight": 0.85,
+      "source": "cultura_atual",
+      "target": "input_cultura_instalada"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 337",
+      "weight": 1.0,
+      "source": "cultura_aspirada",
+      "target": "convergencia_valores"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 337",
+      "weight": 1.0,
+      "source": "cultura_exigida",
+      "target": "convergencia_valores"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 380",
+      "weight": 1.0,
+      "source": "convergencia_valores",
+      "target": "cultura_final"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/cultura-diagram.html",
+      "source_location": "line 415",
+      "weight": 1.0,
+      "source": "cultura_final",
+      "target": "mckinsey_7s"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "nina_brain_cultural_mapping",
+      "label": "Nina Brain processes inputs through Venn cultural mapping to produce final culture",
+      "nodes": [
+        "zona_processamento",
+        "zona_mapeamento",
+        "convergencia_valores",
+        "cultura_final"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "public/cultura-diagram.html"
+    },
+    {
+      "id": "agent_layer_pillars",
+      "label": "Orchestrator + Pillars + Specialists form Nina agent layer",
+      "nodes": [
+        "orchestrator_ts",
+        "pillars_ts",
+        "specialists_ts"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "README.md"
+    },
+    {
+      "id": "venn_three_cultures",
+      "label": "Aspirada, Exigida, and Atual cultures intersect to define Final Culture",
+      "nodes": [
+        "cultura_aspirada",
+        "cultura_exigida",
+        "cultura_atual",
+        "cultura_final"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "public/cultura-diagram.html"
+    }
+  ]
+}

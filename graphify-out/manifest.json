@@ -1,0 +1,310 @@
+{
+  "/home/user/Laimalidori/next.config.mjs": {
+    "mtime": 1777823326.5946648,
+    "hash": "4eb19b1f1a3f1f1c28962d346031da34"
+  },
+  "/home/user/Laimalidori/middleware.ts": {
+    "mtime": 1777823326.5946648,
+    "hash": "fff97ffb0ea3e328f559e299e6d2fb8c"
+  },
+  "/home/user/Laimalidori/tailwind.config.ts": {
+    "mtime": 1777823326.6034863,
+    "hash": "bd3b196beb8ed6fd848dd4ede54ba3ed"
+  },
+  "/home/user/Laimalidori/postcss.config.mjs": {
+    "mtime": 1777823326.5958374,
+    "hash": "b7941c02b947e17ae32f67ae7e664ec8"
+  },
+  "/home/user/Laimalidori/types/module.ts": {
+    "mtime": 1777823326.6056182,
+    "hash": "661b686f6c104d806c96194e16bf7462"
+  },
+  "/home/user/Laimalidori/types/history.ts": {
+    "mtime": 1777823326.6056182,
+    "hash": "78b5403ff71d5d1dd42ddb8b8330d994"
+  },
+  "/home/user/Laimalidori/types/agent.ts": {
+    "mtime": 1777823326.6034863,
+    "hash": "9e021fd51a54445f26128bc7b84e6759"
+  },
+  "/home/user/Laimalidori/types/chat.ts": {
+    "mtime": 1777823326.6056182,
+    "hash": "d3e396e6d221a4888fac8df72faf3127"
+  },
+  "/home/user/Laimalidori/types/empresa.ts": {
+    "mtime": 1777823326.6056182,
+    "hash": "6e6a51d4ab5b6b11b0ac8a8dfce481b6"
+  },
+  "/home/user/Laimalidori/types/wfp.ts": {
+    "mtime": 1777823326.6056182,
+    "hash": "b8714f1278beb7a54113640bb25e64a0"
+  },
+  "/home/user/Laimalidori/components/wfp/WFPStageChat.tsx": {
+    "mtime": 1777823326.5922356,
+    "hash": "2abb3681d783a9c5b410e76ac81fd19a"
+  },
+  "/home/user/Laimalidori/components/wfp/EtapaFrameworks.tsx": {
+    "mtime": 1777823326.5900927,
+    "hash": "26808bae7c145a3769b4ac5d340332dd"
+  },
+  "/home/user/Laimalidori/components/wfp/SintesePanel.tsx": {
+    "mtime": 1777823326.5922356,
+    "hash": "4be7b0d8e62520e3cdc9e1e20da254a9"
+  },
+  "/home/user/Laimalidori/components/ui/Separator.tsx": {
+    "mtime": 1777823326.5900927,
+    "hash": "01bdb86ff93b182497a86a9aabd3622d"
+  },
+  "/home/user/Laimalidori/components/ui/Input.tsx": {
+    "mtime": 1777823326.5900927,
+    "hash": "84de6155de927befafbe54f9441e246a"
+  },
+  "/home/user/Laimalidori/components/ui/Select.tsx": {
+    "mtime": 1777823326.5900927,
+    "hash": "09a89285703adaef7a2d4b3a7878d92f"
+  },
+  "/home/user/Laimalidori/components/ui/Button.tsx": {
+    "mtime": 1777823326.5900927,
+    "hash": "5000bfbdc7f3ec46a05a68601a2788d8"
+  },
+  "/home/user/Laimalidori/components/ui/Textarea.tsx": {
+    "mtime": 1777823326.5900927,
+    "hash": "4f5c2ad293f236369f26769b2e2907f9"
+  },
+  "/home/user/Laimalidori/components/ui/Badge.tsx": {
+    "mtime": 1777823326.5889792,
+    "hash": "c768cd3be624caca9001a8770f25b5a2"
+  },
+  "/home/user/Laimalidori/components/ui/SectionLabel.tsx": {
+    "mtime": 1777823326.5900927,
+    "hash": "0a61bc0056af14620629a77781108aba"
+  },
+  "/home/user/Laimalidori/components/history/HistoryItem.tsx": {
+    "mtime": 1777823326.5867593,
+    "hash": "68c7b660c098eec0b69d21d372b713c3"
+  },
+  "/home/user/Laimalidori/components/history/HistoryFilter.tsx": {
+    "mtime": 1777823326.5867593,
+    "hash": "8c561077fac5a40a5253d64380cf7d4e"
+  },
+  "/home/user/Laimalidori/components/history/ArtifactCard.tsx": {
+    "mtime": 1777823326.5842621,
+    "hash": "cb825d65b6cecccb91640d06c4a325d8"
+  },
+  "/home/user/Laimalidori/components/empresa/EmpresaForm.tsx": {
+    "mtime": 1777823326.5842621,
+    "hash": "3f8c0715c86d5a66b771f1a3e529249c"
+  },
+  "/home/user/Laimalidori/components/chat/QuickActions.tsx": {
+    "mtime": 1777823326.5842621,
+    "hash": "41522fd80f688c3edb738bce428087a1"
+  },
+  "/home/user/Laimalidori/components/chat/Message.tsx": {
+    "mtime": 1777823326.5842621,
+    "hash": "77a70ba6f0e7e76804ae415ccf411322"
+  },
+  "/home/user/Laimalidori/components/chat/ChatInput.tsx": {
+    "mtime": 1777823326.5836802,
+    "hash": "5a79cdf85c3a766c313e834f27dc6874"
+  },
+  "/home/user/Laimalidori/components/chat/MessageList.tsx": {
+    "mtime": 1777823326.5842621,
+    "hash": "69cb0b12f1b1bdda49c4d84703b0f202"
+  },
+  "/home/user/Laimalidori/components/chat/ChatInterface.tsx": {
+    "mtime": 1777823326.5842621,
+    "hash": "980e788f9f57e98f5409664f0ac357a0"
+  },
+  "/home/user/Laimalidori/components/chat/TypingIndicator.tsx": {
+    "mtime": 1777823326.5842621,
+    "hash": "f37cf912289201c872df8165df10a2d1"
+  },
+  "/home/user/Laimalidori/components/layout/CompanyStrip.tsx": {
+    "mtime": 1777823326.5867593,
+    "hash": "478f19ae5c68a7188440d3515fecfade"
+  },
+  "/home/user/Laimalidori/components/layout/EmpresaProvider.tsx": {
+    "mtime": 1777823326.58763,
+    "hash": "156b89810295a857c86f98d5ac756eda"
+  },
+  "/home/user/Laimalidori/components/layout/Header.tsx": {
+    "mtime": 1777823326.58763,
+    "hash": "ec1935fb9e236ede36766bcae6b1f90d"
+  },
+  "/home/user/Laimalidori/components/layout/MobileNav.tsx": {
+    "mtime": 1777823326.58763,
+    "hash": "b49eefc9fa758367f39ae20e6edba264"
+  },
+  "/home/user/Laimalidori/components/layout/Sidebar.tsx": {
+    "mtime": 1777823326.58763,
+    "hash": "655c37d8133f14046fd791ede560602d"
+  },
+  "/home/user/Laimalidori/components/pillars/PillarCard.tsx": {
+    "mtime": 1777823326.58763,
+    "hash": "f09a46d0daf792a25b904edeccfbd791"
+  },
+  "/home/user/Laimalidori/components/pillars/ToolsGrid.tsx": {
+    "mtime": 1777823326.5889792,
+    "hash": "65965bb49fcfe5cb535b059c5dfafb9e"
+  },
+  "/home/user/Laimalidori/components/pillars/PillarGrid.tsx": {
+    "mtime": 1777823326.5889792,
+    "hash": "a8e35d0c2e22ec5077c3a4af2c7c96df"
+  },
+  "/home/user/Laimalidori/components/pillars/PillarHeader.tsx": {
+    "mtime": 1777823326.5889792,
+    "hash": "46669fcb341c04394fd53b5f91da6d84"
+  },
+  "/home/user/Laimalidori/supabase/wfp_migration.sql": {
+    "mtime": 1777823326.6034863,
+    "hash": "7127d3cc91c65c5e26735e00daefc16b"
+  },
+  "/home/user/Laimalidori/supabase/schema.sql": {
+    "mtime": 1777823326.602519,
+    "hash": "08b41b6e02340b845494e6397d9b74e0"
+  },
+  "/home/user/Laimalidori/app/page.tsx": {
+    "mtime": 1777823326.5818675,
+    "hash": "7fc07483250fc5c773522ea2d4999474"
+  },
+  "/home/user/Laimalidori/app/layout.tsx": {
+    "mtime": 1777823326.5818675,
+    "hash": "0d13c78c2741c59b19056c234d8db798"
+  },
+  "/home/user/Laimalidori/app/api/artefato/save/route.ts": {
+    "mtime": 1777823326.569086,
+    "hash": "bc0689aff84745fadb1126d37b766399"
+  },
+  "/home/user/Laimalidori/app/api/chat/route.ts": {
+    "mtime": 1777823326.570141,
+    "hash": "fa2421f1a23cbd64351d1ea2a88b623d"
+  },
+  "/home/user/Laimalidori/app/api/chat/wfp/route.ts": {
+    "mtime": 1777823326.570141,
+    "hash": "e9fb7c92e00f19f9bd95e7ae0f6524a5"
+  },
+  "/home/user/Laimalidori/app/api/chat/title/route.ts": {
+    "mtime": 1777823326.570141,
+    "hash": "97bb522da5511e71b1b99608dac160dc"
+  },
+  "/home/user/Laimalidori/app/api/chat/free/route.ts": {
+    "mtime": 1777823326.570141,
+    "hash": "491226919fba17d66c8f34daede9bc7b"
+  },
+  "/home/user/Laimalidori/app/(auth)/callback/route.ts": {
+    "mtime": 1777823326.5638373,
+    "hash": "84fce0adc3e5ad52c78b65e0bdc323c0"
+  },
+  "/home/user/Laimalidori/app/(auth)/login/page.tsx": {
+    "mtime": 1777823326.5638373,
+    "hash": "991d381390ab636ea937d43b2bddcc05"
+  },
+  "/home/user/Laimalidori/app/dashboard/page.tsx": {
+    "mtime": 1777823326.575508,
+    "hash": "b0ea2322edd20e021cdd93d5cf7fb26a"
+  },
+  "/home/user/Laimalidori/app/dashboard/layout.tsx": {
+    "mtime": 1777823326.5725977,
+    "hash": "96d4dadc6afa61565df58d034146d21c"
+  },
+  "/home/user/Laimalidori/app/dashboard/history/page.tsx": {
+    "mtime": 1777823326.5725977,
+    "hash": "97a885ce231037f68b1ad19f8b486c78"
+  },
+  "/home/user/Laimalidori/app/dashboard/empresa/page.tsx": {
+    "mtime": 1777823326.5725977,
+    "hash": "9d76e693b0974416aab88cbb3cebed53"
+  },
+  "/home/user/Laimalidori/app/dashboard/modulo/workforce-planning/page.tsx": {
+    "mtime": 1777823326.575508,
+    "hash": "e3a88d40f1812182f5f7687183fec299"
+  },
+  "/home/user/Laimalidori/app/dashboard/modulo/workforce-planning/novo/page.tsx": {
+    "mtime": 1777823326.575508,
+    "hash": "4a8d2ae39fdbd16fe2ee6e7958577fb7"
+  },
+  "/home/user/Laimalidori/app/dashboard/modulo/workforce-planning/[projectId]/page.tsx": {
+    "mtime": 1777823326.575508,
+    "hash": "593e8c1687e3ec6f1c2f38333737c2a7"
+  },
+  "/home/user/Laimalidori/app/dashboard/modulo/workforce-planning/[projectId]/metricas/page.tsx": {
+    "mtime": 1777823326.575508,
+    "hash": "f2fa4d1798d94cd157363eae0180f6c2"
+  },
+  "/home/user/Laimalidori/app/dashboard/modulo/workforce-planning/[projectId]/etapa/[stage]/page.tsx": {
+    "mtime": 1777823326.575508,
+    "hash": "90aeb2330491a87f8ce81c92284a0fbb"
+  },
+  "/home/user/Laimalidori/app/dashboard/artefato/[id]/page.tsx": {
+    "mtime": 1777823326.5725977,
+    "hash": "c30a7ad85386bc8d69fd1ab2702ab742"
+  },
+  "/home/user/Laimalidori/app/dashboard/pillar/[id]/page.tsx": {
+    "mtime": 1777823326.5758374,
+    "hash": "280a5d5cd057a15c41f870b546a05a98"
+  },
+  "/home/user/Laimalidori/app/dashboard/pillar/cultura/page.tsx": {
+    "mtime": 1777823326.5758374,
+    "hash": "8c66e4a28c3f3034de539415e582c09c"
+  },
+  "/home/user/Laimalidori/store/ui.ts": {
+    "mtime": 1777823326.602519,
+    "hash": "8f1fd5234651c13b2e1ae63a6b6be9bd"
+  },
+  "/home/user/Laimalidori/store/chat.ts": {
+    "mtime": 1777823326.5958374,
+    "hash": "a5415a1d657633fde71416cf63ca5f93"
+  },
+  "/home/user/Laimalidori/store/empresa.ts": {
+    "mtime": 1777823326.602519,
+    "hash": "a73401e8bf5dfa9a445e92d3fe5d10bf"
+  },
+  "/home/user/Laimalidori/lib/context.ts": {
+    "mtime": 1777823326.5937755,
+    "hash": "4d970d46a96de97997a0eaaf594a927e"
+  },
+  "/home/user/Laimalidori/lib/utils.ts": {
+    "mtime": 1777823326.5946648,
+    "hash": "fd88bdc69dc32e606b0cc8991a59fb19"
+  },
+  "/home/user/Laimalidori/lib/anthropic.ts": {
+    "mtime": 1777823326.5937755,
+    "hash": "27144f60af912152eccd92af4f75d824"
+  },
+  "/home/user/Laimalidori/lib/agents/specialists.ts": {
+    "mtime": 1777823326.5937755,
+    "hash": "ffea8df5509febd4a565e576901ce7b3"
+  },
+  "/home/user/Laimalidori/lib/agents/pillars.ts": {
+    "mtime": 1777823326.5937755,
+    "hash": "4249fcd22b60100514e77266b4e68a29"
+  },
+  "/home/user/Laimalidori/lib/agents/orchestrator.ts": {
+    "mtime": 1777823326.5932212,
+    "hash": "48e728825be2b50736a254cf8247473c"
+  },
+  "/home/user/Laimalidori/lib/supabase/middleware.ts": {
+    "mtime": 1777823326.5946648,
+    "hash": "aad69342b260f7857f1c5e1af1947781"
+  },
+  "/home/user/Laimalidori/lib/supabase/server.ts": {
+    "mtime": 1777823326.5946648,
+    "hash": "eadc90ec3018d1582fbf9e6c5ea9d920"
+  },
+  "/home/user/Laimalidori/lib/supabase/client.ts": {
+    "mtime": 1777823326.5937755,
+    "hash": "547aafd0fc1ca84d4880f778de510ebd"
+  },
+  "/home/user/Laimalidori/README.md": {
+    "mtime": 1777823326.5598373,
+    "hash": "e2f7634c980ea75f78f9336b464d57eb"
+  },
+  "/home/user/Laimalidori/CLAUDE.md": {
+    "mtime": 1777823424.8471308,
+    "hash": "8ee39dcfe68a23b3797b02648930d699"
+  },
+  "/home/user/Laimalidori/public/cultura-diagram.html": {
+    "mtime": 1777823326.5958374,
+    "hash": "04b578a80e3a2bc86fcfa26286b8c7de"
+  }
+}
