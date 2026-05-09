@@ -51,7 +51,7 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="text-center mb-10">
           <div className="flex items-baseline justify-center gap-0.5 mb-2">
-            <span className="font-serif font-light text-[36px] text-white tracking-tight">Nina</span>
+            <span className="font-serif font-light text-[36px] text-white tracking-tight">Amplif</span>
             <span className="font-sans font-light text-[18px] text-pink">.AI</span>
           </div>
           <p className="font-sans text-[13px] text-white/40">Advisory executivo de RH</p>

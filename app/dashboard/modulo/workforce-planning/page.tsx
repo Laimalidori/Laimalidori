@@ -39,7 +39,7 @@ export default function WFPModulePage() {
         <h1 className="display-xl text-text-primary">Workforce Planning</h1>
         <p className="body-md text-text-secondary max-w-2xl">
           Diagnóstico, projeção e plano de ação para a força de trabalho.
-          A Nina conduz você por 6 etapas estruturadas — do diagnóstico financeiro
+          A Amplif conduz você por 6 etapas estruturadas — do diagnóstico financeiro
           aos três cenários defensáveis para o board.
         </p>
       </div>

@@ -99,7 +99,7 @@ export function Sidebar() {
           className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg bg-gradient-to-r from-pink/12 to-transparent border border-pink/20 text-pink font-sans text-[12px] hover:from-pink/20 transition-all"
         >
           <MessageCircle size={14} strokeWidth={1.5} className="shrink-0" />
-          <span>Chat com Nina</span>
+          <span>Chat com Amplif</span>
           <ChevronRight size={12} className="ml-auto opacity-50" />
         </Link>
       </div>

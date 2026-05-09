@@ -20,7 +20,7 @@ export default async function EmpresaPage() {
       <div className="mb-8">
         <h1 className="display-md text-text-primary mb-1">Contexto da empresa</h1>
         <p className="body-sm text-text-tertiary">
-          Estas informações personalizam todas as recomendações da Nina para a sua realidade.
+          Estas informações personalizam todas as recomendações da Amplif para a sua realidade.
         </p>
       </div>
 

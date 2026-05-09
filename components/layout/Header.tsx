@@ -34,7 +34,7 @@ export function Header() {
       {/* Logo + nav */}
       <div className="flex items-center gap-8">
         <Link href="/dashboard" className="flex items-baseline gap-0.5">
-          <span className="font-serif font-light text-[22px] text-white tracking-tight">Nina</span>
+          <span className="font-serif font-light text-[22px] text-white tracking-tight">Amplif</span>
           <span className="font-sans font-light text-[13px] text-pink">.AI</span>
         </Link>
 

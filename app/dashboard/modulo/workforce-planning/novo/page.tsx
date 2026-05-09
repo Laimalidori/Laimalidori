@@ -109,7 +109,7 @@ export default function NovoProjetoPage() {
         <p className="label-sm text-text-tertiary mb-1">Novo projeto · Workforce Planning</p>
         <h1 className="display-lg text-text-primary">Parametrização de contexto</h1>
         <p className="body-sm text-text-secondary mt-1">
-          5 blocos · ~10 minutos · Alimenta toda a análise da Nina
+          5 blocos · ~10 minutos · Alimenta toda a análise da Amplif
         </p>
       </div>
 

@@ -212,7 +212,7 @@ export default function EtapaPage() {
           )}
         </div>
 
-        {/* ── Right panel (60%) — Nina chat ── */}
+        {/* ── Right panel (60%) — Amplif chat ── */}
         <div className="space-y-3">
           {/* Stage quote */}
           {quote && (

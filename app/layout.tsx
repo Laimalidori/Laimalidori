@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Nina.AI — Advisory Executivo de RH',
+  title: 'Amplif.AI — Advisory Executivo de RH',
   description: 'Sistema de advisory para CHROs e executivos de RH.',
 }
 
