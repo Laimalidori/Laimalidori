@@ -229,7 +229,7 @@ export function EmpresaForm({ initial }: EmpresaFormProps) {
           id="extra"
           value={form.contexto_extra ?? ''}
           onChange={(e) => update('contexto_extra', e.target.value)}
-          placeholder="Qualquer informação relevante que a Nina deva saber..."
+          placeholder="Qualquer informação relevante que a Amplif deva saber..."
           rows={3}
         />
       </section>

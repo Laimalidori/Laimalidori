@@ -152,7 +152,7 @@ export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) 
       })
   }, [projectId, stageNum])
 
-  /* ── Auto-init: open the stage with Nina's analysis when no history ── */
+  /* ── Auto-init: open the stage with Amplif's analysis when no history ── */
   useEffect(() => {
     if (!historyLoaded)           return
     if (initSentRef.current)      return
@@ -228,7 +228,7 @@ export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) 
         {/* ── Stored (historical) messages ── */}
         {storedMsgs.map((msg, idx) => (
           <div key={`h-${idx}`} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
-            {msg.role === 'assistant' && <NinaAvatar />}
+            {msg.role === 'assistant' && <AmplifAvatar />}
             <div
               className={`max-w-[85%] rounded-lg px-4 py-3 text-sm leading-relaxed ${
                 msg.role === 'user'
@@ -248,7 +248,7 @@ export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) 
           const text = extractText(msg)
           return (
             <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
-              {msg.role === 'assistant' && <NinaAvatar />}
+              {msg.role === 'assistant' && <AmplifAvatar />}
               <div
                 className={`max-w-[85%] rounded-lg px-4 py-3 text-sm leading-relaxed ${
                   msg.role === 'user'
@@ -267,7 +267,7 @@ export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) 
         {/* Streaming indicator */}
         {isLoading && (
           <div className="flex gap-3">
-            <NinaAvatar />
+            <AmplifAvatar />
             <div className="bg-bg-subtle rounded-lg px-4 py-3">
               <span className="streaming-cursor" />
             </div>
@@ -304,7 +304,7 @@ export function WFPStageChat({ projectId, stageNum, projeto, etapaDef }: Props) 
   )
 }
 
-function NinaAvatar() {
+function AmplifAvatar() {
   return (
     <div className="w-7 h-7 rounded bg-accent text-white flex items-center justify-center shrink-0 text-xs font-semibold">
       N

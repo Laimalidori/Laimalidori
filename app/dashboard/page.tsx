@@ -25,7 +25,7 @@ function DashboardContent() {
           Qual é o dilema de hoje?
         </h1>
         <p className="body-md text-text-tertiary mb-6 max-w-xl">
-          Descreva o desafio. Nina aciona o especialista certo automaticamente.
+          Descreva o desafio. Amplif aciona o especialista certo automaticamente.
         </p>
         <ChatInterface
           endpoint="/api/chat/free"

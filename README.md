@@ -1,4 +1,4 @@
-# Nina.AI — CHRO Advisory System
+# Amplif.AI — CHRO Advisory System
 
 Advisory executivo para CHROs e líderes de RH. Funciona como um painel de especialistas sêniores disponível 24/7.
 
@@ -50,7 +50,7 @@ app/
 └── api/chat              # Streaming com Claude
 
 lib/agents/
-├── orchestrator.ts       # System prompt principal da Nina
+├── orchestrator.ts       # System prompt principal da Amplif
 ├── pillars.ts            # 8 pilares + 4 ferramentas
 └── specialists.ts        # 8 prompts especializados
 ```
