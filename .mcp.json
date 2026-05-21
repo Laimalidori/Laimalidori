@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "obsidian": {
+      "command": "npx",
+      "args": ["-y", "obsidian-mcp"],
+      "env": {
+        "OBSIDIAN_API_KEY": "2b0408b3c138d9d39d5dcead67362acbcc992c2adc860d3eaada1c773f38ce57",
+        "VAULT_PATH": "/home/user/Laimalidori"
+      }
+    }
+  }
+}
